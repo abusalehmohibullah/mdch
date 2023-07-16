@@ -1,0 +1,12 @@
+
+
+
+/* photo album */
+
+#album-container {
+    overflow-x: auto;
+}
+
+.album-card {
+    width: 300px;
+}
