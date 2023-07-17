@@ -134,11 +134,31 @@
 
                                 <div class="box-area">
                                     <div class="img-area d-flex justify-content-center">
-                                        <img src="{{ asset('assets/images/du.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                        <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
                                     </div>
                                     <div class="mt-2">
-                                        <h5>Department of Physics</h5>
-                                        <div>David Warner</div>
+                                        <h5>Oral Anatomy Department</h5>
+                                        <div>Dr. Nihar Sultana</div>
+                                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
+                                    </div>
+                                </div>
+                                <div class="box-area">
+                                    <div class="img-area d-flex justify-content-center">
+                                        <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                    </div>
+                                    <div class="mt-2">
+                                        <h5>Science of Dental Materials Department</h5>
+                                        <div>Dr. Nazrul Huda</div>
+                                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
+                                    </div>
+                                </div>
+                                <div class="box-area">
+                                    <div class="img-area d-flex justify-content-center">
+                                        <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                    </div>
+                                    <div class="mt-2">
+                                        <h5>Bio Chemistry Department</h5>
+                                        <div>Dr. Sadia Hasan</div>
                                         <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
                                     </div>
                                 </div>
