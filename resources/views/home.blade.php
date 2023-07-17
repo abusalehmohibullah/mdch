@@ -13,7 +13,7 @@
     <div class="container p-0 shadow-sm">
         <!-- Replace traditional slider with a video -->
         <div class="embed-responsive embed-responsive-16by9 w-100 ratio ratio-16x9">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/RLN99JcdvVk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RLN99JcdvVk?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
 </section>
@@ -123,50 +123,63 @@
 
 <section id="specialization">
     <div class="container shadow-sm bg-white mb-3 p-0">
-    <div class="card border-light section_div text-center">
-        <div class="card-body">
-            <h2 class="card-title section_title">Specialization</h2>
-            <section id="testimonial_area" class="section_padding">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 mt-3">
-                            <div class="specialization_slider_area text-center owl-carousel">
+        <div class="card border-light section_div text-center">
+            <div class="card-body p-0">
+                <h2 class="card-title section_title my-2">Departments</h2>
+                <div id="testimonial_area" class="section_padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 my-3">
+                                <div class="specialization_slider_area text-center owl-carousel">
 
-                                <div class="box-area">
-                                    <div class="img-area d-flex justify-content-center">
-                                        <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                    <div class="card p-2 box-area trans-bg ">
+                                        <div class="img-area d-flex justify-content-center">
+                                            <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                        </div>
+                                        <div class="mt-2">
+                                            <h5>Oral Anatomy Department</h5>
+                                            <div>Dr. Nihar Sultana</div>
+                                            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
+                                        </div>
                                     </div>
-                                    <div class="mt-2">
-                                        <h5>Oral Anatomy Department</h5>
-                                        <div>Dr. Nihar Sultana</div>
-                                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
+                                    <div class="card p-2 box-area trans-bg ">
+                                        <div class="img-area d-flex justify-content-center">
+                                            <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                        </div>
+                                        <div class="mt-2">
+                                            <h5>Science of Dental Materials</h5>
+                                            <div>Dr. Nazrul Huda</div>
+                                            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="box-area">
-                                    <div class="img-area d-flex justify-content-center">
-                                        <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                    <div class="card p-2 box-area trans-bg ">
+                                        <div class="img-area d-flex justify-content-center">
+                                            <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                        </div>
+                                        <div class="mt-2">
+                                            <h5>Bio Chemistry Department</h5>
+                                            <div>Dr. Sadia Hasan</div>
+                                            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
+                                        </div>
                                     </div>
-                                    <div class="mt-2">
-                                        <h5>Science of Dental Materials Department</h5>
-                                        <div>Dr. Nazrul Huda</div>
-                                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
-                                    </div>
-                                </div>
-                                <div class="box-area">
-                                    <div class="img-area d-flex justify-content-center">
-                                        <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
-                                    </div>
-                                    <div class="mt-2">
-                                        <h5>Bio Chemistry Department</h5>
-                                        <div>Dr. Sadia Hasan</div>
-                                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
+                                    <div class="card p-2 box-area trans-bg ">
+                                        <div class="img-area d-flex justify-content-center">
+                                            <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                        </div>
+                                        <div class="mt-2">
+                                            <h5>Lorem fede re gd</h5>
+                                            <div>Dr. Abid Hasan</div>
+                                            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+</section>
 
 
 

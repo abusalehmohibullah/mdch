@@ -68,6 +68,10 @@ body {
 .semitrans-bg {
     background-color: rgb(152 151 151 / 25%);
 }
+
+.trans-bg {
+    background-color: rgb(255 255 255 / 75%);
+}
 .login-bg {
     background-color: rgba(0, 166, 255, 1);
 }
@@ -143,7 +147,11 @@ footer .copyright {
 
 
 
-
+#testimonial_area {
+  background-image: url("../images/college-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 
 #testimonial_area .owl-nav {
