@@ -31,43 +31,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-$(document).ready(function () {
-  // Check if the user has already made a selection
-  if (localStorage.getItem('userSelection')) {
-    // Redirect the user to the appropriate section based on the selection
-    var userSelection = localStorage.getItem('userSelection');
-    window.location.href = '/' + userSelection;
-  } else {
-    // Show the modal
-    $('#sectionModal').modal('show');
-  }
+// $(document).ready(function () {
+//   // Check if the user has already made a selection
+//   if (localStorage.getItem('userSelection')) {
+//     // Redirect the user to the appropriate section based on the selection
+//     var userSelection = localStorage.getItem('userSelection');
+//     window.location.href = '/' + userSelection;
+//   } else {
+//     // Show the modal
+//     $('#sectionModal').modal('show');
+//   }
 
-  // Function to handle user selection
-  function handleSelection(selection) {
-    localStorage.setItem('userSelection', selection);
-    window.location.href = '/' + selection;
-  }
+//   // Function to handle user selection
+//   function handleSelection(selection) {
+//     localStorage.setItem('userSelection', selection);
+//     window.location.href = '/' + selection;
+//   }
 
-  // Event listener for the education button
-  $('#educationBtn').on('click', function () {
-    handleSelection('education');
-  });
+//   // Event listener for the education button
+//   $('#educationBtn').on('click', function () {
+//     handleSelection('education');
+//   });
 
-  // Event listener for the entertainment button
-  $('#entertainmentBtn').on('click', function () {
-    handleSelection('entertainment');
-  });
+//   // Event listener for the entertainment button
+//   $('#entertainmentBtn').on('click', function () {
+//     handleSelection('entertainment');
+//   });
 
-  // Clear user selection when tab or browser is closed
-  $(window).on('beforeunload', function () {
-    clearUserSelection();
-  });
+//   // Clear user selection when tab or browser is closed
+//   $(window).on('beforeunload', function () {
+//     clearUserSelection();
+//   });
 
-  // Function to clear user selection from local storage
-  function clearUserSelection() {
-    localStorage.removeItem('userSelection');
-  }
-});
+//   // Function to clear user selection from local storage
+//   function clearUserSelection() {
+//     localStorage.removeItem('userSelection');
+//   }
+// });
 
 
 
@@ -105,3 +105,54 @@ Fancybox.bind('[data-fancybox="gallery"]', {
 });
 
 
+$(".testmonial_slider_area").owlCarousel({
+  autoplay: true,
+  slideSpeed: 1000,
+  items: 3,
+  loop: true,
+  nav: true,
+  navText: ['<i class="fa fa-arrow-left"></i>', '<i class="fa fa-arrow-right"></i>'],
+  margin: 30,
+  dots: true,
+  responsive: {
+    320: {
+      items: 1
+    },
+    767: {
+      items: 2
+    },
+    600: {
+      items: 2
+    },
+    1000: {
+      items: 3
+    }
+  }
+
+});
+
+$(".specialization_slider_area").owlCarousel({
+  autoplay: true,
+  slideSpeed: 1000,
+  items: 3,
+  loop: true,
+  nav: true,
+  navText: ['<i class="fa fa-arrow-left"></i>', '<i class="fa fa-arrow-right"></i>'],
+  margin: 30,
+  dots: true,
+  responsive: {
+    320: {
+      items: 2
+    },
+    767: {
+      items: 3
+    },
+    600: {
+      items: 2
+    },
+    1000: {
+      items: 4
+    }
+  }
+
+});

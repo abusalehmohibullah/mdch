@@ -75,6 +75,8 @@
     </div>
 </section>
 
+
+
 <!-- Services Section -->
 <section id="services-section">
     <div class="container shadow-sm bg-white mb-3 p-0">
@@ -118,6 +120,43 @@
         </div>
     </div>
 </section>
+
+<section id="specialization">
+    <div class="container shadow-sm bg-white mb-3 p-0">
+    <div class="card border-light section_div text-center">
+        <div class="card-body">
+            <h2 class="card-title section_title">Specialization</h2>
+            <section id="testimonial_area" class="section_padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mt-3">
+                            <div class="specialization_slider_area text-center owl-carousel">
+
+                                <div class="box-area">
+                                    <div class="img-area d-flex justify-content-center">
+                                        <img src="{{ asset('assets/images/du.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                    </div>
+                                    <div class="mt-2">
+                                        <h5>Department of Physics</h5>
+                                        <div>David Warner</div>
+                                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+        </div>
+    </div>
+    </div>
+</section>
+
 
 
 <!-- FAQ Section -->

@@ -136,3 +136,51 @@ footer .copyright {
     width: 100%;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+#testimonial_area .owl-nav {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+}
+#testimonial_area .owl-prev, #testimonial_area .owl-next {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	color: #262626;
+    border: solid 1px #262626;
+	border-radius: 50%;
+	text-align: center;
+	/* background: #fff; */
+	position: absolute;
+}
+#testimonial_area .owl-prev {
+	left: -50px;
+	top: -30px;
+}
+#testimonial_area .owl-next {
+	right: -50px;
+	top: -30px;
+}
+@media only screen and (max-width: 991px) {
+	.owl-nav {
+		display: none;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.box-area {
+		text-align: center;
+	}
+	.owl-nav {
+		display: none;
+	}
+}
+
