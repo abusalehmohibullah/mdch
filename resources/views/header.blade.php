@@ -35,9 +35,9 @@
     </nav>
 
     <!-- Branding Nav -->
-    <nav class="navbar bg-light bg-white sticky-top shadow-sm">
+    <nav class="navbar bg-light bg-white sticky-top shadow-sm pb-0">
         <div class="container-fluid">
-            <div class="container d-flex align-items-center">
+            <div class="container d-flex align-items-center gap-2">
                 <div class="hstack gap-2 w-100 pe-2">
                     <!-- Logo and Full Name -->
                     <a class="navbar-brand fs-1 fw-semibold m-0" href="#">
@@ -54,58 +54,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-100 pe-2" style="overflow:hidden">
-
-                    <!-- HTML -->
-                    <div class="ps-2 w-100 d-none" id="menu-btns">
-
-                        <!-- Menu items -->
-                        <ul class="navbar-nav d-flex flex-row justify-content-end" id="menuItems">
-                            <li class="nav-item">
-                                <a class="nav-link p-2 text-nowrap" href="#">About</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link p-2 text-nowrap" href="#">BDS Course</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link p-2 text-nowrap" href="#">Admission</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link p-2 text-nowrap" href="#">Departments</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link p-2 text-nowrap" href="#">Our Faculties</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link p-2 text-nowrap" href="#">Student Life</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link p-2 text-nowrap" href="#">Notice</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link p-2 text-nowrap" href="#">Career</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link p-2 text-nowrap" href="#">Contact</a>
-                            </li>
-                        </ul>
-
-
-                    </div>
-
+                <div>
+                    <div class="btn btn-success text-nowrap">Patient Care</div>
                 </div>
+                <div>
+                    <div class="btn btn-primary text-nowrap">Log In</div>
+                </div>
+                <div>
+                    <div class="btn btn-danger text-nowrap">Apply Online</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <nav class="navbar navbar-expand-lg bg-danger bg-opacity-50 sticky-top shadow-sm ">
+        <div class="container">
+            <div class="d-flex justify-content-center w-100">
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -118,7 +84,7 @@
                 <div class="offcanvas-body">
 
                     <!-- Menu items -->
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav text-nowrap">
                         <li class="nav-item">
                             <a class="nav-link p-2" href="#">About</a>
                         </li>
