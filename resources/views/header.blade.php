@@ -41,12 +41,12 @@
                 <div class="hstack gap-2 w-100 pe-2">
                     <!-- Logo and Full Name -->
                     <a class="navbar-brand fs-1 fw-semibold m-0" href="#">
-                        <img src="{{ asset('assets/images/mandy.png') }}" alt="Logo" width="70px">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" width="70px">
                         MDCH
                     </a>
                     <div class="vr"></div>
                     <div class="vstack gap-0 h-100 d-flex justify-content-center">
-                        <div class="fs-4 fw-semibold text-nowrap">
+                        <div class="fs-4 fw-semibold text-nowrap deep-color">
                             MANDY DENTAL COLLEGE AND HOSPITAL
                         </div>
                         <div>
@@ -68,7 +68,7 @@
     </nav>
 
 
-    <nav class="navbar navbar-expand-lg bg-danger bg-opacity-50 sticky-top shadow-sm ">
+    <nav class="navbar navbar-expand-lg light-bg sticky-top shadow-sm ">
         <div class="container">
             <div class="d-flex justify-content-center w-100">
 
@@ -93,19 +93,32 @@
                                 About
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Chairman's Message</a></li>
+                                <li><a class="dropdown-item" href="#">Principal's Message</a></li>
+                                <li><a class="dropdown-item" href="#">Administration</a></li>
+                                <li><a class="dropdown-item" href="#">Office Stuff</a></li>
+                                <li><a class="dropdown-item" href="#">Affiliaction</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link p-2" href="#">BDS Course</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            BDS Course
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">1st Phase</a></li>
+                                <li><a class="dropdown-item" href="#">2nd Phase</a></li>
+                                <li><a class="dropdown-item" href="#">3rd Phase</a></li>
+                                <li><a class="dropdown-item" href="#">4th Phase</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link p-2" href="#">Admission</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admission
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Local Students</a></li>
+                                <li><a class="dropdown-item" href="#">International Students</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link p-2" href="#">Departments</a>

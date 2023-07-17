@@ -8,6 +8,29 @@ body {
     box-sizing: border-box;
 }
 
+.deep-bg {
+  background-color: #FE576D !important;
+}
+
+.light-bg {
+  background-color: #EA96A1 !important;
+}
+
+.mixed-bg {
+  background-image: linear-gradient(#EA96A1, #FE576D);
+}
+.deep-color {
+  color: #FE576D !important;
+}
+
+.light-color {
+  color: #EA96A1 !important;
+}
+
+
+
+
+
 
 /*notices*/
 
@@ -192,3 +215,15 @@ footer .copyright {
 	}
 }
 
+
+
+
+
+
+
+.accordion-button:not(.collapsed) {
+  background-color: #EA96A1 !important;
+}
+.accordion {
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(234, 150, 161, 0.5) !important;
+}

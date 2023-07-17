@@ -20,8 +20,8 @@
 
 <!-- Notice Section -->
 <section>
-    <div class="container notice-container bg-warning d-flex my-3 p-0 shadow-sm">
-        <div class="title bg-info d-flex align-items-center py-1 px-3">
+    <div class="container notice-container light-bg d-flex my-3 p-0 shadow-sm">
+        <div class="title deep-bg d-flex align-items-center py-1 px-3">
             Notice
         </div>
 
@@ -59,12 +59,12 @@
         <div class="row g-0">
 
             <div class="col-md-5 order-md-2">
-                <img src="{{ asset('assets/images/teeth.png') }}" class="img-fluid" alt="...">
+                <img src="{{ asset('assets/images/college-image.jpg') }}" class="img-fluid" alt="...">
             </div>
 
             <div class="col-md-7 order-md-1">
                 <div class="card-body p-3">
-                    <h3 class="card-title">About</h3>
+                    <h3 class="card-title deep-color">About</h3>
                     <p class="card-text">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
 
                         One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
@@ -111,7 +111,7 @@
             </div>
             <div class="col-md-5">
                 <div class="card-body p-3">
-                    <h3 class="card-title">Our Faculties</h3>
+                    <h3 class="card-title deep-color">Our Faculties</h3>
                     <p class="card-text">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
 
                         One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
@@ -125,7 +125,7 @@
     <div class="container shadow-sm bg-white mb-3 p-0">
         <div class="card border-light section_div text-center">
             <div class="card-body p-0">
-                <h2 class="card-title section_title my-2">Departments</h2>
+                <h2 class="card-title section_title my-2 deep-color">Departments</h2>
                 <div id="testimonial_area" class="section_padding">
                     <div class="container">
                         <div class="row">
@@ -188,7 +188,7 @@
 <section id="faq-section">
     <div class="container shadow-sm bg-white mb-3 py-2">
         <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="h2 p-2">Why you choose us?</div>
+            <div class="h2 p-2 deep-color">Why you choose us?</div>
             <hr class="m-0">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
@@ -231,8 +231,8 @@
         <div class="row row-cols-4 g-4">
             <div class="col m-0 p-4">
                 <div class="h-100 p-4 semitrans-bg shadow">
-                    <h3 class="card-title text-center fw-bold text-primary">APPROVED</h3>
-                    <h3 class="styled-text text-center fw-bold text-primary">BY</h3>
+                    <h3 class="card-title text-center fw-bold deep-color">APPROVED</h3>
+                    <h3 class="styled-text text-center fw-bold deep-color">BY</h3>
                     <div class="p-4">
 
                         <img src="{{ asset('assets/images/bd.png') }}" class="card-img-top" alt="...">
@@ -244,8 +244,8 @@
             </div>
             <div class="col m-0 p-4">
                 <div class="h-100 p-4 semitrans-bg shadow">
-                    <h3 class="card-title text-center fw-bold text-primary">AFFILIATED</h3>
-                    <h3 class="styled-text text-center fw-bold text-primary">WITH</h3>
+                    <h3 class="card-title text-center fw-bold deep-color">AFFILIATED</h3>
+                    <h3 class="styled-text text-center fw-bold deep-color">WITH</h3>
                     <div class="p-4">
                         <img src="{{ asset('assets/images/du.png') }}" class="card-img-top" alt="...">
                     </div>
@@ -256,8 +256,8 @@
             </div>
             <div class="col m-0 p-4">
                 <div class="h-100 p-4 semitrans-bg shadow">
-                    <h3 class="card-title text-center fw-bold text-primary">RECOGNIZED</h3>
-                    <h3 class="styled-text text-center fw-bold text-primary">BY</h3>
+                    <h3 class="card-title text-center fw-bold deep-color">RECOGNIZED</h3>
+                    <h3 class="styled-text text-center fw-bold deep-color">BY</h3>
                     <div class="p-4">
                         <img src="{{ asset('assets/images/bmdc.png') }}" class="card-img-top" alt="...">
                     </div>
@@ -275,12 +275,21 @@
 <section id="message-section">
     <div class="container mb-3 p-0">
 
-        <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
                 <div class="shadow-sm bg-white h-100">
                     <img src="{{ asset('assets/images/cm.png') }}" class="card-img-top" alt="...">
                     <div class="card-body p-3">
-                        <h3 class="card-title">Chairman's Message</h3>
+                        <h4 class="card-title deep-color">Chairman's Message</h4>
+                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatibus non qui? Alias dolore vel quos unde, incidunt earum iusto quasi aut libero aliquam officia veniam consequatur laborum itaque et! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati labore veniam, tempora eum atque rem libero architecto quas. Tempore a placeat minima ab neque officia dicta quaerat hic eligendi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="shadow-sm bg-white h-100">
+                    <img src="{{ asset('assets/images/director.jpeg') }}" class="card-img-top" alt="...">
+                    <div class="card-body p-3">
+                        <h4 class="card-title deep-color">Directors's Message</h4>
                         <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatibus non qui? Alias dolore vel quos unde, incidunt earum iusto quasi aut libero aliquam officia veniam consequatur laborum itaque et! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati labore veniam, tempora eum atque rem libero architecto quas. Tempore a placeat minima ab neque officia dicta quaerat hic eligendi.</p>
                     </div>
                 </div>
@@ -289,7 +298,7 @@
                 <div class="shadow-sm bg-white h-100">
                     <img src="{{ asset('assets/images/pr.png') }}" class="card-img-top" alt="...">
                     <div class="card-body p-3">
-                        <h3 class="card-title">Principal's Message</h3>
+                        <h4 class="card-title deep-color">Principal's Message</h3>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum suscipit sequi dolor beatae voluptatem voluptatum minima corporis consequatur maxime debitis dolorum, quae officia nesciunt rem nostrum omnis optio minus iure. Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, ratione, quos ipsum ex sequi, voluptatibus fugiat error atque magnam mollitia laudantium quaerat quia adipisci optio odit fuga inventore delectus ab.</p>
                     </div>
                 </div>
@@ -368,7 +377,7 @@
 <!-- Services Section -->
 <section id="services-section">
     <div class="container shadow-sm bg-white  mb-3 py-2">
-        <div class="h2 p-2">Student's Life</div>
+        <div class="h2 p-2 deep-color">Student's Life</div>
         <div class="row g-0">
             <div id="album-container" class="col-4 mb-2">
                 <div class="d-flex align-items-center position-relative">
@@ -411,7 +420,7 @@
             </div>
             <div class="col-md-4">
                 <div class="notice-box p-2">
-                    <h4 class="alert-heading">MDC News</h4>
+                    <h4 class="alert-heading deep-color mt-2">MDC News</h4>
                     <hr>
                     <div class="notices">
                         <ul>
@@ -446,23 +455,23 @@
 <!-- Map Section -->
 <section id="map-section">
     <div class="container p-0 bg-white shadow-sm text-center mb-3 p-4">
-        <h3 class="text-primary fw-semibold">Out Patient Department (OPD)</h3>
+        <h3 class="deep-color fw-semibold">Out Patient Department (OPD)</h3>
         <div class="fs-6">Service Hour (9:00 am - 2:30 pm - Saturday - Thursday)</div>
         <div class="row my-3">
             <div class="col-md-6 my-2">
                 <div class="d-flex align-items-start justify-content-start p-4 gap-3 semitrans-bg shadow-sm h-100">
-                    <div class="btn btn-primary rounded-circle py-2 d-inline"><i class="fa-solid fa-phone-volume"></i></div>
+                    <div class="btn btn-primary deep-bg border-0 rounded-circle py-2 d-inline"><i class="fa-solid fa-phone-volume"></i></div>
                     <div class="d-inline text-start">
-                        <div class="h2 text-primary fw-semibold d-inline">Recieption</div>
+                        <div class="h2 deep-color fw-semibold d-inline">Recieption</div>
                         <div class="fs-4">0123456789</div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 my-2">
                 <div class="d-flex align-items-start justify-content-start p-4 gap-3 semitrans-bg shadow-sm h-100">
-                    <div class="btn btn-primary rounded-circle py-1 d-inline fs-5 fw-bold"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <div class="btn btn-primary deep-bg border-0 rounded-circle py-1 d-inline fs-5 fw-bold"><i class="fa-solid fa-mobile-screen"></i></div>
                     <div class="d-inline text-start">
-                        <div class="h2 text-primary fw-semibold d-inline">Patient Query</div>
+                        <div class="h2 deep-color fw-semibold d-inline">Patient Query</div>
                         <div class="fs-5">Dr. Mohammad Arif Bin Fatah</div>
                         <div class="fs-6">ODP In-charge</div>
                         <div class="fs-4">0123456789</div>
@@ -470,7 +479,7 @@
                 </div>
             </div>
         </div>
-        <div class="btn btn-primary">Read Me <i class="fa-solid fa-arrow-right"></i></div>
+        <div class="btn btn-primary deep-bg border-0">Read Me <i class="fa-solid fa-arrow-right"></i></div>
     </div>
 </section>
 
