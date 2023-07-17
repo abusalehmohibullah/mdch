@@ -9,22 +9,22 @@ body {
 }
 
 .deep-bg {
-  background-color: #FE576D !important;
+  background-color: #0296C9 !important;
 }
 
 .light-bg {
-  background-color: #EA96A1 !important;
+  background-color: #BCE1FB !important;
 }
 
 .mixed-bg {
   background-image: linear-gradient(#EA96A1, #FE576D);
 }
 .deep-color {
-  color: #FE576D !important;
+  color: #0296C9 !important;
 }
 
 .light-color {
-  color: #EA96A1 !important;
+  color: #BCE1FB !important;
 }
 
 

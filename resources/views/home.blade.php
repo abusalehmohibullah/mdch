@@ -230,7 +230,7 @@
 
         <div class="row row-cols-4 g-4">
             <div class="col m-0 p-4">
-                <div class="h-100 p-4 semitrans-bg shadow">
+                <div class="h-100 p-4 light-bg shadow">
                     <h3 class="card-title text-center fw-bold deep-color">APPROVED</h3>
                     <h3 class="styled-text text-center fw-bold deep-color">BY</h3>
                     <div class="p-4">
@@ -243,7 +243,7 @@
                 </div>
             </div>
             <div class="col m-0 p-4">
-                <div class="h-100 p-4 semitrans-bg shadow">
+                <div class="h-100 p-4 light-bg shadow">
                     <h3 class="card-title text-center fw-bold deep-color">AFFILIATED</h3>
                     <h3 class="styled-text text-center fw-bold deep-color">WITH</h3>
                     <div class="p-4">
@@ -255,7 +255,7 @@
                 </div>
             </div>
             <div class="col m-0 p-4">
-                <div class="h-100 p-4 semitrans-bg shadow">
+                <div class="h-100 p-4 light-bg shadow">
                     <h3 class="card-title text-center fw-bold deep-color">RECOGNIZED</h3>
                     <h3 class="styled-text text-center fw-bold deep-color">BY</h3>
                     <div class="p-4">
