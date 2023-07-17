@@ -132,7 +132,7 @@
                             <div class="col-md-12 my-3">
                                 <div class="specialization_slider_area text-center owl-carousel">
 
-                                    <div class="card p-2 box-area trans-bg ">
+                                    <div class="card p-2 box-area trans-bg border border-light">
                                         <div class="img-area d-flex justify-content-center">
                                             <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
                                         </div>
@@ -142,7 +142,7 @@
                                             <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
                                         </div>
                                     </div>
-                                    <div class="card p-2 box-area trans-bg ">
+                                    <div class="card p-2 box-area trans-bg border border-light">
                                         <div class="img-area d-flex justify-content-center">
                                             <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
                                         </div>
@@ -152,7 +152,7 @@
                                             <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
                                         </div>
                                     </div>
-                                    <div class="card p-2 box-area trans-bg ">
+                                    <div class="card p-2 box-area trans-bg border border-light">
                                         <div class="img-area d-flex justify-content-center">
                                             <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
                                         </div>
@@ -162,7 +162,7 @@
                                             <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
                                         </div>
                                     </div>
-                                    <div class="card p-2 box-area trans-bg ">
+                                    <div class="card p-2 box-area trans-bg border border-light">
                                         <div class="img-area d-flex justify-content-center">
                                             <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
                                         </div>
