@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root {
+
+  --light-color: #BCE1FB;
+  --deep-color: #0296C9;
+
+}
+
 * {
     font-family: 'Poppins', sans-serif;
 }
@@ -9,22 +16,19 @@ body {
 }
 
 .deep-bg {
-  background-color: #0296C9 !important;
+  background-color: var(--deep-color) !important;
 }
 
 .light-bg {
-  background-color: #BCE1FB !important;
+  background-color: var(--light-color) !important;
 }
 
-.mixed-bg {
-  background-image: linear-gradient(#EA96A1, #FE576D);
-}
 .deep-color {
-  color: #0296C9 !important;
+  color: var(--deep-color) !important;
 }
 
 .light-color {
-  color: #BCE1FB !important;
+  color: var(--light-color) !important;
 }
 
 
@@ -222,8 +226,5 @@ footer .copyright {
 
 
 .accordion-button:not(.collapsed) {
-  background-color: #EA96A1 !important;
-}
-.accordion {
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(234, 150, 161, 0.5) !important;
+  background-color: var(--light-color) !important;
 }

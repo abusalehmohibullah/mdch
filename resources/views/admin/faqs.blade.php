@@ -17,7 +17,7 @@
 </div>
 @endif
 
-<div class="table-responsive px-0 py-3">
+<div class="table-responsive px-0 pt-3">
     <table class="table" width="100%">
         <thead>
             <tr>
@@ -27,28 +27,34 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $faqs)
+            @foreach ($faqs as $faq)
             <tr>
                 <td>
-                {{ $loop->iteration }}
+                    {{ $faqs->firstItem() + $loop->index }}
                 </td>
                 <td width="99%">
                     <div class="table-data__info">
-                        <h6>{{$faqs->question}}</h6>
+                        <h6>{{$faq->question}}</h6>
                         <span>
-                            <a>{{$faqs->answer}}</a>
+                            <a>{{$faq->answer}}</a>
                         </span>
                     </div>
                 </td>
                 <td>
                     <div class="d-flex flex-nowrap">
-                        <label class="switch switch-text switch-success">
-                      <input type="checkbox" class="switch-input" checked="true">
-                      <span data-on="Showed" data-off="Hidden" class="switch-label bg-secondary border-0"></span>
-                      <span class="switch-handle border-0"></span>
-                    </label>
+                        <form action="{{ route('faqs.update', $faq->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <label class="switch switch-text switch-success">
+                                <input type="checkbox" class="switch-input" name="status" value="1" onchange="this.form.submit()" {{ $faq->status == 1 ? 'checked' : '' }}>
+                                <span data-on="Showed" data-off="Hidden" class="switch-label bg-secondary border-0"></span>
+                                <span class="switch-handle border-0"></span>
+                            </label>
+                        </form>
+
+
                         <a type="button" class="btn btn-info text-white ml-2"><i class="fas fa-pencil"></i></a>
-                        <a href="faqs/delete/{{$faqs->id}}" type="button" class="btn btn-danger text-white ml-2"><i class="fas fa-trash-o"></i></a>
+                        <a href="faqs/delete/{{$faq->id}}" type="button" class="btn btn-danger text-white ml-2"><i class="fas fa-trash-o"></i></a>
 
                     </div>
                 </td>
@@ -56,6 +62,29 @@
             @endforeach
         </tbody>
     </table>
+</div>
+<hr class="mt-0">
+<div class="d-flex justify-content-between overview-wrap">
+    <form action="{{ route('faqs') }}" method="GET">
+        <label for="perPage">Show Per Page:</label>
+        <select name="perPage" id="perPage" onchange="this.form.submit()">
+            <option value="10" {{ request()->input('perPage') == 10 ? 'selected' : '' }}>10</option>
+            <option value="25" {{ request()->input('perPage') == 25 ? 'selected' : '' }}>25</option>
+            <option value="100" {{ request()->input('perPage') == 100 ? 'selected' : '' }}>100</option>
+        </select>
+    </form>
+
+    <div class="d-flex overview-wrap pagination-info mb-2">
+        <div>
+            Showing {{ $faqs->firstItem() }} - {{ $faqs->lastItem() }} of {{ $faqs->total() }}
+        </div>
+
+        <div class="ml-2">
+            {{$faqs->links('pagination::bootstrap-4')}}
+
+        </div>
+    </div>
+
 </div>
 
 @endsection

@@ -38,43 +38,43 @@
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="news">
+                                    <a href="/admin/news">
                                         <i class="fas fa-newspaper"></i>News</a>
                                 </li>
                                 <li>
-                                    <a href="about">
+                                    <a href="/admin/about">
                                         <i class="fas fa-circle-info"></i>About</a>
                                 </li>
                                 <li>
-                                    <a href="facilities">
+                                    <a href="/admin/facilities">
                                         <i class="fas fa-rectangle-list"></i></i>Our Facilities</a>
                                 </li>
                                 <li>
-                                    <a href="faqs">
+                                    <a href="/admin/faqs">
                                         <i class="fas fa-file-circle-question"></i>FAQs</a>
                                 </li>
                                 <li>
-                                    <a href="image_box">
+                                    <a href="/admin/image_box">
                                         <i class="fas fa-image"></i>Image Box</a>
                                 </li>
                                 <li>
-                                    <a href="messages">
+                                    <a href="/admin/messages">
                                         <i class="fas fa-message"></i>Messages</a>
                                 </li>
                                 <li>
-                                    <a href="ads">
+                                    <a href="/admin/ads">
                                         <i class="fas fa-rectangle-ad"></i>Ads</a>
                                 </li>
                                 <li>
-                                    <a href="photo_album">
+                                    <a href="/admin/photo_album">
                                         <i class="fas fa-images"></i>Photo Album</a>
                                 </li>
                                 <li>
-                                    <a href="admission">
+                                    <a href="/admin/admission">
                                         <i class="fas fa-graduation-cap"></i>Admission</a>
                                 </li>
                                 <li>
-                                    <a href="opd">
+                                    <a href="/admin/opd">
                                         <i class="fas fa-hospital-user"></i>OPD</a>
                                 </li>
                             </ul>
@@ -263,7 +263,8 @@
                         <nav aria-label="breadcrumb bg-light">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                <li class="breadcrumb-item" aria-current="page">faq</li>
+                                <li class="breadcrumb-item active" aria-current="page">manage</li>
                             </ol>
                         </nav>
 

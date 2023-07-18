@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FaqsController;
 use Illuminate\Support\Facades\Route;
@@ -14,10 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'education'])->name('home');;
 
 // routes/web.php
 
@@ -44,9 +42,11 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/admin/facilities', function () {
         return view('admin.facilities');
     });
-    Route::get('/admin/faqs', [FaqsController::class, 'index']);
+    Route::get('/admin/faqs', [FaqsController::class, 'index'])->name('faqs');
     Route::get('/admin/faqs/manage', [FaqsController::class, 'faqs_manage']);
     Route::post('/admin/faqs/process', [FaqsController::class, 'faqs_process'])->name('faqs.add');
+    Route::put('/admin/faqs/update/{id}', [FaqsController::class, 'faqs_update'])->name('faqs.update');
+
     Route::get('/admin/image-box', function () {
         return view('admin.image-box');
     });

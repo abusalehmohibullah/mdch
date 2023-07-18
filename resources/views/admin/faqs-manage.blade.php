@@ -2,13 +2,8 @@
 
 @section('content')
 
-<div class="row py-3">
-    <div class="col-md-12">
-        <div class="overview-wrap">
-            <h2 class="title-1">ADD FAQS</h2>
-        </div>
-    </div>
-</div>
+<x-back-btn-component title="ADD FAQS"/>
+
 
 
 <form action="{{route('faqs.add')}}" method="post" class="form-horizontal">
