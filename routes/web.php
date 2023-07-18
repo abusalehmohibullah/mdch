@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FaqsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,11 +44,11 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/admin/facilities', function () {
         return view('admin.facilities');
     });
-    Route::get('/admin/faqs', function () {
-        return view('admin.faqs');
-    });
-    Route::get('/admin/image_box', function () {
-        return view('admin.image_box');
+    Route::get('/admin/faqs', [FaqsController::class, 'index']);
+    Route::get('/admin/manage-faqs', [FaqsController::class, 'manage_faqs']);
+    Route::get('/admin/process-faqs', [FaqsController::class, 'process_faqs'])->name('faqs.add');
+    Route::get('/admin/image-box', function () {
+        return view('admin.image-box');
     });
     Route::get('/admin/messages', function () {
         return view('admin.messages');
@@ -55,8 +56,8 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/admin/ads', function () {
         return view('admin.ads');
     });
-    Route::get('/admin/photo_album', function () {
-        return view('admin.photo_album');
+    Route::get('/admin/photo-album', function () {
+        return view('admin.photo-album');
     });
     Route::get('/admin/admission', function () {
         return view('admin.admission');

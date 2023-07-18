@@ -2,7 +2,17 @@
 
 @section('content')
 
-<div class="table-responsive p-3">
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1">FAQS</h2>
+            <a href="manage-faqs" class="btn btn-info" role="button" data-bs-toggle="button">
+                <i class="zmdi zmdi-plus"></i> ADD FAQ</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive px-0 py-3">
     <table class="table">
         <thead>
             <tr>
@@ -43,34 +53,5 @@
         </tbody>
     </table>
 </div>
-
-
-    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-
-    <div class="row form-group">
-        <div class="col col-md-3">
-            <label for="file-input" class=" form-control-label">File input</label>
-        </div>
-        <div class="col-12 col-md-9">
-        <input type="text" class="form-control" id="validationTooltip01" value="" required>
-        </div>
-    </div>
-
-    <div class="row form-group">
-        <div class="col col-md-3">
-            <label for="textarea-input" class=" form-control-label">Textarea</label>
-        </div>
-        <div class="col-12 col-md-9">
-            <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
-        </div>
-    </div>
-    <div class="d-flex justify-content-end">
-
-        <button type="button" class="btn btn-success ms-auto">Submit</button>
-    </div>
-
-</form>
-
-
 
 @endsection
