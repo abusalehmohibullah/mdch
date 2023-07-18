@@ -9,7 +9,8 @@ class FaqsController extends Controller
 {
     public function index()
     {
-        return view('admin.faqs');
+        $result['data'] = Faqs::all();
+        return view('admin.faqs', $result);
     }
 
     public function faqs_manage()
@@ -23,14 +24,23 @@ class FaqsController extends Controller
         $validatedData = $request->validate([
             'question' => 'required',
             'answer' => 'required',
+        ], [
+            'question.required' => 'Please provide a question.',
+            'answer.required' => 'Please provide an answer.',
         ]);
+        
 
         $model = new Faqs;
         $model->question = $validatedData['question'];
         $model->answer = $validatedData['answer'];
         $model->created_by = $request->session()->get('ADMIN_ID');
-        $model->save();
-        $request->session()->flash('success', 'FAQ added successfully!');
-        return redirect('admin/faqs');
+
+        if ($model->save()) {
+            $request->session()->flash('success', 'FAQ added successfully!');
+            return redirect('admin/faqs');
+        } else {
+            $request->session()->flash('error', 'Failed to add FAQ.');
+            return redirect()->back()->withInput();
+        }
     }
 }

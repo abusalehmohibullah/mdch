@@ -5320,7 +5320,7 @@ section {
 .switch.switch-text .switch-label::before,
   .switch.switch-text .switch-label::after {
     position: absolute;
-    top: 50%;
+    bottom: -15px;
     width: 50%;
     margin-top: -.5em;
     line-height: 1;
@@ -5332,14 +5332,14 @@ section {
 }
 
 .switch.switch-text .switch-label::before {
-    right: 1px;
-    color: #e9ecef;
+    left: 7px;
+    color: #1b1b1b;
     content: attr(data-off);
 }
 
 .switch.switch-text .switch-label::after {
-    left: 1px;
-    color: #fff;
+    left: 3px;
+    color: #009f58;
     content: attr(data-on);
     opacity: 0;
 }

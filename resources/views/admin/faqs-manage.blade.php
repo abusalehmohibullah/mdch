@@ -23,7 +23,7 @@
             {{$message}}
             @enderror
         </div>
-            <input type="text" class="form-control" id="question" name="question" placeholder="Type a frequently asked question..." value="" required>
+            <input type="text" class="form-control" id="question" name="question" placeholder="Type a frequently asked question..." value="{{ old('question') }}">
         </div>
     </div>
 
@@ -37,7 +37,7 @@
             {{$message}}
             @enderror
         </div>
-            <textarea name="answer" id="answer" rows="9" placeholder="Answer of that question..." class="form-control" required></textarea>
+            <textarea name="answer" id="answer" rows="9" placeholder="Answer of that question..." class="form-control">{{ old('answer') }}</textarea>
         </div>
     </div>
     <div class="d-flex justify-content-end">

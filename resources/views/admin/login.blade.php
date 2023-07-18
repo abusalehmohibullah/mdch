@@ -49,10 +49,11 @@
                         <div class="login-form">
                             <form action="{{route('admin.auth')}}" method="post">
                                 @csrf
-
+                                @if(session('error'))
                                 <div class="alert alert-danger" role="alert">
                                     {{session('error')}}
-</div>
+                                </div>
+                                @endif
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" type="email" name="email" placeholder="Email">

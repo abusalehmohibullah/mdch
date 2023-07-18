@@ -6,16 +6,19 @@
     <div class="col-md-12">
         <div class="overview-wrap">
             <h2 class="title-1">FAQS</h2>
-            <a href="faqs-manage" class="btn btn-info" role="button" data-bs-toggle="button">
+            <a href="faqs/manage" class="btn btn-info" role="button" data-bs-toggle="button">
                 <i class="zmdi zmdi-plus"></i> ADD FAQ</a>
         </div>
     </div>
 </div>
+@if(session('success'))
 <div class="alert alert-success my-2" role="alert">
-    {{session('success')}}
+    {{ session('success') }}
 </div>
+@endif
+
 <div class="table-responsive px-0 py-3">
-    <table class="table">
+    <table class="table" width="100%">
         <thead>
             <tr>
                 <td>#</td>
@@ -24,34 +27,33 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($data as $faqs)
             <tr>
                 <td>
-                    1
+                {{ $loop->iteration }}
                 </td>
-                <td>
+                <td width="99%">
                     <div class="table-data__info">
-                        <h6>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim quasi voluptas adipisci dignissimos minima modi quia unde?</h6>
+                        <h6>{{$faqs->question}}</h6>
                         <span>
-                            <a>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, quisquam! Esse, repellendus. Odio dicta dolorum qui quod, sit tenetur ipsam eligendi sed quis neque provident dolores officiis mollitia aperiam nobis.</a>
+                            <a>{{$faqs->answer}}</a>
                         </span>
                     </div>
                 </td>
                 <td>
-                    <div class="px-0 py-1">
-                        <div>
-                            <form action="" method="post">
-                                <label class="switch switch-default switch-success mr-2 ">
-                                    <input type="checkbox" class="switch-input " checked="true">
-                                    <span class="switch-label bg-secondary border-secondary"></span>
-                                    <span class="switch-handle"></span>
-                                </label>
-                            </form>
-                        </div>
-                        <button type="button" class="btn btn-danger ">
-                            <i class="fas fa-trash-o"></i></button>
+                    <div class="d-flex flex-nowrap">
+                        <label class="switch switch-text switch-success">
+                      <input type="checkbox" class="switch-input" checked="true">
+                      <span data-on="Showed" data-off="Hidden" class="switch-label bg-secondary border-0"></span>
+                      <span class="switch-handle border-0"></span>
+                    </label>
+                        <a type="button" class="btn btn-info text-white ml-2"><i class="fas fa-pencil"></i></a>
+                        <a href="faqs/delete/{{$faqs->id}}" type="button" class="btn btn-danger text-white ml-2"><i class="fas fa-trash-o"></i></a>
+
                     </div>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
