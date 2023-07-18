@@ -6,12 +6,14 @@
     <div class="col-md-12">
         <div class="overview-wrap">
             <h2 class="title-1">FAQS</h2>
-            <a href="manage-faqs" class="btn btn-info" role="button" data-bs-toggle="button">
+            <a href="faqs-manage" class="btn btn-info" role="button" data-bs-toggle="button">
                 <i class="zmdi zmdi-plus"></i> ADD FAQ</a>
         </div>
     </div>
 </div>
-
+<div class="alert alert-success my-2" role="alert">
+    {{session('success')}}
+</div>
 <div class="table-responsive px-0 py-3">
     <table class="table">
         <thead>

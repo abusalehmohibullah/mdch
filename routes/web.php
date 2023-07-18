@@ -45,8 +45,8 @@ Route::group(['middleware' => 'admin_auth'], function () {
         return view('admin.facilities');
     });
     Route::get('/admin/faqs', [FaqsController::class, 'index']);
-    Route::get('/admin/manage-faqs', [FaqsController::class, 'manage_faqs']);
-    Route::get('/admin/process-faqs', [FaqsController::class, 'process_faqs'])->name('faqs.add');
+    Route::get('/admin/faqs-manage', [FaqsController::class, 'faqs_manage']);
+    Route::post('/admin/faqs-process', [FaqsController::class, 'faqs_process'])->name('faqs.add');
     Route::get('/admin/image-box', function () {
         return view('admin.image-box');
     });
