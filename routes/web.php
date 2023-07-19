@@ -43,9 +43,11 @@ Route::group(['middleware' => 'admin_auth'], function () {
         return view('admin.facilities');
     });
     Route::get('/admin/faqs', [FaqsController::class, 'index'])->name('faqs');
-    Route::get('/admin/faqs/manage', [FaqsController::class, 'faqs_manage']);
-    Route::post('/admin/faqs/process', [FaqsController::class, 'faqs_process'])->name('faqs.add');
-    Route::put('/admin/faqs/update/{id}', [FaqsController::class, 'faqs_update'])->name('faqs.update');
+    Route::get('/admin/faqs/manage', [FaqsController::class, 'manage']);
+    Route::get('/admin/faqs/manage/{id}', [FaqsController::class, 'manage']);
+    Route::post('/admin/faqs/process', [FaqsController::class, 'process'])->name('faqs.add');
+    Route::put('/admin/faqs/update/{id}', [FaqsController::class, 'update'])->name('faqs.update');
+    Route::post('/admin/faqs/delete/{id}', [FaqsController::class, 'delete'])->name('faqs.delete');
 
     Route::get('/admin/image-box', function () {
         return view('admin.image-box');

@@ -40,18 +40,30 @@
 
 <body class="animsition">
 
-@include('admin/header') <!-- Include the header partial -->
+    @include('admin/header') <!-- Include the header partial -->
 
-<main class="bg-white py-3">
-    
-<div class="container my-3">
+    <main class="bg-white py-3">
 
-    @yield('content') <!-- Placeholder for the page-specific content -->
-</div>
-</main>
+        <div class="container my-3">
+            @if(session('success'))
+            <div class="alert alert-success my-3" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
+
+            @if(session('error'))
+            <div class="alert alert-danger my-3" role="alert">
+                {{ session('error') }}
+            </div>
+            @endif
 
 
-@include('admin/footer') <!-- Include the footer partial -->
+            @yield('content') <!-- Placeholder for the page-specific content -->
+        </div>
+    </main>
+
+
+    @include('admin/footer') <!-- Include the footer partial -->
 
 
 

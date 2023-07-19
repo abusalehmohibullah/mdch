@@ -11,11 +11,6 @@
         </div>
     </div>
 </div>
-@if(session('success'))
-<div class="alert alert-success my-2" role="alert">
-    {{ session('success') }}
-</div>
-@endif
 
 <div class="table-responsive px-0 pt-3">
     <table class="table" width="100%">
@@ -28,7 +23,7 @@
         </thead>
         <tbody>
             @foreach ($faqs as $faq)
-            <tr>
+            <tr class="{{ $faq->status == 0 ? 'bg-light' : '' }}">
                 <td>
                     {{ $faqs->firstItem() + $loop->index }}
                 </td>
@@ -53,8 +48,34 @@
                         </form>
 
 
-                        <a type="button" class="btn btn-info text-white ml-2"><i class="fas fa-pencil"></i></a>
-                        <a href="faqs/delete/{{$faq->id}}" type="button" class="btn btn-danger text-white ml-2"><i class="fas fa-trash-o"></i></a>
+                        <a href="faqs/manage/{{$faq->id}}" type="button" class="btn btn-info text-white ml-2"><i class="fas fa-pencil"></i></a>
+
+                        <!-- Button to trigger the modal -->
+                        <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirmDeleteModal{{ $faq->id }}"><i class="fas fa-trash-o"></i></button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmDeleteModal{{ $faq->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel{{ $faq->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmDeleteModalLabel{{ $faq->id }}">Confirm Deletion</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete this FAQ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <form action="{{ route('faqs.delete', ['id' => $faq->id]) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </td>

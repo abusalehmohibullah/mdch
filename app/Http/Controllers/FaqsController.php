@@ -14,12 +14,12 @@ class FaqsController extends Controller
         return view('admin.faqs', compact('result'), $result);
     }
 
-    public function faqs_manage()
+    public function manage(Request $id)
     {
-        return view('admin.faqs-manage');
+        return view('admin.faqs-manage', $id);
     }
 
-    public function faqs_process(Request $request)
+    public function process(Request $request)
     {
 
         $validatedData = $request->validate([
@@ -37,15 +37,13 @@ class FaqsController extends Controller
         $model->created_by = $request->session()->get('ADMIN_ID');
 
         if ($model->save()) {
-            $request->session()->flash('success', 'FAQ added successfully!');
-            return redirect('admin/faqs');
+            return redirect('admin/faqs')->with('success', 'FAQ added successfully!');
         } else {
-            $request->session()->flash('error', 'Failed to add FAQ.');
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('error', 'Failed to add FAQ.');
         }
     }
 
-    public function faqs_update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $model = Faqs::findOrFail($id);
     
@@ -67,9 +65,7 @@ class FaqsController extends Controller
         } else {
             $model->status = 0;
         }
-    
-        $model->save();
-    
+        
         if ($updateQuestionAnswer) {
             $message = 'FAQ updated successfully!';
         } elseif ($published) {
@@ -77,8 +73,25 @@ class FaqsController extends Controller
         } else {
             $message = 'FAQ is hidden now!';
         }
-    
-        return redirect('admin/faqs')->with('success', $message);
+
+        if ($model->save()) {
+            return redirect('admin/faqs')->with('success', $message);
+        } else {
+            return redirect('admin/faqs')->with('error', 'Failed to update!');
+        }
+       
+    }
+
+    public function delete($id)
+    {
+        $model = Faqs::find($id);
+
+        if ($model) {
+            $model->delete();
+            return redirect('admin/faqs')->with('success', 'FAQ deleted successfully!');
+        } else {
+            return redirect('admin/faqs')->with('error', 'Failed to delete FAQ!');
+        }
     }
     
 }
