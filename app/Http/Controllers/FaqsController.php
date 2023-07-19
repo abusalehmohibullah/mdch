@@ -14,73 +14,90 @@ class FaqsController extends Controller
         return view('admin.faqs', compact('result'), $result);
     }
 
-    public function manage(Request $id)
+    public function manage(Request $request, $id = '')
     {
-        return view('admin.faqs-manage', $id);
+        if ($id > 0) {
+            $arr  = Faqs::where(['id' => $id])->get();
+            $result['id']  = $arr[0]->id;
+            $result['question']  = $arr[0]->question;
+            $result['answer']  = $arr[0]->answer;
+        } else {
+            $result['id']  = '';
+            $result['question']  = '';
+            $result['answer']  = '';
+        }
+
+        return view('admin.faqs-manage', $result);
     }
 
-    public function process(Request $request)
+
+    public function process(Request $request, $id = null)
     {
 
-        $validatedData = $request->validate([
+    // Use dd() to print the form values
+    dd($request->all());
+        // Validation rules for the 'question' and 'answer' fields
+        $validationRules = [
             'question' => 'required',
             'answer' => 'required',
-        ], [
+        ];
+
+        // Custom error messages for validation
+        $customMessages = [
             'question.required' => 'Please provide a question.',
             'answer.required' => 'Please provide an answer.',
-        ]);
+        ];
 
+        // Validate the incoming request data
+        $validatedData = $request->validate($validationRules, $customMessages);
 
-        $model = new Faqs;
-        $model->question = $validatedData['question'];
-        $model->answer = $validatedData['answer'];
-        $model->created_by = $request->session()->get('ADMIN_ID');
+        // Initialize the $message variable
+        $message = '';
 
+        // Check if $id is provided, which indicates an update operation
+        if ($id !== null) {
+
+            
+            // Find the existing FAQ record
+            $model = Faqs::findOrFail($id);
+
+            // Check if the 'question' and 'answer' fields are being updated
+            if ($request->filled('question') && $request->filled('answer')) {
+                $model->question = $request->input('question');
+                $model->answer = $request->input('answer');
+                $message = 'FAQ updated successfully!';
+
+            } else if ($request->filled('status')) {
+
+                // Update the 'status' field if the 'status' checkbox is checked
+                if ($request->has('status')) {
+                    $model->status = 1;
+                    $message = 'FAQ published successfully!';
+                } else {
+                    $model->status = 0;
+                    $message = 'FAQ is hidden!';
+                }
+            }
+            $model->updated_by = $request->session()->get('ADMIN_ID');
+
+        } else {
+            // For insert operation, create a new FAQ model
+            $model = new Faqs;
+            $model->question = $validatedData['question'];
+            $model->answer = $validatedData['answer'];
+            $model->created_by = $request->session()->get('ADMIN_ID');
+            $message = 'FAQ added successfully!';
+        }
+
+        // Save the model
         if ($model->save()) {
-            return redirect('admin/faqs')->with('success', 'FAQ added successfully!');
+            return redirect('admin/faqs')->with('success', $message);
         } else {
             return redirect()->back()->withInput()->with('error', 'Failed to add FAQ.');
         }
     }
 
-    public function update(Request $request, $id)
-    {
-        $model = Faqs::findOrFail($id);
-    
-        $published = $request->has('status');
-        $updateQuestionAnswer = $request->filled('question') || $request->filled('answer');
-    
-        if ($updateQuestionAnswer) {
-            if ($request->filled('question')) {
-                $model->question = $request->input('question');
-            }
-    
-            if ($request->filled('answer')) {
-                $model->answer = $request->input('answer');
-            }
-        }
-    
-        if ($published) {
-            $model->status = 1;
-        } else {
-            $model->status = 0;
-        }
-        
-        if ($updateQuestionAnswer) {
-            $message = 'FAQ updated successfully!';
-        } elseif ($published) {
-            $message = 'FAQ published successfully!';
-        } else {
-            $message = 'FAQ is hidden now!';
-        }
 
-        if ($model->save()) {
-            return redirect('admin/faqs')->with('success', $message);
-        } else {
-            return redirect('admin/faqs')->with('error', 'Failed to update!');
-        }
-       
-    }
 
     public function delete($id)
     {
@@ -93,5 +110,4 @@ class FaqsController extends Controller
             return redirect('admin/faqs')->with('error', 'Failed to delete FAQ!');
         }
     }
-    
 }
