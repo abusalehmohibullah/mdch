@@ -72,16 +72,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  const ul = document.querySelector(".notice-container ul");
-  const container = document.querySelector(".notice-container");
-  const ulWidth = ul.scrollWidth;
-  const containerWidth = container.offsetWidth;
-  const animationDuration = ulWidth / 60; // adjust this value to change the animation speed
-  const style = document.createElement("style");
-  style.textContent = `
-.notice-container ul {
-  animation: scroll ${animationDuration}s infinite linear;
-}
+const ul = document.querySelector(".notice-container ul");
+const container = document.querySelector(".notice-container");
+const ulWidth = ul.scrollWidth;
+const containerWidth = container.offsetWidth;
+const animationDuration = ulWidth / 60; // adjust this value to change the animation speed
+const style = document.createElement("style");
+
+style.textContent = `
+  .notice-container ul {
+    animation: scroll ${animationDuration}s infinite linear;
+  }
+
+  .notice-container:hover ul {
+    animation-play-state: paused;
+  }
 
   @keyframes scroll {
     from {
@@ -92,9 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
       transform: translateX(calc(-${ulWidth}px));
     }
   }
-
 `;
-  document.head.appendChild(style);
+
+document.head.appendChild(style);
 
 
 

@@ -26,11 +26,9 @@
         </div>
 
         <ul class="d-flex align-items-center text-nowrap">
-
-            <li>1Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupides nemo eligendi ipsam, dolo minus temporibus adipisci odit impedit placeat.</li>
-            <li>2Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupides nemo eligendi ipsam, dolo minus temporibus adipisci odit impedit placeat.</li>
-            <li>3Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupides nemo eligendi ipsam, dolo minus temporibus adipisci odit impedit placeat.</li>
-
+            @foreach($news as $newsData)
+            <li><a href="#" class="text-reset text-decoration-none">{{$newsData->heading}}</a></li>
+            @endforeach
         </ul>
 
     </div>
@@ -190,18 +188,18 @@
         <div class="accordion accordion-flush" id="faqs-accordion">
             <div class="h2 p-2 deep-color">Why you choose us?</div>
             <hr class="m-0">
-            @foreach($faqs as $faq)
+            @foreach($faqs as $faqsData)
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-heading-{{ $loop->iteration }}">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ $loop->iteration }}" aria-expanded="false" aria-controls="flush-collapse-{{ $loop->iteration }}">
-                        {{$faq->question}}
+                        {{$faqsData->question}}
                     </button>
                 </h2>
                 <div id="flush-collapse-{{ $loop->iteration }}" class="accordion-collapse collapse" aria-labelledby="flush-heading-{{ $loop->iteration }}" data-bs-parent="#faqs-accordion">
-                    <div class="accordion-body">{{$faq->answer}}</div>
+                    <div class="accordion-body">{{$faqsData->answer}}</div>
                 </div>
             </div>
-@endforeach
+            @endforeach
         </div>
     </div>
 </section>
@@ -281,7 +279,7 @@
                     <img src="{{ asset('assets/images/pr.png') }}" class="card-img-top" alt="...">
                     <div class="card-body p-3">
                         <h4 class="card-title deep-color">Principal's Message</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum suscipit sequi dolor beatae voluptatem voluptatum minima corporis consequatur maxime debitis dolorum, quae officia nesciunt rem nostrum omnis optio minus iure. Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, ratione, quos ipsum ex sequi, voluptatibus fugiat error atque magnam mollitia laudantium quaerat quia adipisci optio odit fuga inventore delectus ab.</p>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum suscipit sequi dolor beatae voluptatem voluptatum minima corporis consequatur maxime debitis dolorum, quae officia nesciunt rem nostrum omnis optio minus iure. Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, ratione, quos ipsum ex sequi, voluptatibus fugiat error atque magnam mollitia laudantium quaerat quia adipisci optio odit fuga inventore delectus ab.</p>
                     </div>
                 </div>
             </div>
@@ -406,24 +404,16 @@
                     <hr>
                     <div class="notices">
                         <ul>
+                            @foreach($news as $newsData)
                             <li>
-                                <div>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur voluptate nulla iusto laborum mollitia esse, eos, voluptatibus, non modi sapiente dignissimos repudiandae in adipisci cum nemo dicta iure. Perferendis, suscipit!
-                                </div>
-                                <div class="text-end mb-2">07 July 2023 - 03:03 PM</div>
+                                <a href="#" class="text-reset text-decoration-none">
+                                    <div>
+                                        {{$newsData->heading}}
+                                    </div>
+                                    <div class="text-end mb-2">07 July 2023 - 03:03 PM</div>
+                                </a>
                             </li>
-                            <li>
-                                <div>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur voluptate nulla iusto laborum mollitia esse, eos, voluptatibus, non modi sapiente dignissimos repudiandae in adipisci cum nemo dicta iure. Perferendis, suscipit!
-                                </div>
-                                <div class="text-end mb-2">07 July 2023 - 03:03 PM</div>
-                            </li>
-                            <li>
-                                <div>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur voluptate nulla iusto laborum mollitia esse, eos, voluptatibus, non modi sapiente dignissimos repudiandae in adipisci cum nemo dicta iure. Perferendis, suscipit!
-                                </div>
-                                <div class="text-end mb-2">07 July 2023 - 03:03 PM</div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

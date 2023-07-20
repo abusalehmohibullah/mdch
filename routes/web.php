@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FaqsController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/admin/facilities', function () {
         return view('admin.facilities');
     });
+
     Route::get('/admin/faqs', [FaqsController::class, 'index'])->name('faqs');
     Route::get('/admin/faqs/manage/{id?}', [FaqsController::class, 'manage']);
     Route::post('/admin/faqs/process/{id?}', [FaqsController::class, 'process'])->name('faqs.process');
@@ -63,9 +65,13 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/admin/admission', function () {
         return view('admin.admission');
     });
-    Route::get('/admin/news', function () {
-        return view('admin.news');
-    });
+
+    Route::get('/admin/news', [NewsController::class, 'index'])->name('news');
+    Route::get('/admin/news/manage/{id?}', [NewsController::class, 'manage']);
+    Route::post('/admin/news/process/{id?}', [NewsController::class, 'process'])->name('news.process');
+    Route::put('/admin/news/status/{id}', [NewsController::class, 'status'])->name('news.status');
+    Route::post('/admin/news/delete/{id}', [NewsController::class, 'delete'])->name('news.delete');
+
     Route::get('/admin/opd', function () {
         return view('admin.opd');
     });

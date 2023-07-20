@@ -2,7 +2,7 @@
 
 @section('content')
 
-<x-back-btn-component title="ADD FAQS"/>
+<x-back-btn-component title="{{ $id ? 'EDIT' : 'ADD' }} FAQS"/>
 
 
 

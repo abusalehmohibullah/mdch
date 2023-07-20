@@ -11,7 +11,7 @@
                         <img src="{{ asset('admin-assets/images/icon/avatar-big-01.jpg') }}" alt="John Doe" />
                     </div>
                     <h4 class="name">john doe</h4>
-                    <a href="logout">Sign out</a>
+                    <a href="/admin/logout">Sign out</a>
                 </div>
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">

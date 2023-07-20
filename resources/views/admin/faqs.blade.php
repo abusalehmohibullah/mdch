@@ -22,43 +22,43 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($faqs as $faq)
-            <tr class="{{ $faq->status == 0 ? 'bg-light' : '' }}">
-                <td>
+            @foreach ($faqs as $faqsData)
+            <tr class="{{ $faqsData->status == 0 ? 'bg-light' : '' }}">
+            <td width="1%">
                     {{ $faqs->firstItem() + $loop->index }}
                 </td>
-                <td width="99%">
+                <td>
                     <div class="table-data__info">
-                        <h6>{{$faq->question}}</h6>
+                        <h6>{{$faqsData->question}}</h6>
                         <span>
-                            <a>{{$faq->answer}}</a>
+                            <a>{{$faqsData->answer}}</a>
                         </span>
                     </div>
                 </td>
-                <td>
+                <td width="1%">
                     <div class="d-flex overview-wrap">
-                    <form action="{{ route('faqs.status', $faq->id) }}" method="POST">
+                    <form action="{{ route('faqs.status', $faqsData->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <label class="switch switch-text switch-success">
-                                <input type="checkbox" class="switch-input" name="status" value="1" onchange="this.form.submit()" {{ $faq->status == 1 ? 'checked' : '' }}>
+                                <input type="checkbox" class="switch-input" name="status" value="1" onchange="this.form.submit()" {{ $faqsData->status == 1 ? 'checked' : '' }}>
                                 <span data-on="Showed" data-off="Hidden" class="switch-label bg-secondary border-0"></span>
                                 <span class="switch-handle border-0"></span>
                             </label>
                         </form>
 
 
-                        <a href="faqs/manage/{{$faq->id}}" type="button" class="btn btn-info text-white ml-2"><i class="fas fa-pencil"></i></a>
+                        <a href="faqs/manage/{{$faqsData->id}}" type="button" class="btn btn-info text-white ml-2"><i class="fas fa-pencil"></i></a>
 
                         <!-- Button to trigger the modal -->
-                        <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirmDeleteModal{{ $faq->id }}"><i class="fas fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirmDeleteModal{{ $faqsData->id }}"><i class="fas fa-trash-o"></i></button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="confirmDeleteModal{{ $faq->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel{{ $faq->id }}" aria-hidden="true">
+                        <div class="modal fade" id="confirmDeleteModal{{ $faqsData->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel{{ $faqsData->id }}" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="confirmDeleteModalLabel{{ $faq->id }}">Confirm Deletion</h5>
+                                        <h5 class="modal-title" id="confirmDeleteModalLabel{{ $faqsData->id }}">Confirm Deletion</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                        <form action="{{ route('faqs.delete', ['id' => $faq->id]) }}" method="POST">
+                                        <form action="{{ route('faqs.delete', ['id' => $faqsData->id]) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
