@@ -37,8 +37,9 @@
                 </td>
                 <td>
                     <div class="d-flex overview-wrap">
-                        <form action="{{ route('faqs.process', $faq->id) }}" method="POST">
+                    <form action="{{ route('faqs.status', $faq->id) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <label class="switch switch-text switch-success">
                                 <input type="checkbox" class="switch-input" name="status" value="1" onchange="this.form.submit()" {{ $faq->status == 1 ? 'checked' : '' }}>
                                 <span data-on="Showed" data-off="Hidden" class="switch-label bg-secondary border-0"></span>

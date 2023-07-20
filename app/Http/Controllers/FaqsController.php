@@ -34,8 +34,6 @@ class FaqsController extends Controller
     public function process(Request $request, $id = null)
     {
 
-    // Use dd() to print the form values
-    dd($request->all());
         // Validation rules for the 'question' and 'answer' fields
         $validationRules = [
             'question' => 'required',
@@ -67,17 +65,7 @@ class FaqsController extends Controller
                 $model->answer = $request->input('answer');
                 $message = 'FAQ updated successfully!';
 
-            } else if ($request->filled('status')) {
-
-                // Update the 'status' field if the 'status' checkbox is checked
-                if ($request->has('status')) {
-                    $model->status = 1;
-                    $message = 'FAQ published successfully!';
-                } else {
-                    $model->status = 0;
-                    $message = 'FAQ is hidden!';
-                }
-            }
+            } 
             $model->updated_by = $request->session()->get('ADMIN_ID');
 
         } else {
@@ -97,7 +85,33 @@ class FaqsController extends Controller
         }
     }
 
+    
+    public function status(Request $request, $id)
+    {
+        $model = Faqs::findOrFail($id);
+    
+        $published = $request->has('status');
+    
+        if ($published) {
+            $model->status = 1;
+        } else {
+            $model->status = 0;
+        }
+        $model->updated_by = $request->session()->get('ADMIN_ID');
+        
+        if ($published) {
+            $message = 'FAQ published successfully!';
+        } else {
+            $message = 'FAQ is hidden now!';
+        }
 
+        if ($model->save()) {
+            return redirect('admin/faqs')->with('success', $message);
+        } else {
+            return redirect('admin/faqs')->with('error', 'Failed to update!');
+        }
+       
+    }
 
     public function delete($id)
     {

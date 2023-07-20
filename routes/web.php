@@ -45,6 +45,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/admin/faqs', [FaqsController::class, 'index'])->name('faqs');
     Route::get('/admin/faqs/manage/{id?}', [FaqsController::class, 'manage']);
     Route::post('/admin/faqs/process/{id?}', [FaqsController::class, 'process'])->name('faqs.process');
+    Route::put('/admin/faqs/status/{id}', [FaqsController::class, 'status'])->name('faqs.status');
     Route::post('/admin/faqs/delete/{id}', [FaqsController::class, 'delete'])->name('faqs.delete');
 
     Route::get('/admin/image-box', function () {
