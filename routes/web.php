@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\MessagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,9 +54,13 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/admin/image-box', function () {
         return view('admin.image-box');
     });
-    Route::get('/admin/messages', function () {
-        return view('admin.messages');
-    });
+
+    Route::get('/admin/messages', [MessagesController::class, 'index'])->name('messages');
+    Route::get('/admin/messages/manage/{id?}', [MessagesController::class, 'manage']);
+    Route::post('/admin/messages/process/{id?}', [MessagesController::class, 'process'])->name('messages.process');
+    Route::put('/admin/messages/status/{id}', [MessagesController::class, 'status'])->name('messages.status');
+    Route::post('/admin/messages/delete/{id}', [MessagesController::class, 'delete'])->name('messages.delete');
+
     Route::get('/admin/ads', function () {
         return view('admin.ads');
     });
@@ -71,6 +76,8 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::post('/admin/news/process/{id?}', [NewsController::class, 'process'])->name('news.process');
     Route::put('/admin/news/status/{id}', [NewsController::class, 'status'])->name('news.status');
     Route::post('/admin/news/delete/{id}', [NewsController::class, 'delete'])->name('news.delete');
+    Route::get('/admin/news/download/{id}', [NewsController::class, 'download'])->name('news.download');
+
 
     Route::get('/admin/opd', function () {
         return view('admin.opd');

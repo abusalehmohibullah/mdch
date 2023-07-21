@@ -1,58 +1,117 @@
 @extends('admin/layout')
 
-@section('content')
+@section('title')
 
-    <div class="row g-0 mb-5">
-    <div class="col">
-                <div class="shadow-sm bg-white  h-100">
-                    <img src="{{ asset('assets/images/cm.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body p-3">
-                        <h3 class="card-title">Chairman's Message</h3>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatibus non qui? Alias dolore vel quos unde, incidunt earum iusto quasi aut libero aliquam officia veniam consequatur laborum itaque et! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati labore veniam, tempora eum atque rem libero architecto quas. Tempore a placeat minima ab neque officia dicta quaerat hic eligendi.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="shadow-sm bg-white  h-100">
-                    <img src="{{ asset('assets/images/cm.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body p-3">
-                        <h3 class="card-title">Principal's Message</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum suscipit sequi dolor beatae voluptatem voluptatum minima corporis consequatur maxime debitis dolorum, quae officia nesciunt rem nostrum omnis optio minus iure. Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, ratione, quos ipsum ex sequi, voluptatibus fugiat error atque magnam mollitia laudantium quaerat quia adipisci optio odit fuga inventore delectus ab.</p>
-                    </div>
-                </div>
-            </div>
-
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1">MESSAGES</h2>
+            <a href="messages/manage" class="btn btn-info" role="button" data-bs-toggle="button">
+                <i class="zmdi zmdi-plus"></i> ADD</a>
+        </div>
     </div>
-
-    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-
-        <div class="row form-group">
-            <div class="col col-md-3">
-                <label for="file-input" class=" form-control-label">File input</label>
-            </div>
-            <div class="col-12 col-md-9">
-                <input type="file" id="file-input" name="file-input" class="form-control-file">
-            </div>
-        </div>
-
-        <div class="row form-group">
-            <div class="col col-md-3">
-                <label for="textarea-input" class=" form-control-label">Textarea</label>
-            </div>
-            <div class="col-12 col-md-9">
-                <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
-            </div>
-        </div>
-<div class="d-flex justify-content-end">
-
-    <button type="button" class="btn btn-success ms-auto">Submit</button>
 </div>
 
+<div class="table-responsive px-0 pt-3">
+    <table class="table" width="100%">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Message</td>
+                <td>Image</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($messages as $messagesData)
+            <tr class="{{ $messagesData->status == 0 ? 'bg-light' : '' }}">
+            <td width="1%">
+                    {{ $messages->firstItem() + $loop->index }}
+                </td>
+                <td>
+                    <div class="table-data__info">
+                        <h6>{{$messagesData->title}}</h6>
+                        <span>
+                            <a>{{$messagesData->message}}</a>
+                        </span>
+                    </div>
+                </td>
+                <td width="1%">
+                    <div class="table-data__info">
+                    <a>{{$messagesData->image}}</a>
+                    </div>
+                </td>
+                <td width="1%">
+                    <div class="d-flex overview-wrap">
+                        <form action="{{ route('messages.status', $messagesData->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <label class="switch switch-text switch-success">
+                                <input type="checkbox" class="switch-input" name="status" value="1" onchange="this.form.submit()" {{ $messagesData->status == 1 ? 'checked' : '' }}>
+                                <span data-on="Showed" data-off="Hidden" class="switch-label bg-secondary border-0"></span>
+                                <span class="switch-handle border-0"></span>
+                            </label>
+                        </form>
+
+
+                        <a href="messages/manage/{{$messagesData->id}}" type="button" class="btn btn-info text-white ml-2"><i class="fas fa-pencil"></i></a>
+
+                        <!-- Button to trigger the modal -->
+                        <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#confirmDeleteModal{{ $messagesData->id }}"><i class="fas fa-trash-o"></i></button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmDeleteModal{{ $messagesData->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel{{ $messagesData->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-title">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmDeleteModalLabel{{ $messagesData->id }}">Confirm Deletion</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete this messages?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <form action="{{ route('messages.delete', ['id' => $messagesData->id]) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+<hr class="mt-0">
+<div class="d-flex justify-title-between overview-wrap">
+    <form action="{{ route('messages') }}" method="GET">
+        <label for="perPage">Show Per Page:</label>
+        <select name="perPage" id="perPage" onchange="this.form.submit()">
+            <option value="10" {{ request()->input('perPage') == 10 ? 'selected' : '' }}>10</option>
+            <option value="25" {{ request()->input('perPage') == 25 ? 'selected' : '' }}>25</option>
+            <option value="100" {{ request()->input('perPage') == 100 ? 'selected' : '' }}>100</option>
+        </select>
     </form>
 
+    <div class="d-flex overview-wrap pagination-info mb-2">
+        <div>
+            Showing {{ $messages->firstItem() }} - {{ $messages->lastItem() }} of {{ $messages->total() }}
+        </div>
 
+        <div class="ml-2">
+            {{$messages->links('pagination::bootstrap-4')}}
 
+        </div>
+    </div>
 
-
+</div>
 
 @endsection

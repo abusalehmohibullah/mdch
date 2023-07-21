@@ -5,9 +5,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="overview-wrap">
-            <h2 class="title-1">News</h2>
+            <h2 class="title-1">NEWS</h2>
             <a href="news/manage" class="btn btn-info" role="button" data-bs-toggle="button">
-                <i class="zmdi zmdi-plus"></i> ADD NEWS</a>
+                <i class="zmdi zmdi-plus"></i> ADD</a>
         </div>
     </div>
 </div>
@@ -37,9 +37,15 @@
                     </div>
                 </td>
                 <td width="1%">
-                    <div class="table-data__info">
-                    <a>{{$newsData->attachment}}</a>
-                    </div>
+                <div class="table-data__info d-flex justify-content-center align-items-center">
+    @if ($newsData->attachment)
+        <a href="{{ asset('storage/' . $newsData->attachment) }}" target="_blank"><i class="fa-solid fa-eye fa-lg p-2 text-dark"></i></a>
+        <a href="{{ route('news.download', $newsData->id) }}"><i class="fa-solid fa-download fa-lg p-2 text-dark"></i></a>
+    @else
+        -
+    @endif
+</div>
+
                 </td>
                 <td width="1%">
                     <div class="d-flex overview-wrap">

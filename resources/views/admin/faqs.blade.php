@@ -7,7 +7,7 @@
         <div class="overview-wrap">
             <h2 class="title-1">FAQS</h2>
             <a href="faqs/manage" class="btn btn-info" role="button" data-bs-toggle="button">
-                <i class="zmdi zmdi-plus"></i> ADD FAQ</a>
+                <i class="zmdi zmdi-plus"></i> ADD</a>
         </div>
     </div>
 </div>

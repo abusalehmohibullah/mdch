@@ -2,10 +2,10 @@
 
 @section('content')
 
-<x-back-btn-component title="{{ $id ? 'EDIT' : 'ADD' }} NEWS"/>
+<x-back-btn-component title="{{ $id ? 'EDIT' : 'ADD' }} MESSAGE"/>
 
 
-<form action="{{ route('news.process', $id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ route('messages.process', $id) }}" method="POST" class="form-horizontal">
     @csrf
     <div class="row form-group">
         <div class="col col-md-3">
@@ -17,7 +17,7 @@
                 {{$message}}
                 @enderror
             </div>
-            <input type="text" class="form-control" id="heading" name="heading" placeholder="Enter a heading of the news..." value="{{ old('heading') ? old('heading') : $heading }}">
+            <input type="text" class="form-control" id="heading" name="heading" placeholder="Type a frequently asked heading..." value="{{ old('heading') ? old('heading') : $heading }}">
         </div>
     </div>
 
@@ -31,7 +31,7 @@
                 {{$message}}
                 @enderror
             </div>
-            <textarea name="content" id="content" rows="9" placeholder="Enter the content of the news..." class="form-control">{{ old('content') ? old('content') : $content }}</textarea>
+            <textarea name="content" id="content" rows="9" placeholder="content of that heading..." class="form-control">{{ old('content') ? old('content') : $content }}</textarea>
         </div>
     </div>
 
@@ -40,11 +40,6 @@
             <label for="attachment" class=" form-control-label">Attachment</label>
         </div>
         <div class="col-12 col-md-9">
-        <div class="text-danger">
-                @error('attachment')
-                {{$message}}
-                @enderror
-            </div>
             <input type="file" id="attachment" name="attachment" class="form-control-file">
         </div>
     </div>

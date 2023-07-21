@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class NewsController extends Controller
 {
@@ -37,13 +41,15 @@ class NewsController extends Controller
         // Validation rules for the 'heading' and 'content' fields
         $validationRules = [
             'heading' => 'required',
-            'content' => 'required',
+            'content' => 'nullable',
+            'attachment' => 'nullable|mimes:pdf,doc,docx,jpg,jpeg,png|max:1024', // 1MB (1024 KB) limit
         ];
 
         // Custom error messages for validation
         $customMessages = [
             'heading.required' => 'Please provide a heading.',
-            'content.required' => 'Please provide an content.',
+            'attachment.mimes' => 'Invalid file format. Only pdf, doc, docx, jpg, jpeg, png files are allowed.',
+            'attachment.max' => 'The attachment must not be larger than 1MB.',
         ];
 
         // Validate the incoming request data
@@ -55,54 +61,77 @@ class NewsController extends Controller
         // Check if $id is provided, which indicates an update operation
         if ($id !== null) {
 
-            
-            // Find the existing FAQ record
+
+            // Find the existing News record
             $model = News::findOrFail($id);
 
             // Check if the 'heading' and 'content' fields are being updated
-            if ($request->filled('heading') && $request->filled('content')) {
+            if ($request->filled('heading') || $request->filled('content')) {
                 $model->heading = $request->input('heading');
                 $model->content = $request->input('content');
-                $message = 'FAQ updated successfully!';
-
-            } 
+                $message = 'News updated successfully!';
+            }
             $model->updated_by = $request->session()->get('ADMIN_ID');
-
         } else {
-            // For insert operation, create a new FAQ model
+            // For insert operation, create a new News model
             $model = new News;
             $model->heading = $validatedData['heading'];
             $model->content = $validatedData['content'];
             $model->created_by = $request->session()->get('ADMIN_ID');
-            $message = 'FAQ added successfully!';
+            $message = 'News added successfully!';
         }
 
-        // Save the model
-        if ($model->save()) {
-            return redirect('admin/news')->with('success', $message);
-        } else {
-            return redirect()->back()->withInput()->with('error', 'Failed to add FAQ.');
+        try {
+            if ($request->hasFile('attachment')) {
+                // Get the uploaded file from the request
+                $attachment = $request->file('attachment');
+
+                // Validate the file size and type
+                if ($attachment->isValid()) {
+                    // Generate a unique name for the file based on the heading, date, and time
+                    $fileName = Str::slug($validatedData['heading']) . '-' . Carbon::now()->format('Ymd-His') . '.' . $attachment->getClientOriginalExtension();
+
+                    // Store the file in the storage directory with the generated name
+                    $attachmentPath = $attachment->storeAs('attachments', $fileName, 'public');
+
+
+                    // Save the file path in the database
+                    $model->attachment = $attachmentPath;
+                } else {
+                    return redirect()->back()->withInput()->with('error', 'Failed to upload attachment.');
+                }
+            }
+
+            // Save the model
+            if ($model->save()) {
+                return redirect('admin/news')->with('success', $message);
+            } else {
+                throw new \Exception('Failed to save news.');
+            }
+        } catch (\Exception $e) {
+            // Handle the error
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
         }
     }
 
-    
+
     public function status(Request $request, $id)
     {
         $model = News::findOrFail($id);
-    
+
         $published = $request->has('status');
-    
+
         if ($published) {
             $model->status = 1;
         } else {
             $model->status = 0;
         }
         $model->updated_by = $request->session()->get('ADMIN_ID');
-        
+
         if ($published) {
-            $message = 'FAQ published successfully!';
+            $message = 'News published successfully!';
         } else {
-            $message = 'FAQ is hidden now!';
+            $message = 'News is hidden now!';
         }
 
         if ($model->save()) {
@@ -110,7 +139,6 @@ class NewsController extends Controller
         } else {
             return redirect('admin/news')->with('error', 'Failed to update!');
         }
-       
     }
 
     public function delete($id)
@@ -119,9 +147,36 @@ class NewsController extends Controller
 
         if ($model) {
             $model->delete();
-            return redirect('admin/news')->with('success', 'FAQ deleted successfully!');
+            return redirect('admin/news')->with('success', 'News deleted successfully!');
         } else {
-            return redirect('admin/news')->with('error', 'Failed to delete FAQ!');
+            return redirect('admin/news')->with('error', 'Failed to delete News!');
+        }
+    }
+
+    public function download($id)
+    {
+        // Find the news record by ID
+        $newsData = News::findOrFail($id);
+    
+        // Check if the attachment exists
+        if ($newsData->attachment) {
+            // Get the attachment path
+            $attachmentPath = storage_path('app/public/' . $newsData->attachment);
+    
+            // Check if the file exists
+            if (file_exists($attachmentPath)) {
+                // Extract the filename from the path
+                $filename = pathinfo($attachmentPath, PATHINFO_BASENAME);
+    
+                // Return the file for download
+                return response()->download($attachmentPath, $filename);
+            } else {
+                // File not found, redirect back with an error message
+                return redirect()->back()->with('error', 'Attachment not found.');
+            }
+        } else {
+            // No attachment, redirect back with an error message
+            return redirect()->back()->with('error', 'No attachment available.');
         }
     }
 }
