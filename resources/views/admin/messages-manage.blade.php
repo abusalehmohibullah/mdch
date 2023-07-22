@@ -9,7 +9,7 @@
     @csrf
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="heading" class=" form-control-label">Heading</label>
+            <label for="heading" class=" form-control-label">Heading<span class="text-danger ml-1">*</span></label>
         </div>
         <div class="col-12 col-md-9">
             <div class="text-danger">
@@ -23,7 +23,7 @@
 
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="content" class=" form-control-label">Content</label>
+            <label for="content" class=" form-control-label">Content<span class="text-danger ml-1">*</span></label>
         </div>
         <div class="col-12 col-md-9">
             <div class="text-danger">
@@ -37,7 +37,7 @@
 
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="attachment" class=" form-control-label">Attachment</label>
+            <label for="attachment" class=" form-control-label">Attachment<span class="text-danger ml-1">*</span></label>
         </div>
         <div class="col-12 col-md-9">
             <input type="file" id="attachment" name="attachment" class="form-control-file">

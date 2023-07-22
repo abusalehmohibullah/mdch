@@ -10,7 +10,7 @@
     @csrf
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="question" class=" form-control-label">Question</label>
+            <label for="question" class=" form-control-label">Question<span class="text-danger ml-1">*</span></label>
         </div>
         <div class="col-12 col-md-9">
         <div class="text-danger">
@@ -24,7 +24,7 @@
 
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="answer" class=" form-control-label">Answer</label>
+            <label for="answer" class=" form-control-label">Answer<span class="text-danger ml-1">*</span></label>
         </div>
         <div class="col-12 col-md-9">
         <div class="text-danger">

@@ -50,6 +50,10 @@
                                         <i class="fas fa-rectangle-list"></i></i>Our Facilities</a>
                                 </li>
                                 <li>
+                                    <a href="/admin/departments">
+                                    <i class="fas fa-building"></i>Departments</a>
+                                </li>
+                                <li>
                                     <a href="/admin/faqs">
                                         <i class="fas fa-file-circle-question"></i>FAQs</a>
                                 </li>

@@ -20,19 +20,15 @@ class NewsController extends Controller
 
     public function manage(Request $request, $id = '')
     {
+        $newsData = new News;
+    
         if ($id > 0) {
-            $arr  = News::where(['id' => $id])->get();
-            $result['id']  = $arr[0]->id;
-            $result['heading']  = $arr[0]->heading;
-            $result['content']  = $arr[0]->content;
-        } else {
-            $result['id']  = '';
-            $result['heading']  = '';
-            $result['content']  = '';
+            $newsData = News::findOrFail($id);
         }
-
-        return view('admin.news-manage', $result);
+    
+        return view('admin.news-manage', compact('newsData'));
     }
+    
 
 
     public function process(Request $request, $id = null)
@@ -43,6 +39,7 @@ class NewsController extends Controller
             'heading' => 'required',
             'content' => 'nullable',
             'attachment' => 'nullable|mimes:pdf,doc,docx,jpg,jpeg,png|max:1024', // 1MB (1024 KB) limit
+            'latest_news' => 'required',
         ];
 
         // Custom error messages for validation
@@ -50,6 +47,7 @@ class NewsController extends Controller
             'heading.required' => 'Please provide a heading.',
             'attachment.mimes' => 'Invalid file format. Only pdf, doc, docx, jpg, jpeg, png files are allowed.',
             'attachment.max' => 'The attachment must not be larger than 1MB.',
+            'latest_news.required' => 'Please select an option.',
         ];
 
         // Validate the incoming request data
@@ -69,6 +67,7 @@ class NewsController extends Controller
             if ($request->filled('heading') || $request->filled('content')) {
                 $model->heading = $request->input('heading');
                 $model->content = $request->input('content');
+                $model->latest_news = $request->input('latest_news');
                 $message = 'News updated successfully!';
             }
             $model->updated_by = $request->session()->get('ADMIN_ID');
@@ -78,6 +77,7 @@ class NewsController extends Controller
             $model->heading = $validatedData['heading'];
             $model->content = $validatedData['content'];
             $model->created_by = $request->session()->get('ADMIN_ID');
+            $model->latest_news = $validatedData['latest_news'];
             $message = 'News added successfully!';
         }
 

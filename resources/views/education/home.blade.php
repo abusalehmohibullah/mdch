@@ -26,8 +26,8 @@
         </div>
 
         <ul class="d-flex align-items-center text-nowrap">
-            @foreach($news as $newsData)
-            <li><a href="#" class="text-reset text-decoration-none">{{$newsData->heading}}</a></li>
+            @foreach($latestNews as $latestNewsData)
+            <li><a href="#" class="text-reset text-decoration-none">{{$latestNewsData->heading}}</a></li>
             @endforeach
         </ul>
 
@@ -129,47 +129,19 @@
                         <div class="row">
                             <div class="col-md-12 my-3">
                                 <div class="specialization_slider_area text-center owl-carousel">
+                                    @foreach($departments as $departmentsData)
+                                    <div class="card p-2 box-area trans-bg border border-light">
+                                        <div class="img-area d-flex justify-content-center">
+                                            <img src="{{ asset('storage/' . $departmentsData->image) }}" alt="" class="rounded-circle border border-2 shadow w-75">
+                                        </div>
+                                        <div class="mt-2">
+                                            <h5>{{$departmentsData->department_name}}</h5>
+                                            <div>{{$departmentsData->department_head}}</div>
+                                            <div>{{$departmentsData->description}}</div>
+                                        </div>
+                                    </div>
 
-                                    <div class="card p-2 box-area trans-bg border border-light">
-                                        <div class="img-area d-flex justify-content-center">
-                                            <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
-                                        </div>
-                                        <div class="mt-2">
-                                            <h5>Oral Anatomy Department</h5>
-                                            <div>Dr. Nihar Sultana</div>
-                                            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
-                                        </div>
-                                    </div>
-                                    <div class="card p-2 box-area trans-bg border border-light">
-                                        <div class="img-area d-flex justify-content-center">
-                                            <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
-                                        </div>
-                                        <div class="mt-2">
-                                            <h5>Science of Dental Materials</h5>
-                                            <div>Dr. Nazrul Huda</div>
-                                            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
-                                        </div>
-                                    </div>
-                                    <div class="card p-2 box-area trans-bg border border-light">
-                                        <div class="img-area d-flex justify-content-center">
-                                            <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
-                                        </div>
-                                        <div class="mt-2">
-                                            <h5>Bio Chemistry Department</h5>
-                                            <div>Dr. Sadia Hasan</div>
-                                            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
-                                        </div>
-                                    </div>
-                                    <div class="card p-2 box-area trans-bg border border-light">
-                                        <div class="img-area d-flex justify-content-center">
-                                            <img src="{{ asset('assets/images/placeholder-person.png') }}" alt="" class="rounded-circle border border-2 shadow w-75">
-                                        </div>
-                                        <div class="mt-2">
-                                            <h5>Lorem fede re gd</h5>
-                                            <div>Dr. Abid Hasan</div>
-                                            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut et eum, fugiat ea corrupti molestias voluptatum reprehenderit, magnam vitae necessitatibus a, nihil illo laudantium reiciendis maiores cupiditate voluptas sunt maxime!</div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

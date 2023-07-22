@@ -57,13 +57,13 @@
                 @enderror
             </div>
             <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="latest_news" id="latestNewsYes" value="1" {{ ($newsData->latest_news === 1 && $newsData->latest_news !== null) ? 'checked' : '' }}>
-    <label class="form-check-label" for="latestNewsYes">Yes</label>
-</div>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="latest_news" id="latestNewsNo" value="0" {{ ($newsData->latest_news === 0 && $newsData->latest_news !== null) ? 'checked' : '' }}>
-    <label class="form-check-label" for="latestNewsNo">No</label>
-</div>
+                <input class="form-check-input" type="radio" name="latest_news" id="latestNewsYes" value="1" {{ ($newsData->latest_news === 1 && $newsData->latest_news !== null) ? 'checked' : '' }}>
+                <label class="form-check-label" for="latestNewsYes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="latest_news" id="latestNewsNo" value="0" {{ ($newsData->latest_news === 0 && $newsData->latest_news !== null) ? 'checked' : '' }}>
+                <label class="form-check-label" for="latestNewsNo">No</label>
+            </div>
 
         </div>
     </div>

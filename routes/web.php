@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FaqsController;
+use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MessagesController;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +51,13 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::post('/admin/faqs/process/{id?}', [FaqsController::class, 'process'])->name('faqs.process');
     Route::put('/admin/faqs/status/{id}', [FaqsController::class, 'status'])->name('faqs.status');
     Route::post('/admin/faqs/delete/{id}', [FaqsController::class, 'delete'])->name('faqs.delete');
-
+    
+    Route::get('/admin/departments', [DepartmentsController::class, 'index'])->name('departments');
+    Route::get('/admin/departments/manage/{id?}', [DepartmentsController::class, 'manage']);
+    Route::post('/admin/departments/process/{id?}', [DepartmentsController::class, 'process'])->name('departments.process');
+    Route::put('/admin/departments/status/{id}', [DepartmentsController::class, 'status'])->name('departments.status');
+    Route::post('/admin/departments/delete/{id}', [DepartmentsController::class, 'delete'])->name('departments.delete');
+    
     Route::get('/admin/image-box', function () {
         return view('admin.image-box');
     });
