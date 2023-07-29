@@ -21,14 +21,14 @@ class NewsController extends Controller
     public function manage(Request $request, $id = '')
     {
         $newsData = new News;
-    
+
         if ($id > 0) {
             $newsData = News::findOrFail($id);
         }
-    
+
         return view('admin.news-manage', compact('newsData'));
     }
-    
+
 
 
     public function process(Request $request, $id = null)
@@ -39,6 +39,7 @@ class NewsController extends Controller
             'heading' => 'required',
             'content' => 'nullable',
             'attachment' => 'nullable|mimes:pdf,doc,docx,jpg,jpeg,png|max:1024', // 1MB (1024 KB) limit
+            'published_at' => 'required',
             'latest_news' => 'required',
         ];
 
@@ -47,6 +48,7 @@ class NewsController extends Controller
             'heading.required' => 'Please provide a heading.',
             'attachment.mimes' => 'Invalid file format. Only pdf, doc, docx, jpg, jpeg, png files are allowed.',
             'attachment.max' => 'The attachment must not be larger than 1MB.',
+            'published_at.required' => 'Please select a date.',
             'latest_news.required' => 'Please select an option.',
         ];
 
@@ -67,6 +69,7 @@ class NewsController extends Controller
             if ($request->filled('heading') || $request->filled('content')) {
                 $model->heading = $request->input('heading');
                 $model->content = $request->input('content');
+                $model->published_at = $request->input('published_at');
                 $model->latest_news = $request->input('latest_news');
                 $message = 'News updated successfully!';
             }
@@ -77,41 +80,58 @@ class NewsController extends Controller
             $model->heading = $validatedData['heading'];
             $model->content = $validatedData['content'];
             $model->created_by = $request->session()->get('ADMIN_ID');
+            $model->published_at = $validatedData['published_at'];
             $model->latest_news = $validatedData['latest_news'];
             $message = 'News added successfully!';
         }
 
-        try {
-            if ($request->hasFile('attachment')) {
-                // Get the uploaded file from the request
-                $attachment = $request->file('attachment');
 
-                // Validate the file size and type
-                if ($attachment->isValid()) {
-                    // Generate a unique name for the file based on the heading, date, and time
-                    $fileName = Str::slug($validatedData['heading']) . '-' . Carbon::now()->format('Ymd-His') . '.' . $attachment->getClientOriginalExtension();
+// Convert the heading to a slug
+$model->slug = Str::slug($validatedData['heading']);
 
-                    // Store the file in the storage directory with the generated name
-                    $attachmentPath = $attachment->storeAs('attachments', $fileName, 'public');
+// Check if the slug already exists in the database
+if ($id === null && News::where('slug', $model->slug)->exists()) {
+    // If the slug already exists for a different news item,
+    // modify the slug to make it unique by appending a count
+    $count = 1;
+    $originalSlug = $model->slug;
+    while (News::where('slug', $model->slug)->exists()) {
+        $model->slug = $originalSlug . '-' . $count;
+        $count++;
+    }
+}
 
+try {
+    if ($request->hasFile('attachment')) {
+        // Get the uploaded file from the request
+        $attachment = $request->file('attachment');
 
-                    // Save the file path in the database
-                    $model->attachment = $attachmentPath;
-                } else {
-                    return redirect()->back()->withInput()->with('error', 'Failed to upload attachment.');
-                }
-            }
+        // Validate the file size and type
+        if ($attachment->isValid()) {
+            // Generate a unique name for the file based on the slug and the file extension
+            $fileName = $model->slug . '.' . $attachment->getClientOriginalExtension();
 
-            // Save the model
-            if ($model->save()) {
-                return redirect('admin/news')->with('success', $message);
-            } else {
-                throw new \Exception('Failed to save news.');
-            }
-        } catch (\Exception $e) {
-            // Handle the error
-            return redirect()->back()->withInput()->with('error', $e->getMessage());
+            // Store the file in the storage directory with the generated name
+            $attachmentPath = $attachment->storeAs('attachments', $fileName, 'public');
+
+            // Save the file path in the database
+            $model->attachment = $attachmentPath;
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Failed to upload attachment.');
         }
+    }
+
+    // Save the model
+    if ($model->save()) {
+        return redirect('admin/news')->with('success', $message);
+    } else {
+        throw new \Exception('Failed to save news.');
+    }
+} catch (\Exception $e) {
+    // Handle the error
+    return redirect()->back()->withInput()->with('error', $e->getMessage());
+}
+
     }
 
 
@@ -157,17 +177,17 @@ class NewsController extends Controller
     {
         // Find the news record by ID
         $newsData = News::findOrFail($id);
-    
+
         // Check if the attachment exists
         if ($newsData->attachment) {
             // Get the attachment path
             $attachmentPath = storage_path('app/public/' . $newsData->attachment);
-    
+
             // Check if the file exists
             if (file_exists($attachmentPath)) {
                 // Extract the filename from the path
                 $filename = pathinfo($attachmentPath, PATHINFO_BASENAME);
-    
+
                 // Return the file for download
                 return response()->download($attachmentPath, $filename);
             } else {

@@ -42,11 +42,11 @@
                                         <i class="fas fa-newspaper"></i>News</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/about">
+                                    <a href="{{ route('section_key', 'about') }}">
                                         <i class="fas fa-circle-info"></i>About</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/facilities">
+                                <a href="{{ route('section_key', 'facilities') }}">
                                         <i class="fas fa-rectangle-list"></i></i>Our Facilities</a>
                                 </li>
                                 <li>
@@ -62,7 +62,7 @@
                                         <i class="fas fa-image"></i>Image Box</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/messages">
+                                <a href="{{ route('section_key', 'messages') }}">
                                         <i class="fas fa-message"></i>Messages</a>
                                 </li>
                                 <li>

@@ -2,22 +2,23 @@
 
 @section('content')
 
-<x-back-btn-component title="{{ $newsData->id ? 'EDIT' : 'ADD' }} NEWS" />
+<x-back-btn-component title="{{ $sectionsData->id ? 'Edit' : 'Add' }} About" />
 
 
-<form action="{{ route('news.process', $newsData->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ route('section_key.process', $sectionsData->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+
     @csrf
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="heading" class=" form-control-label">Heading<span class="text-danger ml-1">*</span></label>
+            <label for="title" class=" form-control-label">Heading<span class="text-danger ml-1">*</span></label>
         </div>
         <div class="col-12 col-md-9">
             <div class="text-danger">
-                @error('heading')
+                @error('title')
                 {{$message}}
                 @enderror
             </div>
-            <input type="text" class="form-control" id="heading" name="heading" placeholder="Enter a heading of the news..." value="{{ old('heading') ? old('heading') : $newsData->heading }}">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title of the news..." value="{{ old('title') ? old('title') : $sectionsData->title }}">
         </div>
     </div>
 
@@ -31,7 +32,7 @@
                 {{$message}}
                 @enderror
             </div>
-            <textarea name="content" id="content" rows="9" placeholder="Enter the content of the news..." class="form-control">{{ old('content') ? old('content') : $newsData->content }}</textarea>
+            <textarea name="content" id="content" rows="9" placeholder="Enter the content of the news..." class="form-control">{{ old('content') ? old('content') : $sectionsData->content }}</textarea>
         </div>
     </div>
 
@@ -39,32 +40,13 @@
         <div class="col col-md-3">
             <label for="attachment" class=" form-control-label">Attachment</label>
         </div>
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-9">
             <div class="text-danger">
                 @error('attachment')
                 {{$message}}
                 @enderror
             </div>
             <input type="file" id="attachment" name="attachment" class="form-control-file">
-        </div>
-        <div class="col col-md-3">
-            <label class=" form-control-label">Latest news?<span class="text-danger ml-1">*</span></label>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="text-danger">
-                @error('latest_news')
-                {{$message}}
-                @enderror
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="latest_news" id="latestNewsYes" value="1" {{ ($newsData->latest_news === 1 && $newsData->latest_news !== null) ? 'checked' : '' }}>
-                <label class="form-check-label" for="latestNewsYes">Yes</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="latest_news" id="latestNewsNo" value="0" {{ ($newsData->latest_news === 0 && $newsData->latest_news !== null) ? 'checked' : '' }}>
-                <label class="form-check-label" for="latestNewsNo">No</label>
-            </div>
-
         </div>
     </div>
 

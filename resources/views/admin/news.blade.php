@@ -2,15 +2,8 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="overview-wrap">
-            <h2 class="title-1">NEWS</h2>
-            <a href="news/manage" class="btn btn-info" role="button" data-bs-toggle="button">
-                <i class="zmdi zmdi-plus"></i> ADD</a>
-        </div>
-    </div>
-</div>
+
+<x-add-btn-component title="News" route="news/manage" icon="fas fa-plus" type="Add" />
 
 <div class="table-responsive px-0 pt-3">
     <table class="table" width="100%">
@@ -18,6 +11,8 @@
             <tr>
                 <td>#</td>
                 <td>Content</td>
+                <td>Latest?</td>
+                <td>Published</td>
                 <td>Attachment</td>
                 <td>Action</td>
             </tr>
@@ -25,7 +20,7 @@
         <tbody>
             @foreach ($news as $newsData)
             <tr class="{{ $newsData->status == 0 ? 'bg-light' : '' }}">
-            <td width="1%">
+                <td width="1%">
                     {{ $news->firstItem() + $loop->index }}
                 </td>
                 <td>
@@ -37,14 +32,29 @@
                     </div>
                 </td>
                 <td width="1%">
-                <div class="table-data__info d-flex justify-content-center align-items-center">
-    @if ($newsData->attachment)
-        <a href="{{ asset('storage/' . $newsData->attachment) }}" target="_blank"><i class="fa-solid fa-eye fa-lg p-2 text-dark"></i></a>
-        <a href="{{ route('news.download', $newsData->id) }}"><i class="fa-solid fa-download fa-lg p-2 text-dark"></i></a>
-    @else
-        -
-    @endif
-</div>
+                    <div class="table-data__info d-flex justify-content-center align-items-center">
+                        @if ($newsData->latest_news == 1)
+                            Yes
+                        @else
+                            No
+                            @endif
+                    </div>
+                    
+                </td>
+                <td width="1%" class="text-nowrap">
+
+                        {{$newsData->published_at}}
+
+                </td>
+                <td width="1%">
+                    <div class="table-data__info d-flex justify-content-center align-items-center">
+                        @if ($newsData->attachment)
+                        <a href="{{ asset('storage/' . $newsData->attachment) }}" target="_blank"><i class="fa-solid fa-eye fa-lg p-2 text-dark"></i></a>
+                        <a href="{{ route('news.download', $newsData->id) }}"><i class="fa-solid fa-download fa-lg p-2 text-dark"></i></a>
+                        @else
+                        -
+                        @endif
+                    </div>
 
                 </td>
                 <td width="1%">

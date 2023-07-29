@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\NewsController;
@@ -18,75 +19,102 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', [HomeController::class, 'education'])->name('home');;
 
 // routes/web.php
 
 
+Route::prefix('education')->group(function () {
+    Route::get('/', [HomeController::class, 'education'])->name('home');
+});
 
-Route::get('/education', [HomeController::class, 'education'])->name('home');
+// Route::get('/{section_key}', [HomeController::class, 'show'])->name('section_key')->where('section_key', 'about|facilities|messages|news');
+Route::get('/news', [HomeController::class, 'news'])->name('news.all');
+Route::get('/news/{slug}', [HomeController::class, 'previewNews'])->name('news.preview');
+
 Route::get('/entertainment', [HomeController::class, 'entertainment'])->name('entertainment');
 
 // admin panel 
 Route::get('/admin', [AdminController::class, 'index']);
 Route::post('/admin/auth', [AdminController::class, 'auth'])->name('admin.auth');
 Route::group(['middleware' => 'admin_auth'], function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
-    // Route::get('/admin/update_password', [AdminController::class, 'update_password']);
-    Route::get('/admin/logout', function () {
-        session()->forget('ADMIN_LOGIN');
-        session()->forget('ADMIN_ID');
-        session()->flash('error', 'Logout Successfully!');
-        return redirect('admin');
-    });
-    Route::get('/admin/about', function () {
-        return view('admin.about');
-    });
-    Route::get('/admin/facilities', function () {
-        return view('admin.facilities');
-    });
 
-    Route::get('/admin/faqs', [FaqsController::class, 'index'])->name('faqs');
-    Route::get('/admin/faqs/manage/{id?}', [FaqsController::class, 'manage']);
-    Route::post('/admin/faqs/process/{id?}', [FaqsController::class, 'process'])->name('faqs.process');
-    Route::put('/admin/faqs/status/{id}', [FaqsController::class, 'status'])->name('faqs.status');
-    Route::post('/admin/faqs/delete/{id}', [FaqsController::class, 'delete'])->name('faqs.delete');
-    
-    Route::get('/admin/departments', [DepartmentsController::class, 'index'])->name('departments');
-    Route::get('/admin/departments/manage/{id?}', [DepartmentsController::class, 'manage']);
-    Route::post('/admin/departments/process/{id?}', [DepartmentsController::class, 'process'])->name('departments.process');
-    Route::put('/admin/departments/status/{id}', [DepartmentsController::class, 'status'])->name('departments.status');
-    Route::post('/admin/departments/delete/{id}', [DepartmentsController::class, 'delete'])->name('departments.delete');
-    
-    Route::get('/admin/image-box', function () {
-        return view('admin.image-box');
-    });
+    Route::prefix('admin')->group(function () {
 
-    Route::get('/admin/messages', [MessagesController::class, 'index'])->name('messages');
-    Route::get('/admin/messages/manage/{id?}', [MessagesController::class, 'manage']);
-    Route::post('/admin/messages/process/{id?}', [MessagesController::class, 'process'])->name('messages.process');
-    Route::put('/admin/messages/status/{id}', [MessagesController::class, 'status'])->name('messages.status');
-    Route::post('/admin/messages/delete/{id}', [MessagesController::class, 'delete'])->name('messages.delete');
+        Route::get('/dashboard', [AdminController::class, 'dashboard']);
+        // Route::get('/update_password', [AdminController::class, 'update_password']);
+        Route::get('/logout', function () {
+            session()->forget('ADMIN_LOGIN');
+            session()->forget('ADMIN_ID');
+            session()->flash('error', 'Logout Successfully!');
+            return redirect('admin');
+        });
 
-    Route::get('/admin/ads', function () {
-        return view('admin.ads');
-    });
-    Route::get('/admin/photo-album', function () {
-        return view('admin.photo-album');
-    });
-    Route::get('/admin/admission', function () {
-        return view('admin.admission');
-    });
-
-    Route::get('/admin/news', [NewsController::class, 'index'])->name('news');
-    Route::get('/admin/news/manage/{id?}', [NewsController::class, 'manage']);
-    Route::post('/admin/news/process/{id?}', [NewsController::class, 'process'])->name('news.process');
-    Route::put('/admin/news/status/{id}', [NewsController::class, 'status'])->name('news.status');
-    Route::post('/admin/news/delete/{id}', [NewsController::class, 'delete'])->name('news.delete');
-    Route::get('/admin/news/download/{id}', [NewsController::class, 'download'])->name('news.download');
+        Route::get('/{section_key}', [SectionsController::class, 'index'])->name('section_key')->where('section_key', 'about|facilities|messages');
 
 
-    Route::get('/admin/opd', function () {
-        return view('admin.opd');
+        Route::get('/{section_key}/manage/{id?}', [SectionsController::class, 'manage'])->where('section_key', 'about|facilities|messages');
+        Route::post('/{section_key}/process/{id?}', [SectionsController::class, 'process'])->name('section_key.process')->where('section_key', 'about|facilities|messages');
+
+        Route::put('/status/{id}', [SectionsController::class, 'status'])->name('messages.status');
+        Route::post('/delete/{id}', [SectionsController::class, 'delete'])->name('messages.delete');
+
+
+        Route::get('/facilities', function () {
+            return view('admin.facilities');
+        });
+
+        Route::prefix('faqs')->group(function () {
+            Route::get('/', [FaqsController::class, 'index'])->name('faqs');
+            Route::get('/manage/{id?}', [FaqsController::class, 'manage']);
+            Route::post('/process/{id?}', [FaqsController::class, 'process'])->name('faqs.process');
+            Route::put('/status/{id}', [FaqsController::class, 'status'])->name('faqs.status');
+            Route::post('/delete/{id}', [FaqsController::class, 'delete'])->name('faqs.delete');
+        });
+
+        Route::prefix('departments')->group(function () {
+            Route::get('/', [DepartmentsController::class, 'index'])->name('departments');
+            Route::get('/manage/{id?}', [DepartmentsController::class, 'manage']);
+            Route::post('/process/{id?}', [DepartmentsController::class, 'process'])->name('departments.process');
+            Route::put('/status/{id}', [DepartmentsController::class, 'status'])->name('departments.status');
+            Route::post('/delete/{id}', [DepartmentsController::class, 'delete'])->name('departments.delete');
+        });
+
+        Route::get('/image-box', function () {
+            return view('admin.image-box');
+        });
+
+        Route::prefix('messages')->group(function () {
+            Route::get('/', [MessagesController::class, 'index'])->name('messages');
+            Route::get('/manage/{id?}', [MessagesController::class, 'manage']);
+            Route::post('/process/{id?}', [MessagesController::class, 'process'])->name('messages.process');
+            Route::put('/status/{id}', [MessagesController::class, 'status'])->name('messages.status');
+            Route::post('/delete/{id}', [MessagesController::class, 'delete'])->name('messages.delete');
+        });
+
+        Route::get('/ads', function () {
+            return view('admin.ads');
+        });
+        Route::get('/photo-album', function () {
+            return view('admin.photo-album');
+        });
+        Route::get('/admission', function () {
+            return view('admin.admission');
+        });
+
+        Route::prefix('news')->group(function () {
+            Route::get('/', [NewsController::class, 'index'])->name('news');
+            Route::get('/manage/{id?}', [NewsController::class, 'manage']);
+            Route::post('/process/{id?}', [NewsController::class, 'process'])->name('news.process');
+            Route::put('/status/{id}', [NewsController::class, 'status'])->name('news.status');
+            Route::post('/delete/{id}', [NewsController::class, 'delete'])->name('news.delete');
+            Route::get('/download/{id}', [NewsController::class, 'download'])->name('news.download');
+        });
+
+
+        Route::get('/opd', function () {
+            return view('admin.opd');
+        });
     });
 });

@@ -228,3 +228,33 @@ footer .copyright {
 .accordion-button:not(.collapsed) {
   background-color: var(--light-color) !important;
 }
+
+
+.text-justify {
+  text-align:justify !important;
+}
+
+
+
+
+
+
+
+
+
+.multiline-ellipsis {
+--max-lines: 22;
+--line-height: 1.4;
+
+max-height: calc(var(--max-lines) * 1em * var(--line-height));
+overflow: hidden;
+}
+
+
+.preview-container {
+  height: 100vh;
+}
+
+.preview-container>img {
+  max-width: 100%;
+}

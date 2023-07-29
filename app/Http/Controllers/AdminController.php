@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->session()->has('ADMIN_LOGIN')){
+        if ($request->session()->has('ADMIN_LOGIN')) {
             return redirect('admin/dashboard');
         } else {
             return view('admin.login');
@@ -50,12 +50,10 @@ class AdminController extends Controller
                 $request->session()->put('ADMIN_ID', $result->id);
                 return redirect('admin/dashboard');
             } else {
-                $request->session()->flash('error', 'Please enter correct password!');
-                return redirect('admin');
+                return redirect()->back()->withInput()->with('error', 'Please enter correct password!');
             }
         } else {
-            $request->session()->flash('error', 'Please enter valid email address!');
-            return redirect('admin');
+            return redirect()->back()->withInput()->with('error', 'No user found with this email address!');
         }
     }
 

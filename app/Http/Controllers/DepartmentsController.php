@@ -150,36 +150,10 @@ class DepartmentsController extends Controller
 
         if ($model) {
             $model->delete();
-            return redirect('admin/departments')->with('success', 'Departments deleted successfully!');
+            return redirect('admin/departments')->with('success', 'Department deleted successfully!');
         } else {
-            return redirect('admin/departments')->with('error', 'Failed to delete Departments!');
+            return redirect('admin/departments')->with('error', 'Failed to delete Department!');
         }
     }
 
-    public function download($id)
-    {
-        // Find the departments record by ID
-        $departmentsData = Departments::findOrFail($id);
-    
-        // Check if the image exists
-        if ($departmentsData->image) {
-            // Get the image path
-            $imagePath = storage_path('app/public/' . $departmentsData->image);
-    
-            // Check if the file exists
-            if (file_exists($imagePath)) {
-                // Extract the filename from the path
-                $filename = pathinfo($imagePath, PATHINFO_BASENAME);
-    
-                // Return the file for download
-                return response()->download($imagePath, $filename);
-            } else {
-                // File not found, redirect back with an error message
-                return redirect()->back()->with('error', 'Image not found.');
-            }
-        } else {
-            // No image, redirect back with an error message
-            return redirect()->back()->with('error', 'No image available.');
-        }
-    }
 }

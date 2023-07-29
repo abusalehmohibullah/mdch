@@ -19,7 +19,7 @@ class AdminAuth
         if($request->session()->has('ADMIN_LOGIN')){
 
         } else {
-            $request->session()->flash('error', 'Unauthorized Access');
+            $request->session()->flash('error', 'Please log in to continue');
             return redirect('admin');
         }
         return $next($request);

@@ -22,12 +22,12 @@
 <section>
     <div class="container notice-container light-bg d-flex my-3 p-0 shadow-sm">
         <div class="title deep-bg d-flex align-items-center py-1 px-3">
-            Notice
+        <a href="{{ route('news.all') }}" class="text-decoration-none text-dark">Notice</a>
         </div>
 
         <ul class="d-flex align-items-center text-nowrap">
             @foreach($latestNews as $latestNewsData)
-            <li><a href="#" class="text-reset text-decoration-none">{{$latestNewsData->heading}}</a></li>
+            <li><a href="{{ route('news.preview', $latestNewsData->slug) }}" class="text-reset text-decoration-none">{{$latestNewsData->heading}}</a></li>
             @endforeach
         </ul>
 
@@ -52,6 +52,25 @@
 
 
 <!-- About Us Section -->
+<!-- <section id="about-us-section">
+    <div class="container shadow-sm bg-white mb-3 p-0">
+        <div class="float-end ms-3" style="width: 40%;">
+            <img src="{{ asset('assets/images/college-image.jpg') }}" class="img-fluid" alt="...">
+        </div>
+
+        <div class="card-body p-3">
+            <h3 class="card-title deep-color">About</h3>
+            <p class="card-text text-justify">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, facere! Vel labore officia aliquam, voluptatibus saepe impedit quis recusandae necessitatibus beatae ratione, architecto ipsum corrupti modi suscipit eveniet nobis dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ea hic nobis odit aut odio eveniet quia quis impedit tenetur vitae vel, totam ex earum. Vel cupiditate itaque quod molestias!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, facere! Vel labore officia aliquam, voluptatibus saepe impedit quis recusandae necessitatibus beatae ratione, architecto ipsum corrupti modi suscipit eveniet nobis dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ea hic nobis odit aut odio eveniet quia quis impedit tenetur vitae vel, totam ex earum. Vel cupiditate itaque quod molestias!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, facere! Vel labore officia aliquam, voluptatibus saepe impedit quis recusandae necessitatibus beatae ratione, architecto ipsum corrupti modi suscipit eveniet nobis dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ea hic nobis odit aut odio eveniet quia quis impedit tenetur vitae vel, totam ex earum. Vel cupiditate itaque quod molestias!
+                One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
+        </div>
+
+    </div>
+</section> -->
+<!-- About Us Section -->
 <section id="about-us-section">
     <div class="container shadow-sm bg-white mb-3 p-0">
         <div class="row g-0">
@@ -64,7 +83,8 @@
                 <div class="card-body p-3">
                     <h3 class="card-title deep-color">About</h3>
                     <p class="card-text">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
-
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, facere! Vel labore officia aliquam, voluptatibus saepe impedit quis recusandae necessitatibus beatae ratione, architecto ipsum corrupti modi suscipit eveniet nobis dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ea hic nobis odit aut odio eveniet quia quis impedit tenetur vitae vel, totam ex earum. Vel cupiditate itaque quod molestias!
                         One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
                 </div>
             </div>
@@ -333,7 +353,7 @@
         <div class="row g-0">
             <div id="album-container" class="col-4 mb-2">
                 <div class="d-flex align-items-center position-relative">
-                    <div class="preview-container d-flex justify-content-center position-relative">
+                    <div class="thumbnail-container d-flex justify-content-center position-relative">
                         <div class="card m-2 album-card">
                             <a data-fancybox="gallery" href="https://lipsum.app/id/60/1600x1200" class="text-decoration-none text-dark">
                                 <img src="{{ asset('assets/images/teeth.png') }}" class="w-100" alt="" />
@@ -372,17 +392,20 @@
             </div>
             <div class="col-md-4">
                 <div class="notice-box p-2">
-                    <h4 class="alert-heading deep-color mt-2">MDC News</h4>
+                    <div class="d-flex jusify-content-center align-items-center">
+                        <h4 class="alert-heading deep-color mt-2">MDC News</h4>
+                        <div class="ms-auto"><a href="{{ route('news.all') }}">See All</a></div>
+                    </div>
                     <hr>
                     <div class="notices">
                         <ul>
                             @foreach($news as $newsData)
                             <li>
-                                <a href="#" class="text-reset text-decoration-none">
+                                <a href="{{ route('news.preview', $newsData->slug) }}" class="text-reset text-decoration-none">
                                     <div>
                                         {{$newsData->heading}}
                                     </div>
-                                    <div class="text-end mb-2">07 July 2023 - 03:03 PM</div>
+                                    <div class="text-end mb-2">{{ \Carbon\Carbon::parse($newsData->published_at)->format('d F, Y') }}</div>
                                 </a>
                             </li>
                             @endforeach

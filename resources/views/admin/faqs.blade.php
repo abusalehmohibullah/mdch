@@ -2,15 +2,8 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="overview-wrap">
-            <h2 class="title-1">FAQS</h2>
-            <a href="faqs/manage" class="btn btn-info" role="button" data-bs-toggle="button">
-                <i class="zmdi zmdi-plus"></i> ADD</a>
-        </div>
-    </div>
-</div>
+
+<x-add-btn-component  title="Faqs" route="faqs/manage" icon="fas fa-plus" type="Add" />
 
 <div class="table-responsive px-0 pt-3">
     <table class="table" width="100%">
