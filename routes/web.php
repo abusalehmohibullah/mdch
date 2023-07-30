@@ -7,6 +7,7 @@ use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\AlbumsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -96,9 +97,18 @@ Route::group(['middleware' => 'admin_auth'], function () {
         Route::get('/ads', function () {
             return view('admin.ads');
         });
-        Route::get('/photo-album', function () {
-            return view('admin.photo-album');
+
+
+        Route::prefix('albums')->group(function () {
+            Route::get('/', [AlbumsController::class, 'index'])->name('albums');
+            Route::post('/create/{id?}', [AlbumsController::class, 'create'])->name('albums.create');
+            Route::get('/manage/{id?}', [AlbumsController::class, 'manage'])->name('albums.manage');
+            Route::post('/process/{id?}', [AlbumsController::class, 'process'])->name('albums.process');
+            Route::put('/status/{id}', [AlbumsController::class, 'status'])->name('albums.status');
+            Route::post('/delete/{id}', [AlbumsController::class, 'delete'])->name('albums.delete');
+            Route::get('/download/{id}', [AlbumsController::class, 'download'])->name('albums.download');
         });
+
         Route::get('/admission', function () {
             return view('admin.admission');
         });

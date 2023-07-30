@@ -5,11 +5,13 @@
     <div class="col-md-12">
         <div class="overview-wrap">
             <h2 class="title-1">Photo Album</h2>
-            <div class="d-flex flex-nowrap">
-
-                <input type="text" class="form-control" id="validationTooltip01" value="" placeholder="Create New Album" required>
-                <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i></button>
-            </div>
+            <form action="{{ route('albums.create') }}" method="POST">
+                @csrf
+                <div class="d-flex flex-nowrap">
+                    <input type="text" class="form-control" id="name" name="name" value="" placeholder="Create New Album" required>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -26,8 +28,16 @@
     </div>
 </div>
 
+<ul>
+    @foreach ($albums as $album)
+    <li>
+        <a href="{{ route('albums.manage', $album->id) }}">{{ $album->name }}</a>
+    </li>
+    @endforeach
+</ul>
 
 
 
 
 @endsection
+
