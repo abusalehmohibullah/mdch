@@ -2,11 +2,11 @@
 
 @section('content')
 
-<x-back-btn-component title="{{ $id ? 'EDIT' : 'ADD' }} FAQS"/>
+<x-back-btn-component title="{{ $faqsData->id ? 'EDIT' : 'ADD' }} FAQS"/>
 
 
 
-<form action="{{ route('faqs.process', $id) }}" method="POST" class="form-horizontal">
+<form action="{{ route('faqs.process', $faqsData->id) }}" method="POST" class="form-horizontal">
     @csrf
     <div class="row form-group">
         <div class="col col-md-3">
@@ -18,7 +18,7 @@
             {{$message}}
             @enderror
         </div>
-            <input type="text" class="form-control" id="question" name="question" placeholder="Type a frequently asked question..." value="{{ old('question') ? old('question') : $question }}">
+            <input type="text" class="form-control" id="question" name="question" placeholder="Type a frequently asked question..." value="{{ old('question') ? old('question') : $faqsData->question }}">
         </div>
     </div>
 
@@ -32,7 +32,7 @@
             {{$message}}
             @enderror
         </div>
-            <textarea name="answer" id="answer" rows="9" placeholder="Answer of that question..." class="form-control">{{ old('answer') ? old('answer') : $answer }}</textarea>
+            <textarea name="answer" id="answer" rows="9" placeholder="Answer of that question..." class="form-control">{{ old('answer') ? old('answer') : $faqsData->answer }}</textarea>
         </div>
     </div>
 

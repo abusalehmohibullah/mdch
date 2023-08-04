@@ -161,3 +161,28 @@ $(".specialization_slider_area").owlCarousel({
   }
 
 });
+
+
+
+
+$(document).ready(function() {
+    // Select all image and text containers
+    const $imageContainers = $('.img-container');
+    const $textContainers = $('.text-container');
+
+    // Loop through each section
+    $imageContainers.each(function(index) {
+        const $image = $(this);
+        const $text = $textContainers.eq(index);
+
+        // Get the height of the image
+        const imageHeight = $image.height();
+
+        // Apply the image height to the text container
+        $text.css('height', imageHeight + 'px');
+        $text.css('display', 'block');
+    });
+});
+
+
+

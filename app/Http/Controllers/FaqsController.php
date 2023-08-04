@@ -16,20 +16,14 @@ class FaqsController extends Controller
 
     public function manage(Request $request, $id = '')
     {
+        $faqsData = new Faqs;
+
         if ($id > 0) {
-            $arr  = Faqs::where(['id' => $id])->get();
-            $result['id']  = $arr[0]->id;
-            $result['question']  = $arr[0]->question;
-            $result['answer']  = $arr[0]->answer;
-        } else {
-            $result['id']  = '';
-            $result['question']  = '';
-            $result['answer']  = '';
+            $faqsData = Faqs::findOrFail($id);
         }
 
-        return view('admin.faqs-manage', $result);
+        return view('admin.faqs-manage', compact('faqsData'));
     }
-
 
     public function process(Request $request, $id = null)
     {

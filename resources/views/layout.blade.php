@@ -15,12 +15,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
 
+    
+    <!-- animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
     <!-- Include custom CSS -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
 </head>
 
-<body class="bg-light">
+<body class="bg-light overflow-x-hidden">
     @include('header') <!-- Include the header partial -->
 
     <main>
@@ -29,15 +33,17 @@
 
     @include('footer') <!-- Include the footer partial -->
 
-
     <!-- jQuery library for DOM manipulation and event handling -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
     <!-- Bootstrap library for enhanced styling and interactivity -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
     <!-- Include custom JavaScript -->
-    <script src="{{ asset('assets/js/js.js') }}"></script>
+    <script defer src="{{ asset('assets/js/animations.js') }}"></script>
+    <script defer src="{{ asset('assets/js/js.js') }}"></script>
 
 </body>
 

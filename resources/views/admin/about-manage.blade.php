@@ -5,7 +5,7 @@
 <x-back-btn-component title="{{ $sectionsData->id ? 'Edit' : 'Add' }} About" />
 
 
-<form action="{{ route('section_key.process', $sectionsData->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ route('sections.process', ['section_key' => 'about', 'id' => $sectionsData->id]) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
 
     @csrf
     <div class="row form-group">

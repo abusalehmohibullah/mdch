@@ -258,3 +258,38 @@ overflow: hidden;
 .preview-container>img {
   max-width: 100%;
 }
+
+
+
+
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.text-container {
+  overflow: hidden;
+  display: none;
+  position: relative;
+}
+
+.text-container::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Adjust the height of the fading effect as needed */
+  background: linear-gradient(rgba(255, 255, 255, 0), white); /* Fading gradient */
+  pointer-events: none; /* Allow clicks on underlying content */
+}
+
+.read-more-btn {
+  position: absolute;
+  bottom: 10px; /* Adjust the distance from the bottom */
+  right: 10px; /* Adjust the distance from the right */
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}

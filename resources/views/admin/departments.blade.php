@@ -79,6 +79,7 @@
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                         <form action="{{ route('departments.delete', ['id' => $departmentsData->id]) }}" method="POST">
                                             @csrf
+                                            @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                     </div>

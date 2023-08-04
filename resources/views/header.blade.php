@@ -3,7 +3,7 @@
 <header>
 
     <!-- Top Nav -->
-    <nav class="navbar navbar-expand semitrans-bg py-0">
+    <nav class="navbar navbar-expand semitrans-bg py-0 animate-on-scroll" data-animation="fadeInDown" data-animation-delay="0">
         <div class="container">
             <!-- Contacts and Socials -->
             <ul class="navbar-nav ms-auto">
@@ -35,7 +35,7 @@
     </nav>
 
     <!-- Branding Nav -->
-    <nav class="navbar bg-light bg-white sticky-top shadow-sm pb-0">
+    <nav class="navbar bg-light bg-white sticky-top shadow-sm pb-0 animate-on-scroll" data-animation="fadeInDown" data-animation-delay="0.2">
         <div class="container-fluid">
             <div class="container d-flex align-items-center gap-2">
                 <div class="hstack gap-2 w-100 pe-2">
@@ -61,14 +61,14 @@
                     <div class="btn btn-primary text-nowrap">Log In</div>
                 </div>
                 <div>
-                    <div class="btn btn-danger text-nowrap">Apply Online</div>
+                    <div class="btn btn-danger text-nowrap animate__animated animate__headShake animate__delay-3s">Apply Online</div>
                 </div>
             </div>
         </div>
     </nav>
 
 
-    <nav class="navbar navbar-expand-lg light-bg sticky-top shadow-sm ">
+    <nav class="navbar navbar-expand-lg light-bg sticky-top shadow-sm animate-on-scroll" data-animation="fadeInDown" data-animation-delay="0.4">
         <div class="container">
             <div class="d-flex justify-content-center w-100">
 

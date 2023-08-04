@@ -11,4 +11,9 @@ class Albums extends Model
 
     protected $fillable = ['name', 'created_by', 'status'];
 
+    public function images()
+    {
+        return $this->hasMany(Images::class, 'album_id');
+    }
+    
 }

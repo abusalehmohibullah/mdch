@@ -112,7 +112,7 @@ try {
             $fileName = $model->slug . '.' . $attachment->getClientOriginalExtension();
 
             // Store the file in the storage directory with the generated name
-            $attachmentPath = $attachment->storeAs('attachments', $fileName, 'public');
+            $attachmentPath = $attachment->storeAs('news-attachments', $fileName, 'public');
 
             // Save the file path in the database
             $model->attachment = $attachmentPath;
@@ -164,24 +164,33 @@ try {
     public function delete($id)
     {
         $model = News::find($id);
-
+    
         if ($model) {
+            // Delete the attached file if it exists
+            if (!empty($model->attachment)) {
+                $attachmentPath = 'public/' . $model->attachment;
+                if (Storage::exists($attachmentPath)) {
+                    Storage::delete($attachmentPath);
+                }
+            }
+    
             $model->delete();
             return redirect('admin/news')->with('success', 'News deleted successfully!');
         } else {
             return redirect('admin/news')->with('error', 'Failed to delete News!');
         }
     }
+    
 
     public function download($id)
     {
         // Find the news record by ID
-        $newsData = News::findOrFail($id);
+        $model = News::findOrFail($id);
 
         // Check if the attachment exists
-        if ($newsData->attachment) {
+        if ($model->attachment) {
             // Get the attachment path
-            $attachmentPath = storage_path('app/public/' . $newsData->attachment);
+            $attachmentPath = storage_path('app/public/' . $model->attachment);
 
             // Check if the file exists
             if (file_exists($attachmentPath)) {

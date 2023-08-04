@@ -70,7 +70,7 @@
                                         <i class="fas fa-rectangle-ad"></i>Ads</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/photo-album">
+                                    <a href="/admin/albums">
                                         <i class="fas fa-images"></i>Photo Album</a>
                                 </li>
                                 <li>

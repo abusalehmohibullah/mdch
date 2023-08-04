@@ -17,6 +17,7 @@ class CreateSectionsTable extends Migration
             $table->id();
             $table->string('section_key')->unique();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('content');
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedTinyInteger('status')->default(1);

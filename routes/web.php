@@ -56,10 +56,10 @@ Route::group(['middleware' => 'admin_auth'], function () {
 
 
         Route::get('/{section_key}/manage/{id?}', [SectionsController::class, 'manage'])->where('section_key', 'about|facilities|messages');
-        Route::post('/{section_key}/process/{id?}', [SectionsController::class, 'process'])->name('section_key.process')->where('section_key', 'about|facilities|messages');
+        Route::post('/{section_key}/process/{id?}', [SectionsController::class, 'process'])->name('sections.process')->where('section_key', 'about|facilities|messages');
 
         Route::put('/status/{id}', [SectionsController::class, 'status'])->name('messages.status');
-        Route::post('/delete/{id}', [SectionsController::class, 'delete'])->name('messages.delete');
+        Route::delete('/delete/{id}', [SectionsController::class, 'delete'])->name('messages.delete');
 
 
         Route::get('/facilities', function () {
@@ -71,7 +71,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::get('/manage/{id?}', [FaqsController::class, 'manage']);
             Route::post('/process/{id?}', [FaqsController::class, 'process'])->name('faqs.process');
             Route::put('/status/{id}', [FaqsController::class, 'status'])->name('faqs.status');
-            Route::post('/delete/{id}', [FaqsController::class, 'delete'])->name('faqs.delete');
+            Route::delete('/delete/{id}', [FaqsController::class, 'delete'])->name('faqs.delete');
         });
 
         Route::prefix('departments')->group(function () {
@@ -79,7 +79,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::get('/manage/{id?}', [DepartmentsController::class, 'manage']);
             Route::post('/process/{id?}', [DepartmentsController::class, 'process'])->name('departments.process');
             Route::put('/status/{id}', [DepartmentsController::class, 'status'])->name('departments.status');
-            Route::post('/delete/{id}', [DepartmentsController::class, 'delete'])->name('departments.delete');
+            Route::delete('/delete/{id}', [DepartmentsController::class, 'delete'])->name('departments.delete');
         });
 
         Route::get('/image-box', function () {
@@ -91,7 +91,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::get('/manage/{id?}', [MessagesController::class, 'manage']);
             Route::post('/process/{id?}', [MessagesController::class, 'process'])->name('messages.process');
             Route::put('/status/{id}', [MessagesController::class, 'status'])->name('messages.status');
-            Route::post('/delete/{id}', [MessagesController::class, 'delete'])->name('messages.delete');
+            Route::delete('/delete/{id}', [MessagesController::class, 'delete'])->name('messages.delete');
         });
 
         Route::get('/ads', function () {
@@ -105,7 +105,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::get('/manage/{id?}', [AlbumsController::class, 'manage'])->name('albums.manage');
             Route::post('/process/{id?}', [AlbumsController::class, 'process'])->name('albums.process');
             Route::put('/status/{id}', [AlbumsController::class, 'status'])->name('albums.status');
-            Route::post('/delete/{id}', [AlbumsController::class, 'delete'])->name('albums.delete');
+            Route::delete('/delete/{id}', [AlbumsController::class, 'delete'])->name('albums.delete');
             Route::get('/download/{id}', [AlbumsController::class, 'download'])->name('albums.download');
         });
 
@@ -118,7 +118,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::get('/manage/{id?}', [NewsController::class, 'manage']);
             Route::post('/process/{id?}', [NewsController::class, 'process'])->name('news.process');
             Route::put('/status/{id}', [NewsController::class, 'status'])->name('news.status');
-            Route::post('/delete/{id}', [NewsController::class, 'delete'])->name('news.delete');
+            Route::delete('/delete/{id}', [NewsController::class, 'delete'])->name('news.delete');
             Route::get('/download/{id}', [NewsController::class, 'download'])->name('news.download');
         });
 

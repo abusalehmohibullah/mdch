@@ -2,28 +2,29 @@
 
 @section('content')
 
-<x-back-btn-component title="{{ $id ? 'EDIT' : 'ADD' }} MESSAGE"/>
+<x-back-btn-component title="{{ $sectionsData->id ? 'Edit' : 'Add' }} Messages" />
 
 
-<form action="{{ route('messages.process', $id) }}" method="POST" class="form-horizontal">
+<form action="{{ route('sections.process', ['section_key' => 'messages', 'id' => $sectionsData->id]) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+
     @csrf
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="heading" class=" form-control-label">Heading<span class="text-danger ml-1">*</span></label>
+            <label for="title" class=" form-control-label">Heading<span class="text-danger ml-1">*</span></label>
         </div>
         <div class="col-12 col-md-9">
             <div class="text-danger">
-                @error('heading')
+                @error('title')
                 {{$message}}
                 @enderror
             </div>
-            <input type="text" class="form-control" id="heading" name="heading" placeholder="Type a frequently asked heading..." value="{{ old('heading') ? old('heading') : $heading }}">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title of the news..." value="{{ old('title') ? old('title') : $sectionsData->title }}">
         </div>
     </div>
 
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="content" class=" form-control-label">Content<span class="text-danger ml-1">*</span></label>
+            <label for="content" class=" form-control-label">Content</label>
         </div>
         <div class="col-12 col-md-9">
             <div class="text-danger">
@@ -31,15 +32,20 @@
                 {{$message}}
                 @enderror
             </div>
-            <textarea name="content" id="content" rows="9" placeholder="content of that heading..." class="form-control">{{ old('content') ? old('content') : $content }}</textarea>
+            <textarea name="content" id="content" rows="9" placeholder="Enter the content of the news..." class="form-control">{{ old('content') ? old('content') : $sectionsData->content }}</textarea>
         </div>
     </div>
 
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="attachment" class=" form-control-label">Attachment<span class="text-danger ml-1">*</span></label>
+            <label for="attachment" class=" form-control-label">Attachment</label>
         </div>
         <div class="col-12 col-md-9">
+            <div class="text-danger">
+                @error('attachment')
+                {{$message}}
+                @enderror
+            </div>
             <input type="file" id="attachment" name="attachment" class="form-control-file">
         </div>
     </div>

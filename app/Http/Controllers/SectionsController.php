@@ -34,23 +34,22 @@ class SectionsController extends Controller
 
 
 
-    public function process(Request $request, $id = null)
+    public function process(Request $request, $section_key, $id = null)
     {
 
         // Validation rules for the 'title' and 'content' fields
         $validationRules = [
             'title' => 'required',
-            'content' => 'nullable',
-            'attachment' => 'nullable|mimes:pdf,doc,docx,jpg,jpeg,png|max:1024', // 1MB (1024 KB) limit
-            'latest_news' => 'required',
+            'content' => 'required',
+            'attachment' => 'nullable|mimes:jpg,jpeg,png|max:1024', // 1MB (1024 KB) limit
         ];
 
         // Custom error messages for validation
         $customMessages = [
             'title.required' => 'Please provide a title.',
-            'attachment.mimes' => 'Invalid file format. Only pdf, doc, docx, jpg, jpeg, png files are allowed.',
+            'content.required' => 'Please provide a content.',
+            'attachment.mimes' => 'Invalid file format. Only jpg, jpeg, png files are allowed.',
             'attachment.max' => 'The attachment must not be larger than 1MB.',
-            'latest_news.required' => 'Please select an option.',
         ];
 
         // Validate the incoming request data
@@ -63,43 +62,31 @@ class SectionsController extends Controller
         if ($id !== null) {
 
 
-            // Find the existing Sections record
             $model = Sections::findOrFail($id);
-
             // Check if the 'title' and 'content' fields are being updated
             if ($request->filled('title') || $request->filled('content')) {
+  
                 $model->title = $request->input('title');
                 $model->content = $request->input('content');
-                $model->latest_news = $request->input('latest_news');
                 $message = 'Sections updated successfully!';
             }
             $model->updated_by = $request->session()->get('ADMIN_ID');
-        } else {
-            // For insert operation, create a new Sections model
-            $model = new Sections;
-            $model->title = $validatedData['title'];
-            $model->content = $validatedData['content'];
-            $model->created_by = $request->session()->get('ADMIN_ID');
-            $model->latest_news = $validatedData['latest_news'];
-            $message = 'Sections added successfully!';
         }
 
         try {
+
             if ($request->hasFile('attachment')) {
                 // Get the uploaded file from the request
                 $attachment = $request->file('attachment');
-
+        
                 // Validate the file size and type
                 if ($attachment->isValid()) {
-                    // Generate a unique name for the file based on the title, date, and time
-                    $fileName = Str::slug($validatedData['title']) . '-' . Carbon::now()->format('Ymd-His') . '.' . $attachment->getClientOriginalExtension();
-
+                    // Generate a unique name for the file based on the slug and the file extension
+                    $fileName = $model->slug . '.jpg';
+        
                     // Store the file in the storage directory with the generated name
-                    $attachmentPath = $attachment->storeAs('attachments', $fileName, 'public');
-
-
-                    // Save the file path in the database
-                    $model->attachment = $attachmentPath;
+                    $attachment->storeAs('default', $fileName, 'public');
+        
                 } else {
                     return redirect()->back()->withInput()->with('error', 'Failed to upload attachment.');
                 }
@@ -107,7 +94,8 @@ class SectionsController extends Controller
 
             // Save the model
             if ($model->save()) {
-                return redirect('admin/news')->with('success', $message);
+                return redirect('admin/' . $section_key)->with('success', $message);
+
             } else {
                 throw new \Exception('Failed to save news.');
             }

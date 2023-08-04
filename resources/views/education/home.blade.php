@@ -10,19 +10,19 @@
 
 <!-- Video Section -->
 <section id="video-section">
-    <div class="container p-0 shadow-sm">
+    <div class="container p-0 shadow-sm animate-on-load animate__zoomIn animate__delay-1s">
         <!-- Replace traditional slider with a video -->
         <div class="embed-responsive embed-responsive-16by9 w-100 ratio ratio-16x9">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/RLN99JcdvVk?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RLN99JcdvVk?playlist=RLN99JcdvVk&loop=1&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
 </section>
 
 <!-- Notice Section -->
 <section>
-    <div class="container notice-container light-bg d-flex my-3 p-0 shadow-sm">
+    <div class="container notice-container light-bg d-flex my-3 p-0 shadow-sm animate-on-load animate__backInUp animate__delay-1s">
         <div class="title deep-bg d-flex align-items-center py-1 px-3">
-        <a href="{{ route('news.all') }}" class="text-decoration-none text-dark">Notice</a>
+            <a href="{{ route('news.all') }}" class="text-decoration-none text-dark">Notice</a>
         </div>
 
         <ul class="d-flex align-items-center text-nowrap">
@@ -72,14 +72,16 @@
 </section> -->
 <!-- About Us Section -->
 <section id="about-us-section">
-    <div class="container shadow-sm bg-white mb-3 p-0">
+    <div class="container shadow-sm bg-white mb-3 p-0 animate-on-scroll" data-animation="fadeInLeft">
         <div class="row g-0">
 
             <div class="col-md-5 order-md-2">
-                <img src="{{ asset('assets/images/college-image.jpg') }}" class="img-fluid" alt="...">
+                <div class="img-container">
+                    <img src="{{ asset('storage/default/about.jpg') }}" class="img-fluid" alt="...">
+                </div>
             </div>
 
-            <div class="col-md-7 order-md-1">
+            <div class="col-md-7 order-md-1 text-container text-justify">
                 <div class="card-body p-3">
                     <h3 class="card-title deep-color">About</h3>
                     <p class="card-text">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
@@ -87,6 +89,7 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, facere! Vel labore officia aliquam, voluptatibus saepe impedit quis recusandae necessitatibus beatae ratione, architecto ipsum corrupti modi suscipit eveniet nobis dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ea hic nobis odit aut odio eveniet quia quis impedit tenetur vitae vel, totam ex earum. Vel cupiditate itaque quod molestias!
                         One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
                 </div>
+                <a href="#" class="btn btn-primary read-more-btn">Read More</a>
             </div>
 
         </div>
@@ -97,50 +100,70 @@
 
 <!-- Services Section -->
 <section id="services-section">
-    <div class="container shadow-sm bg-white mb-3 p-0">
+    <div class="container shadow-sm bg-white mb-3 p-0 animate-on-scroll" data-animation="fadeInRight">
         <div class="row g-0">
             <div class="col-md-7">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <div class="img-container">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="2500">
+                                <img src="{{ asset('assets/images/teeth.png') }}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2500">
+                                <img src="{{ asset('assets/images/teeth.png') }}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2500">
+                                <img src="{{ asset('assets/images/teeth.png') }}" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="2500">
-                            <img src="{{ asset('assets/images/teeth.png') }}" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item" data-bs-interval="2500">
-                            <img src="{{ asset('assets/images/teeth.png') }}" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item" data-bs-interval="2500">
-                            <img src="{{ asset('assets/images/teeth.png') }}" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 text-container text-justify">
                 <div class="card-body p-3">
                     <h3 class="card-title deep-color">Our Faculties</h3>
                     <p class="card-text">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
-
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
+                        Lorem ipsu
                         One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
                 </div>
+                <a href="#" class="btn btn-primary read-more-btn">Read More</a>
             </div>
         </div>
     </div>
 </section>
 
 <section id="specialization">
-    <div class="container shadow-sm bg-white mb-3 p-0">
+    <div class="container shadow-sm bg-white mb-3 p-0 animate-on-scroll" data-animation="fadeIn">
         <div class="card border-light section_div text-center">
             <div class="card-body p-0">
                 <h2 class="card-title section_title my-2 deep-color">Departments</h2>
@@ -181,7 +204,7 @@
             <div class="h2 p-2 deep-color">Why you choose us?</div>
             <hr class="m-0">
             @foreach($faqs as $faqsData)
-            <div class="accordion-item">
+            <div class="accordion-item animate-on-scroll" data-animation="fadeInDown">
                 <h2 class="accordion-header" id="flush-heading-{{ $loop->iteration }}">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ $loop->iteration }}" aria-expanded="false" aria-controls="flush-collapse-{{ $loop->iteration }}">
                         {{$faqsData->question}}
@@ -201,7 +224,7 @@
     <div class="container shadow-sm bg-white mb-3 mt-5">
 
         <div class="row row-cols-4 g-4">
-            <div class="col m-0 p-4">
+            <div class="col m-0 p-4 animate-on-scroll" data-animation="fadeInLeft" data-animation-delay="0">
                 <div class="h-100 p-4 light-bg shadow">
                     <h3 class="card-title text-center fw-bold deep-color">APPROVED</h3>
                     <h3 class="styled-text text-center fw-bold deep-color">BY</h3>
@@ -214,7 +237,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col m-0 p-4">
+            <div class="col m-0 p-4 animate-on-scroll" data-animation="fadeInLeft" data-animation-delay="0.2">
                 <div class="h-100 p-4 light-bg shadow">
                     <h3 class="card-title text-center fw-bold deep-color">AFFILIATED</h3>
                     <h3 class="styled-text text-center fw-bold deep-color">WITH</h3>
@@ -226,7 +249,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col m-0 p-4">
+            <div class="col m-0 p-4 animate-on-scroll" data-animation="fadeInLeft" data-animation-delay="0.4">
                 <div class="h-100 p-4 light-bg shadow">
                     <h3 class="card-title text-center fw-bold deep-color">RECOGNIZED</h3>
                     <h3 class="styled-text text-center fw-bold deep-color">BY</h3>
@@ -238,6 +261,13 @@
                     </div>
                 </div>
             </div>
+            <div class="col m-0 p-4 animate-on-scroll" data-animation="fadeInLeft" data-animation-delay="0.6">
+                <a href="#" class="btn h-100 p-4 light-bg shadow d-flex justify-content-center align-items-center flex-column position-relative">
+                    <h3 class="card-title text-center fw-bold deep-color">Learn More</h3>
+                    <h1 class="card-title text-center fw-bold deep-color fw-bold"><i class="bi bi-arrow-right"></i></h1>
+
+                </a>
+            </div>
         </div>
 
     </div>
@@ -248,30 +278,39 @@
     <div class="container mb-3 p-0">
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
+            <div class="col animate-on-scroll" data-animation="fadeInUp" data-animation-delay="0">
                 <div class="shadow-sm bg-white h-100">
-                    <img src="{{ asset('assets/images/cm.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body p-3">
+                    <div class="img-container">
+                        <img src="{{ asset('storage/default/chairman.jpg') }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body p-3 text-container text-justify">
                         <h4 class="card-title deep-color">Chairman's Message</h4>
                         <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatibus non qui? Alias dolore vel quos unde, incidunt earum iusto quasi aut libero aliquam officia veniam consequatur laborum itaque et! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati labore veniam, tempora eum atque rem libero architecto quas. Tempore a placeat minima ab neque officia dicta quaerat hic eligendi.</p>
+                        <a href="#" class="btn btn-primary read-more-btn">Read More</a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col animate-on-scroll" data-animation="fadeInUp" data-animation-delay="0.2">
                 <div class="shadow-sm bg-white h-100">
-                    <img src="{{ asset('assets/images/director.jpeg') }}" class="card-img-top" alt="...">
-                    <div class="card-body p-3">
+                    <div class="img-container">
+                        <img src="{{ asset('storage/default/director.jpg') }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body p-3 text-container text-justify">
                         <h4 class="card-title deep-color">Directors's Message</h4>
                         <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatibus non qui? Alias dolore vel quos unde, incidunt earum iusto quasi aut libero aliquam officia veniam consequatur laborum itaque et! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati labore veniam, tempora eum atque rem libero architecto quas. Tempore a placeat minima ab neque officia dicta quaerat hic eligendi.</p>
+                        <a href="#" class="btn btn-primary read-more-btn">Read More</a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col animate-on-scroll" data-animation="fadeInUp" data-animation-delay="0.4">
                 <div class="shadow-sm bg-white h-100">
-                    <img src="{{ asset('assets/images/pr.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body p-3">
+                    <div class="img-container">
+                        <img src="{{ asset('storage/default/principal.jpg') }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body p-3 text-container text-justify">
                         <h4 class="card-title deep-color">Principal's Message</h3>
                             <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum suscipit sequi dolor beatae voluptatem voluptatum minima corporis consequatur maxime debitis dolorum, quae officia nesciunt rem nostrum omnis optio minus iure. Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, ratione, quos ipsum ex sequi, voluptatibus fugiat error atque magnam mollitia laudantium quaerat quia adipisci optio odit fuga inventore delectus ab.</p>
+                            <a href="#" class="btn btn-primary read-more-btn">Read More</a>
                     </div>
                 </div>
             </div>
@@ -279,103 +318,66 @@
     </div>
 </section>
 
-<!-- Specialities Section -->
-<!-- <section id="specialities-section">
-    <div class="container card mb-3">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="{{ asset('assets/images/teeth.png') }}" class="img-fluid " alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h3 class="card-title">Specialities</h3>
-                    <div class="container d-flex justify-content-between p-0 my-2">
-                        <div class="btn border border-light rounded btn-primary fs-6 fw-semibold px-2 py-2 w-100 text-center d-flex justify-content-center align-items-center flex-wrap">
-                            Oral & Maxillofacial Surgery
-                        </div>
-                        <div class="btn border border-light rounded btn-info fs-6 fw-semibold px-2 py-2 w-100 text-center d-flex justify-content-center align-items-center flex-wrap">
-                            Orthodontics
-                        </div>
-                        <div class="btn border border-light rounded btn-info fs-6 fw-semibold px-2 py-2 w-100 text-center d-flex justify-content-center align-items-center flex-wrap">
-                            Prosthodontics
-                        </div>
-                        <div class="btn border border-light rounded btn-info fs-6 fw-semibold px-2 py-2 w-100 text-center d-flex justify-content-center align-items-center flex-wrap">
-                            Dental OPD
-                        </div>
-                        <div class="btn border border-light rounded btn-info fs-6 fw-semibold px-2 py-2 w-100 text-center d-flex justify-content-center align-items-center flex-wrap">
-                            Oral Pathology & Periodontology
-                        </div>
-                    </div>
 
-                    <p class="card-text">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
-
-                        One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<!-- Blogs Section -->
-<!-- <section id="blogs-section">
-    <div class="container">
-        <h2>Latest Blogs</h2>
+<!-- Services Section -->
+<section id="services-section">
+    <div class="container mb-3 py-2 animate-on-scroll" data-animation="fadeIn">
         <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <img src="{{ asset('assets/images/teeth.png') }}" class="card-img-top" alt="Blog 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Blog 1</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <img src="{{ asset('assets/images/teeth.png') }}" class="card-img-top" alt="Blog 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Blog 2</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
+            <div class="col-md-8 shadow-sm bg-white">
+                <div class="h3 p-2 deep-color">Student's Life</div>
+                <div class="row g-0">
+                    <div id="album-container" class="col-3 mb-2">
+                        <div class="d-flex align-items-center position-relative">
+                            <div class="thumbnail-container d-flex justify-content-center position-relative">
+                                <div class="card m-2 album-card">
+                                    <a data-fancybox="gallery" href="https://lipsum.app/id/60/1600x1200" class="text-decoration-none text-dark">
+                                        <img src="{{ asset('assets/images/teeth.png') }}" class="w-100" alt="" />
 
+                                        <div class="card-body p-2">
+                                            <div class="fs-6 card-title m-0">Students</div>
+                                        </div>
+                                    </a>
 
-<!-- Services Section -->
-<section id="services-section">
-    <div class="container shadow-sm bg-white  mb-3 py-2">
-        <div class="h2 p-2 deep-color">Student's Life</div>
-        <div class="row g-0">
-            <div id="album-container" class="col-4 mb-2">
-                <div class="d-flex align-items-center position-relative">
-                    <div class="thumbnail-container d-flex justify-content-center position-relative">
-                        <div class="card m-2 album-card">
-                            <a data-fancybox="gallery" href="https://lipsum.app/id/60/1600x1200" class="text-decoration-none text-dark">
-                                <img src="{{ asset('assets/images/teeth.png') }}" class="w-100" alt="" />
+                                    <div style="display:none">
+                                        <a data-fancybox="gallery" href="https://lipsum.app/id/61/1600x1200">
+                                            <img src="https://lipsum.app/id/61/120x80" />
+                                        </a>
+                                        <a data-fancybox="gallery" href="https://lipsum.app/id/62/1600x1200">
+                                            <img src="https://lipsum.app/id/62/120x80" />
+                                        </a>
+                                        <a data-fancybox="gallery" href="https://lipsum.app/id/63/1600x1200">
+                                            <img src="https://lipsum.app/id/63/120x80" />
+                                        </a>
+                                    </div>
 
-                                <div class="card-body p-2">
-                                    <h5 class="card-title m-0">Students</h5>
                                 </div>
-                            </a>
-
-                            <div style="display:none">
-                                <a data-fancybox="gallery" href="https://lipsum.app/id/61/1600x1200">
-                                    <img src="https://lipsum.app/id/61/120x80" />
-                                </a>
-                                <a data-fancybox="gallery" href="https://lipsum.app/id/62/1600x1200">
-                                    <img src="https://lipsum.app/id/62/120x80" />
-                                </a>
-                                <a data-fancybox="gallery" href="https://lipsum.app/id/63/1600x1200">
-                                    <img src="https://lipsum.app/id/63/120x80" />
-                                </a>
                             </div>
-
                         </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4 p-0 ps-md-2">
+                <div class="notice-box shadow-sm bg-white p-2">
+                    <div class="d-flex jusify-content-center align-items-center">
+                        <h3 class="alert-heading deep-color mt-2">MDC News</h3>
+                        <div class="ms-auto"><a href="{{ route('news.all') }}">See All</a></div>
+                    </div>
+                    <hr>
+                    <div class="notices">
+                        <ul>
+                            @foreach($news as $newsData)
+                            <li class="animate-on-scroll" data-animation="fadeInDown">
+                                <a href="{{ route('news.preview', $newsData->slug) }}" class="text-reset text-decoration-none text-nowrap">
+                                    <div class="text-truncate">
+                                        {{$newsData->heading}}
+                                    </div>
+                                    <div class="text-end mb-2">{{ \Carbon\Carbon::parse($newsData->published_at)->format('d F, Y') }}</div>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -384,7 +386,7 @@
 </section>
 
 <!-- Services Section -->
-<section id="services-section">
+<!-- <section id="services-section">
     <div class="container shadow-sm bg-white  mb-3">
         <div class="row g-0">
             <div class="col-md-8">
@@ -400,9 +402,9 @@
                     <div class="notices">
                         <ul>
                             @foreach($news as $newsData)
-                            <li>
-                                <a href="{{ route('news.preview', $newsData->slug) }}" class="text-reset text-decoration-none">
-                                    <div>
+                            <li class="animate-on-scroll" data-animation="fadeInDown">
+                                <a href="{{ route('news.preview', $newsData->slug) }}" class="text-reset text-decoration-none text-nowrap">
+                                    <div class="text-truncate">
                                         {{$newsData->heading}}
                                     </div>
                                     <div class="text-end mb-2">{{ \Carbon\Carbon::parse($newsData->published_at)->format('d F, Y') }}</div>
@@ -415,7 +417,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 

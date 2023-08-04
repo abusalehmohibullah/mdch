@@ -69,18 +69,13 @@ class AlbumsController extends Controller
 
     public function manage(Request $request, $id = '')
     {
-        // if ($id > 0) {
-        //     $arr  = Albums::where(['id' => $id])->get();
-        //     $result['id']  = $arr[0]->id;
-        //     $result['title']  = $arr[0]->title;
-        //     $result['message']  = $arr[0]->message;
-        // } else {
-        //     $result['id']  = '';
-        //     $result['title']  = '';
-        //     $result['message']  = '';
-        // }
+        $albumsData = new Albums;
 
-        return view('admin.albums-manage');
+        if ($id > 0) {
+            $albumsData = Albums::findOrFail($id);
+        }
+
+        return view('admin.albums-manage', compact('albumsData'));
     }
 
     // public function show(Albums $album)
