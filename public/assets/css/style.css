@@ -260,8 +260,9 @@ overflow: hidden;
 }
 
 
-
-
+.show-first-child .child:not(:first-child) {
+  display: none;
+}
 .animate-on-scroll {
   opacity: 0;
 }

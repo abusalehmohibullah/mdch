@@ -6,8 +6,8 @@ use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\AlbumsController;
+use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,14 +86,6 @@ Route::group(['middleware' => 'admin_auth'], function () {
             return view('admin.image-box');
         });
 
-        Route::prefix('messages')->group(function () {
-            Route::get('/', [MessagesController::class, 'index'])->name('messages');
-            Route::get('/manage/{id?}', [MessagesController::class, 'manage']);
-            Route::post('/process/{id?}', [MessagesController::class, 'process'])->name('messages.process');
-            Route::put('/status/{id}', [MessagesController::class, 'status'])->name('messages.status');
-            Route::delete('/delete/{id}', [MessagesController::class, 'delete'])->name('messages.delete');
-        });
-
         Route::get('/ads', function () {
             return view('admin.ads');
         });
@@ -101,11 +93,16 @@ Route::group(['middleware' => 'admin_auth'], function () {
 
         Route::prefix('albums')->group(function () {
             Route::get('/', [AlbumsController::class, 'index'])->name('albums');
-            Route::post('/create/{id?}', [AlbumsController::class, 'create'])->name('albums.create');
             Route::get('/manage/{id?}', [AlbumsController::class, 'manage'])->name('albums.manage');
             Route::post('/process/{id?}', [AlbumsController::class, 'process'])->name('albums.process');
-            Route::put('/status/{id}', [AlbumsController::class, 'status'])->name('albums.status');
-            Route::delete('/delete/{id}', [AlbumsController::class, 'delete'])->name('albums.delete');
+
+            Route::get('/{albumId}', [MediaController::class, 'index'])->name('media');
+            Route::get('/{albumId}/manage/{mediaId?}', [MediaController::class, 'manage'])->where(['albumId' => '\d+', 'mediaId' => '\d*'])->name('media.manage');
+
+            Route::post('/{albumId}/process/{mediaId?}', [MediaController::class, 'process'])->name('media.process');
+            
+            Route::delete('/delete/{id}', [AlbumsController::class, 'delete'])->name('albums.images.delete');
+            Route::delete('/destroy/{id}', [AlbumsController::class, 'destroy'])->name('albums.destroy');
             Route::get('/download/{id}', [AlbumsController::class, 'download'])->name('albums.download');
         });
 

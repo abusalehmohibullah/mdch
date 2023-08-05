@@ -1,49 +1,45 @@
 @extends('admin/layout')
 
 @section('content')
-<div class="container">
-    <h1>Manage Photo Album</h1>
 
-    <form action="{{ route('albums.destroy', $albumsData->id) }}" method="POST">
+<x-back-btn-component title="{{ $albumsData->id ? 'Edit' : 'Add' }} Album" />
+
+    <form action="{{ route('albums.process', $albumsData->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+
         @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Delete Album</button>
-    </form>
-
-    <hr>
-
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Add New Image</h3>
-            <form action="{{ route('albums.images.store', $albumsData->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="mb-3">
-                    <label for="image">Image</label>
-                    <input type="file" name="image" id="image" class="form-control">
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="name" class=" form-control-label">Album Name<span class="text-danger ml-1">*</span></label>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="text-danger">
+                    @error('name')
+                    {{$message}}
+                    @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Upload Image</button>
-            </form>
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="row">
-        <div class="col-md-12">
-            <h3>Album Images</h3>
-            <div class="row">
-                @foreach($albumsData->images as $image)
-                <div class="col-md-3 mb-3">
-                    <img src="{{ asset($image->path) }}" alt="Image" class="img-thumbnail">
-                    <form action="{{ route('albums.images.destroy', ['album' => $albumsData->id, 'image' => $image->id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm mt-2">Delete</button>
-                    </form>
-                </div>
-                @endforeach
+                <input type="text" class="form-control" id="name" name="name" placeholder="Give it a name" value="{{ old('name') ? old('name') : $albumsData->name }}">
             </div>
         </div>
-    </div>
-</div>
+
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="content" class=" form-control-label">Description</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="text-danger">
+                    @error('description')
+                    {{$message}}
+                    @enderror
+                </div>
+                <textarea name="description" id="description" rows="9" placeholder="Describe this album" class="form-control">{{ old('description') ? old('description') : $albumsData->description }}</textarea>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-info ms-auto">Submit</button>
+        </div>
+
+    </form>
+
+
 @endsection

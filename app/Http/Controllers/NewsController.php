@@ -86,52 +86,51 @@ class NewsController extends Controller
         }
 
 
-// Convert the heading to a slug
-$model->slug = Str::slug($validatedData['heading']);
+        // Convert the heading to a slug
+        $model->slug = Str::slug($validatedData['heading']);
 
-// Check if the slug already exists in the database
-if ($id === null && News::where('slug', $model->slug)->exists()) {
-    // If the slug already exists for a different news item,
-    // modify the slug to make it unique by appending a count
-    $count = 1;
-    $originalSlug = $model->slug;
-    while (News::where('slug', $model->slug)->exists()) {
-        $model->slug = $originalSlug . '-' . $count;
-        $count++;
-    }
-}
-
-try {
-    if ($request->hasFile('attachment')) {
-        // Get the uploaded file from the request
-        $attachment = $request->file('attachment');
-
-        // Validate the file size and type
-        if ($attachment->isValid()) {
-            // Generate a unique name for the file based on the slug and the file extension
-            $fileName = $model->slug . '.' . $attachment->getClientOriginalExtension();
-
-            // Store the file in the storage directory with the generated name
-            $attachmentPath = $attachment->storeAs('news-attachments', $fileName, 'public');
-
-            // Save the file path in the database
-            $model->attachment = $attachmentPath;
-        } else {
-            return redirect()->back()->withInput()->with('error', 'Failed to upload attachment.');
+        // Check if the slug already exists in the database
+        if ($id === null && News::where('slug', $model->slug)->exists()) {
+            // If the slug already exists for a different news item,
+            // modify the slug to make it unique by appending a count
+            $count = 1;
+            $originalSlug = $model->slug;
+            while (News::where('slug', $model->slug)->exists()) {
+                $model->slug = $originalSlug . '-' . $count;
+                $count++;
+            }
         }
-    }
 
-    // Save the model
-    if ($model->save()) {
-        return redirect('admin/news')->with('success', $message);
-    } else {
-        throw new \Exception('Failed to save news.');
-    }
-} catch (\Exception $e) {
-    // Handle the error
-    return redirect()->back()->withInput()->with('error', $e->getMessage());
-}
+        try {
+            if ($request->hasFile('attachment')) {
+                // Get the uploaded file from the request
+                $attachment = $request->file('attachment');
 
+                // Validate the file size and type
+                if ($attachment->isValid()) {
+                    // Generate a unique name for the file based on the slug and the file extension
+                    $fileName = $model->slug . '.' . $attachment->getClientOriginalExtension();
+
+                    // Store the file in the storage directory with the generated name
+                    $attachmentPath = $attachment->storeAs('news-attachments', $fileName, 'public');
+
+                    // Save the file path in the database
+                    $model->attachment = $attachmentPath;
+                } else {
+                    return redirect()->back()->withInput()->with('error', 'Failed to upload attachment.');
+                }
+            }
+
+            // Save the model
+            if ($model->save()) {
+                return redirect('admin/news')->with('success', $message);
+            } else {
+                throw new \Exception('Failed to save news.');
+            }
+        } catch (\Exception $e) {
+            // Handle the error
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
     }
 
 
@@ -164,7 +163,7 @@ try {
     public function delete($id)
     {
         $model = News::find($id);
-    
+
         if ($model) {
             // Delete the attached file if it exists
             if (!empty($model->attachment)) {
@@ -173,14 +172,14 @@ try {
                     Storage::delete($attachmentPath);
                 }
             }
-    
+
             $model->delete();
             return redirect('admin/news')->with('success', 'News deleted successfully!');
         } else {
             return redirect('admin/news')->with('error', 'Failed to delete News!');
         }
     }
-    
+
 
     public function download($id)
     {

@@ -105,10 +105,15 @@ document.head.appendChild(style);
 
 
 
-Fancybox.bind('[data-fancybox="gallery"]', {
-  //
-});
 
+function openAlbum(id) {
+  // Use the id parameter in your JavaScript logic
+  console.log('Opening album with id:', id);
+
+  Fancybox.bind('[data-fancybox="album-' + id + '"]', {
+    //
+  });
+}
 
 $(".testmonial_slider_area").owlCarousel({
   autoplay: true,

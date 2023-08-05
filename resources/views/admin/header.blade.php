@@ -16,7 +16,7 @@
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="/admin/dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>
@@ -49,41 +49,41 @@
                                 <a href="{{ route('section_key', 'facilities') }}">
                                         <i class="fas fa-rectangle-list"></i></i>Our Facilities</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="/admin/departments">
                                     <i class="fas fa-building"></i>Departments</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="/admin/faqs">
                                         <i class="fas fa-file-circle-question"></i>FAQs</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="/admin/image_box">
                                         <i class="fas fa-image"></i>Image Box</a>
-                                </li>
+                                </li> -->
                                 <li>
                                 <a href="{{ route('section_key', 'messages') }}">
                                         <i class="fas fa-message"></i>Messages</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="/admin/ads">
                                         <i class="fas fa-rectangle-ad"></i>Ads</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="/admin/albums">
                                         <i class="fas fa-images"></i>Photo Album</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="/admin/admission">
                                         <i class="fas fa-graduation-cap"></i>Admission</a>
-                                </li>
-                                <li>
+                                </li> -->
+                                <!-- <li>
                                     <a href="/admin/opd">
                                         <i class="fas fa-hospital-user"></i>OPD</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-user-doctor"></i>Teachers</a>
                             </a>
@@ -102,7 +102,7 @@
                             <a class="js-arrow" href="#">
                                 <i class="zmdi zmdi-settings"></i>Setting</a>
                             </a>
-                        </li>
+                        </li> -->
                         <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>Pages

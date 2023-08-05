@@ -13,7 +13,7 @@
     <div class="container p-0 shadow-sm animate-on-load animate__zoomIn animate__delay-1s">
         <!-- Replace traditional slider with a video -->
         <div class="embed-responsive embed-responsive-16by9 w-100 ratio ratio-16x9">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/RLN99JcdvVk?playlist=RLN99JcdvVk&loop=1&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/K4TOrB7at0Y?playlist=K4TOrB7at0Y&loop=1&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
 </section>
@@ -35,41 +35,6 @@
 </section>
 
 
-<!-- catagories Section -->
-<!-- <section id="about-us-section">
-        <div class="container d-flex justify-content-around">
-            <div class="border border-light rounded bg-info fs-3 fw-semibold px-5 py-3">
-                Admission
-            </div>
-            <div class="border border-light rounded bg-info fs-3 fw-semibold px-5 py-3">
-                Treatement
-            </div>
-            <div class="border border-light rounded bg-info fs-3 fw-semibold px-5 py-3">
-                Treatement
-            </div>
-        </div>
-    </section> -->
-
-
-<!-- About Us Section -->
-<!-- <section id="about-us-section">
-    <div class="container shadow-sm bg-white mb-3 p-0">
-        <div class="float-end ms-3" style="width: 40%;">
-            <img src="{{ asset('assets/images/college-image.jpg') }}" class="img-fluid" alt="...">
-        </div>
-
-        <div class="card-body p-3">
-            <h3 class="card-title deep-color">About</h3>
-            <p class="card-text text-justify">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, facere! Vel labore officia aliquam, voluptatibus saepe impedit quis recusandae necessitatibus beatae ratione, architecto ipsum corrupti modi suscipit eveniet nobis dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ea hic nobis odit aut odio eveniet quia quis impedit tenetur vitae vel, totam ex earum. Vel cupiditate itaque quod molestias!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, facere! Vel labore officia aliquam, voluptatibus saepe impedit quis recusandae necessitatibus beatae ratione, architecto ipsum corrupti modi suscipit eveniet nobis dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ea hic nobis odit aut odio eveniet quia quis impedit tenetur vitae vel, totam ex earum. Vel cupiditate itaque quod molestias!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, facere! Vel labore officia aliquam, voluptatibus saepe impedit quis recusandae necessitatibus beatae ratione, architecto ipsum corrupti modi suscipit eveniet nobis dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ea hic nobis odit aut odio eveniet quia quis impedit tenetur vitae vel, totam ex earum. Vel cupiditate itaque quod molestias!
-                One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
-        </div>
-
-    </div>
-</section> -->
 <!-- About Us Section -->
 <section id="about-us-section">
     <div class="container shadow-sm bg-white mb-3 p-0 animate-on-scroll" data-animation="fadeInLeft">
@@ -83,11 +48,8 @@
 
             <div class="col-md-7 order-md-1 text-container text-justify">
                 <div class="card-body p-3">
-                    <h3 class="card-title deep-color">About</h3>
-                    <p class="card-text">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, facere! Vel labore officia aliquam, voluptatibus saepe impedit quis recusandae necessitatibus beatae ratione, architecto ipsum corrupti modi suscipit eveniet nobis dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ea hic nobis odit aut odio eveniet quia quis impedit tenetur vitae vel, totam ex earum. Vel cupiditate itaque quod molestias!
-                        One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
+                    <h3 class="card-title deep-color">{{$about->title}}</h3>
+                    <p class="card-text">{!! nl2br(e($about->content)) !!}</p>
                 </div>
                 <a href="#" class="btn btn-primary read-more-btn">Read More</a>
             </div>
@@ -134,27 +96,8 @@
             </div>
             <div class="col-md-5 text-container text-justify">
                 <div class="card-body p-3">
-                    <h3 class="card-title deep-color">Our Faculties</h3>
-                    <p class="card-text">Our esteemed faculty comprises accomplished educators and experienced dental professionals who are passionate about sharing their knowledge and expertise. They foster a culture of innovation and critical thinking, challenging our students to explore new horizons in dental science and patient care. By integrating the latest advancements in dentistry into our teaching methodologies, we ensure that our graduates are equipped with the skills and knowledge necessary to thrive in an ever-evolving healthcare landscape.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi qui veritatis molestias facere aliquam laborum dolores illum illo quas? Exercitationem consequuntur recusandae fugit eligendi rem vitae odio sequi facilis deserunt.
-                        Lorem ipsu
-                        One of the hallmarks of our institution is our state-of-the-art dental clinic, where our students gain invaluable practical experience under the supervision of faculty and staff. This real-world exposure enables them to apply their theoretical knowledge to diagnose, treat, and prevent various oral health conditions. We prioritize patient-centered care, ensuring that each individual receives personalized treatment while maintaining the highest standards of professionalism, ethics, and safety.</p>
+                    <h3 class="card-title deep-color">{{$facilities->title}}</h3>
+                    <p class="card-text">{!! nl2br(e($facilities->content)) !!}</p>
                 </div>
                 <a href="#" class="btn btn-primary read-more-btn">Read More</a>
             </div>
@@ -162,7 +105,7 @@
     </div>
 </section>
 
-<section id="specialization">
+<!-- <section id="specialization">
     <div class="container shadow-sm bg-white mb-3 p-0 animate-on-scroll" data-animation="fadeIn">
         <div class="card border-light section_div text-center">
             <div class="card-body p-0">
@@ -192,7 +135,7 @@
                 </div>
             </div>
         </div>
-</section>
+</section> -->
 
 
 
@@ -278,43 +221,22 @@
     <div class="container mb-3 p-0">
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col animate-on-scroll" data-animation="fadeInUp" data-animation-delay="0">
+            @foreach($messages as $messageData)
+            <div class="col animate-on-scroll" data-animation="fadeInUp" data-animation-delay='{{ $loop->index * 0.2 }}'>
                 <div class="shadow-sm bg-white h-100">
                     <div class="img-container">
-                        <img src="{{ asset('storage/default/chairman.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/default/' . $messageData->slug . '.jpg') }}" class="card-img-top" alt="...">
                     </div>
                     <div class="card-body p-3 text-container text-justify">
-                        <h4 class="card-title deep-color">Chairman's Message</h4>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatibus non qui? Alias dolore vel quos unde, incidunt earum iusto quasi aut libero aliquam officia veniam consequatur laborum itaque et! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati labore veniam, tempora eum atque rem libero architecto quas. Tempore a placeat minima ab neque officia dicta quaerat hic eligendi.</p>
+                        <h4 class="card-title deep-color">{!! nl2br(e($messageData->title)) !!}</h4>
+                        <p class="card-text">{!! nl2br(e($messageData->content)) !!}</p>
                         <a href="#" class="btn btn-primary read-more-btn">Read More</a>
                     </div>
                 </div>
             </div>
-            <div class="col animate-on-scroll" data-animation="fadeInUp" data-animation-delay="0.2">
-                <div class="shadow-sm bg-white h-100">
-                    <div class="img-container">
-                        <img src="{{ asset('storage/default/director.jpg') }}" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body p-3 text-container text-justify">
-                        <h4 class="card-title deep-color">Directors's Message</h4>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatibus non qui? Alias dolore vel quos unde, incidunt earum iusto quasi aut libero aliquam officia veniam consequatur laborum itaque et! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati labore veniam, tempora eum atque rem libero architecto quas. Tempore a placeat minima ab neque officia dicta quaerat hic eligendi.</p>
-                        <a href="#" class="btn btn-primary read-more-btn">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col animate-on-scroll" data-animation="fadeInUp" data-animation-delay="0.4">
-                <div class="shadow-sm bg-white h-100">
-                    <div class="img-container">
-                        <img src="{{ asset('storage/default/principal.jpg') }}" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body p-3 text-container text-justify">
-                        <h4 class="card-title deep-color">Principal's Message</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum suscipit sequi dolor beatae voluptatem voluptatum minima corporis consequatur maxime debitis dolorum, quae officia nesciunt rem nostrum omnis optio minus iure. Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, ratione, quos ipsum ex sequi, voluptatibus fugiat error atque magnam mollitia laudantium quaerat quia adipisci optio odit fuga inventore delectus ab.</p>
-                            <a href="#" class="btn btn-primary read-more-btn">Read More</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+
     </div>
 </section>
 
@@ -326,34 +248,31 @@
             <div class="col-md-8 shadow-sm bg-white">
                 <div class="h3 p-2 deep-color">Student's Life</div>
                 <div class="row g-0">
-                    <div id="album-container" class="col-3 mb-2">
-                        <div class="d-flex align-items-center position-relative">
-                            <div class="thumbnail-container d-flex justify-content-center position-relative">
-                                <div class="card m-2 album-card">
-                                    <a data-fancybox="gallery" href="https://lipsum.app/id/60/1600x1200" class="text-decoration-none text-dark">
-                                        <img src="{{ asset('assets/images/teeth.png') }}" class="w-100" alt="" />
+                    @foreach($albums as $albumsData)
+                    @php
+                    $id = $loop->index;
+                    @endphp
+                    <div id="album-container-{{$id}}" class="col-3 mb-2" onclick="openAlbum(<?php echo $id ?>)">
+                        <div class="d-flex align-items-center position-relative w-100">
 
-                                        <div class="card-body p-2">
-                                            <div class="fs-6 card-title m-0">Students</div>
-                                        </div>
+                            <div class="card m-2 w-100">
+                                <div class="show-first-child w-100">
+
+                                    @foreach($albumsData->media as $mediaData)
+                                    <a data-fancybox="album-{{$id}}" href="{{ asset('storage/' . $mediaData->path) }}" class="child w-100 ratio ratio-4x3 overflow-hidden">
+                                        <img src="{{ asset('storage/' . $mediaData->path) }}" />
                                     </a>
+                                    @endforeach
 
-                                    <div style="display:none">
-                                        <a data-fancybox="gallery" href="https://lipsum.app/id/61/1600x1200">
-                                            <img src="https://lipsum.app/id/61/120x80" />
-                                        </a>
-                                        <a data-fancybox="gallery" href="https://lipsum.app/id/62/1600x1200">
-                                            <img src="https://lipsum.app/id/62/120x80" />
-                                        </a>
-                                        <a data-fancybox="gallery" href="https://lipsum.app/id/63/1600x1200">
-                                            <img src="https://lipsum.app/id/63/120x80" />
-                                        </a>
+                                    <div class="card-body p-2">
+                                        <div class="fs-6 card-title m-0">{{$albumsData->name}}</div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
+
                     </div>
+                    @endforeach
                 </div>
 
             </div>
@@ -385,42 +304,6 @@
     </div>
 </section>
 
-<!-- Services Section -->
-<!-- <section id="services-section">
-    <div class="container shadow-sm bg-white  mb-3">
-        <div class="row g-0">
-            <div class="col-md-8">
-
-            </div>
-            <div class="col-md-4">
-                <div class="notice-box p-2">
-                    <div class="d-flex jusify-content-center align-items-center">
-                        <h4 class="alert-heading deep-color mt-2">MDC News</h4>
-                        <div class="ms-auto"><a href="{{ route('news.all') }}">See All</a></div>
-                    </div>
-                    <hr>
-                    <div class="notices">
-                        <ul>
-                            @foreach($news as $newsData)
-                            <li class="animate-on-scroll" data-animation="fadeInDown">
-                                <a href="{{ route('news.preview', $newsData->slug) }}" class="text-reset text-decoration-none text-nowrap">
-                                    <div class="text-truncate">
-                                        {{$newsData->heading}}
-                                    </div>
-                                    <div class="text-end mb-2">{{ \Carbon\Carbon::parse($newsData->published_at)->format('d F, Y') }}</div>
-                                </a>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-
-
 <!-- Map Section -->
 <section id="map-section">
     <div class="container p-0 bg-white shadow-sm text-center mb-3 p-4">
@@ -429,7 +312,7 @@
         <div class="row my-3">
             <div class="col-md-6 my-2">
                 <div class="d-flex align-items-start justify-content-start p-4 gap-3 semitrans-bg shadow-sm h-100">
-                    <div class="btn btn-primary deep-bg border-0 rounded-circle py-2 d-inline"><i class="fa-solid fa-phone-volume"></i></div>
+                    <div class="btn btn-primary deep-bg border-0 rounded-circle py-2 d-inline"><i class="fa-solid fa-phone-volume animate__animated animate__swing animate__infinite infinite"></i></div>
                     <div class="d-inline text-start">
                         <div class="h2 deep-color fw-semibold d-inline">Recieption</div>
                         <div class="fs-4">0123456789</div>
@@ -438,7 +321,7 @@
             </div>
             <div class="col-md-6 my-2">
                 <div class="d-flex align-items-start justify-content-start p-4 gap-3 semitrans-bg shadow-sm h-100">
-                    <div class="btn btn-primary deep-bg border-0 rounded-circle py-1 d-inline fs-5 fw-bold"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <div class="btn btn-primary deep-bg border-0 rounded-circle py-1 d-inline fs-5 fw-bold"><i class="fa-solid fa-mobile-screen animate__animated animate__heartBeat animate__infinite	infinite"></i></div>
                     <div class="d-inline text-start">
                         <div class="h2 deep-color fw-semibold d-inline">Patient Query</div>
                         <div class="fs-5">Dr. Mohammad Arif Bin Fatah</div>

@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImagesTable extends Migration
+class CreateMediaTable extends Migration
 {
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('media', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('album_id');
-            $table->string('name');
+            $table->string('caption');
             $table->string('path');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -23,6 +23,6 @@ class CreateImagesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('media');
     }
 }
