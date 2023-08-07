@@ -2,8 +2,8 @@
 
 :root {
 
-  --light-color: #BCE1FB;
-  --deep-color: #0296C9;
+  --light-color: rgb(188, 225, 251);
+  --deep-color: rgb(17, 175, 228);
 
 }
 
@@ -29,6 +29,10 @@ body {
 
 .light-color {
   color: var(--light-color) !important;
+}
+
+.pink-bg {
+  background-color: rgb(250, 88, 115) !important;
 }
 
 
@@ -101,6 +105,12 @@ body {
 }
 .login-bg {
     background-color: rgba(0, 166, 255, 1);
+}
+.tooth-bg {
+    background-image: url('../images/tooth.png');
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: right top;
 }
 
 /* footer start */
@@ -293,4 +303,10 @@ overflow: hidden;
   padding: 5px 10px;
   text-decoration: none;
   border-radius: 5px;
+}
+
+
+
+.full-name {
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.4), 2px 2px 4px rgba(0, 0, 0, 0.3);
 }

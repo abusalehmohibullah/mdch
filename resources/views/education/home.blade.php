@@ -4,10 +4,6 @@
 
 @section('content')
 
-<!-- Include the modal -->
-@include('education/modal')
-
-
 <!-- Video Section -->
 <section id="video-section">
     <div class="container p-0 shadow-sm animate-on-load animate__zoomIn animate__delay-1s">
@@ -336,6 +332,10 @@
 </section>
 
 
+
+@if(request()->is('/*'))
+    @include('education.modal')
+@endif
 
 
 

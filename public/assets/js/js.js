@@ -31,43 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// $(document).ready(function () {
-//   // Check if the user has already made a selection
-//   if (localStorage.getItem('userSelection')) {
-//     // Redirect the user to the appropriate section based on the selection
-//     var userSelection = localStorage.getItem('userSelection');
-//     window.location.href = '/' + userSelection;
-//   } else {
-//     // Show the modal
-//     $('#sectionModal').modal('show');
-//   }
+$(document).ready(function () {
 
-//   // Function to handle user selection
-//   function handleSelection(selection) {
-//     localStorage.setItem('userSelection', selection);
-//     window.location.href = '/' + selection;
-//   }
+    // Show the modal
+    $('#sectionModal').modal('show');
+  
 
-//   // Event listener for the education button
-//   $('#educationBtn').on('click', function () {
-//     handleSelection('education');
-//   });
-
-//   // Event listener for the entertainment button
-//   $('#entertainmentBtn').on('click', function () {
-//     handleSelection('entertainment');
-//   });
-
-//   // Clear user selection when tab or browser is closed
-//   $(window).on('beforeunload', function () {
-//     clearUserSelection();
-//   });
-
-//   // Function to clear user selection from local storage
-//   function clearUserSelection() {
-//     localStorage.removeItem('userSelection');
-//   }
-// });
+});
 
 
 

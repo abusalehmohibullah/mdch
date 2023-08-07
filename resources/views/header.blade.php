@@ -55,10 +55,10 @@
                     </div>
                 </div>
                 <div>
-                    <div class="btn btn-success text-nowrap">Patient Care</div>
+                    <div class="btn pink-bg text-white text-nowrap">Patient Care</div>
                 </div>
                 <div>
-                    <div class="btn btn-primary text-nowrap">Log In</div>
+                    <a href="/login" class="btn btn-primary text-nowrap">Log In</a>
                 </div>
                 <div>
                     <div class="btn btn-danger text-nowrap animate__animated animate__headShake animate__delay-3s">Apply Online</div>

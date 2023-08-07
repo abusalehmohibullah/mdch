@@ -25,6 +25,13 @@ Route::get('/', [HomeController::class, 'education'])->name('home');;
 
 // routes/web.php
 
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/sections', function () {
+    return view('sections');
+});
 
 Route::prefix('education')->group(function () {
     Route::get('/', [HomeController::class, 'education'])->name('home');
