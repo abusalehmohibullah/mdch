@@ -26,7 +26,7 @@ class HomeController extends Controller
         $result['news'] = News::where('status', 1)->orderBy('published_at', 'desc')->take(10)->get();
 
         $result['albums'] = Albums::with('media')->orderBy('created_at', 'desc')->get();
-        
+
         return view('education.home', $result);
         
     }
@@ -39,6 +39,22 @@ class HomeController extends Controller
     //     // Pass the $sections variable to your view
     //     return view('education.' . $section_key, $result);
     // }
+
+    public function sections(Request $request, $slug)
+    {
+
+        $result['sections'] = Sections::where('slug', $slug)->firstOrFail();
+        // Pass the $sections variable to your view
+        return view('education.sections', $result);
+    }
+
+    public function albums(Request $request)
+    {
+
+        $result['albums'] = Albums::with('media')->orderBy('created_at', 'desc')->get();
+        // Pass the $sections variable to your view
+        return view('education.albums', $result);
+    }
 
     public function news(Request $request)
     {

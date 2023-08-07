@@ -38,7 +38,7 @@
 
             <div class="col-md-5 order-md-2">
                 <div class="img-container">
-                    <img src="{{ asset('storage/default/about.jpg') }}" class="img-fluid" alt="...">
+                <img src="{{ asset('storage/default/' . $about->slug . '.jpg') }}" class="img-fluid" alt="...">
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                     <h3 class="card-title deep-color">{{$about->title}}</h3>
                     <p class="card-text">{!! nl2br(e($about->content)) !!}</p>
                 </div>
-                <a href="#" class="btn btn-primary read-more-btn">Read More</a>
+                <a href="/education/sections/{{$about->slug}}" class="btn btn-primary read-more-btn">Read More</a>
             </div>
 
         </div>
@@ -226,7 +226,7 @@
                     <div class="card-body p-3 text-container text-justify">
                         <h4 class="card-title deep-color">{!! nl2br(e($messageData->title)) !!}</h4>
                         <p class="card-text">{!! nl2br(e($messageData->content)) !!}</p>
-                        <a href="#" class="btn btn-primary read-more-btn">Read More</a>
+                        <a href="/education/sections/{{$messageData->slug}}" class="btn btn-primary read-more-btn">Read More</a>
                     </div>
                 </div>
             </div>
@@ -237,8 +237,8 @@
 </section>
 
 
-<!-- Services Section -->
-<section id="services-section">
+<!-- albums Section -->
+<section id="albums-section">
     <div class="container mb-3 py-2 animate-on-scroll" data-animation="fadeIn">
         <div class="row">
             <div class="col-md-8 shadow-sm bg-white">

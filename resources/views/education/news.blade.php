@@ -4,9 +4,9 @@
 
 <div class="container my-3">
 
-<a href="{{ route('home') }}" type="button" class="btn btn-outline-secondary my-2"><i class="fas fa-arrow-left"></i> Back</a>
 
-<div class="h3">MDC News</div>
+<x-back-btn-component title="MDC News" />
+
 <div class="table-responsive px-3 bg-white mt-3">
     <table class="table table-hover">
         <thead>
@@ -61,7 +61,7 @@
             Showing {{ $news->firstItem() }} - {{ $news->lastItem() }} of {{ $news->total() }}
         </div>
 
-        <div class="ml-2">
+        <div class="ml-2 ms-2">
             {{$news->links('pagination::bootstrap-4')}}
 
         </div>

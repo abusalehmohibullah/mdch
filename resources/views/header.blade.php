@@ -40,7 +40,7 @@
             <div class="container d-flex align-items-center gap-2">
                 <div class="hstack gap-2 w-100 pe-2">
                     <!-- Logo and Full Name -->
-                    <a class="navbar-brand fs-1 fw-semibold m-0" href="#">
+                    <a class="navbar-brand fs-1 fw-semibold m-0" href="/">
                         <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" width="70px">
                         MDCH
                     </a>
@@ -86,21 +86,23 @@
                     <!-- Menu items -->
                     <ul class="navbar-nav text-nowrap">
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#">Home</a>
+                            <a class="nav-link p-2" href="/education">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 About
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Chairman's Message</a></li>
-                                <li><a class="dropdown-item" href="#">Principal's Message</a></li>
-                                <li><a class="dropdown-item" href="#">Administration</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/about">About Us</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/chairman">Chairman's Message</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/director">Director's Message</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/principal">Principal's Message</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Administration</a></li>
                                 <li><a class="dropdown-item" href="#">Office Stuff</a></li>
-                                <li><a class="dropdown-item" href="#">Affiliaction</a></li>
+                                <li><a class="dropdown-item" href="#">Affiliaction</a></li> -->
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             BDS Course
                             </a>
@@ -110,8 +112,8 @@
                                 <li><a class="dropdown-item" href="#">3rd Phase</a></li>
                                 <li><a class="dropdown-item" href="#">4th Phase</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item dropdown">
+                        </li> -->
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Admission
                             </a>
@@ -119,22 +121,22 @@
                                 <li><a class="dropdown-item" href="#">Local Students</a></li>
                                 <li><a class="dropdown-item" href="#">International Students</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link p-2" href="#">Departments</a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link p-2" href="#">Our Faculties</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="/education/albums">Student Life</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#">Student Life</a>
+                            <a class="nav-link p-2" href="/education/news">Notice</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link p-2" href="#">Notice</a>
-                        </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link p-2" href="#">Career</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link p-2" href="#">Contact</a>
                         </li>

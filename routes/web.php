@@ -29,17 +29,23 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/sections', function () {
-    return view('sections');
-});
+
 
 Route::prefix('education')->group(function () {
     Route::get('/', [HomeController::class, 'education'])->name('home');
 });
 
-// Route::get('/{section_key}', [HomeController::class, 'show'])->name('section_key')->where('section_key', 'about|facilities|messages|news');
-Route::get('/news', [HomeController::class, 'news'])->name('news.all');
-Route::get('/news/{slug}', [HomeController::class, 'previewNews'])->name('news.preview');
+Route::prefix('education')->group(function () {
+    // Route::get('/{section_key}', [HomeController::class, 'show'])->name('section_key')->where('section_key', 'about|facilities|messages|news');
+    Route::get('/news', [HomeController::class, 'news'])->name('news.all');
+    Route::get('/news/{slug}', [HomeController::class, 'previewNews'])->name('news.preview');
+
+    Route::get('/albums', [HomeController::class, 'albums'])->name('albums');
+
+    Route::get('/sections/{slug}', [HomeController::class, 'sections'])->name('sections');
+});
+
+
 
 Route::get('/entertainment', [HomeController::class, 'entertainment'])->name('entertainment');
 
@@ -107,7 +113,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::get('/{albumId}/manage/{mediaId?}', [MediaController::class, 'manage'])->where(['albumId' => '\d+', 'mediaId' => '\d*'])->name('media.manage');
 
             Route::post('/{albumId}/process/{mediaId?}', [MediaController::class, 'process'])->name('media.process');
-            
+
             Route::delete('/delete/{id}', [AlbumsController::class, 'delete'])->name('albums.images.delete');
             Route::delete('/destroy/{id}', [AlbumsController::class, 'destroy'])->name('albums.destroy');
             Route::get('/download/{id}', [AlbumsController::class, 'download'])->name('albums.download');
