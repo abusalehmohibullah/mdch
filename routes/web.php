@@ -65,11 +65,11 @@ Route::group(['middleware' => 'admin_auth'], function () {
             return redirect('admin');
         });
 
-        Route::get('/{section_key}', [SectionsController::class, 'index'])->name('section_key')->where('section_key', 'about|facilities|messages');
+        Route::get('/{section_key}', [SectionsController::class, 'index'])->name('section_key')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course');
 
 
-        Route::get('/{section_key}/manage/{id?}', [SectionsController::class, 'manage'])->where('section_key', 'about|facilities|messages');
-        Route::post('/{section_key}/process/{id?}', [SectionsController::class, 'process'])->name('sections.process')->where('section_key', 'about|facilities|messages');
+        Route::get('/{section_key}/manage/{id?}', [SectionsController::class, 'manage'])->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course');
+        Route::post('/{section_key}/process/{id?}', [SectionsController::class, 'process'])->name('sections.process')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course');
 
         Route::put('/status/{id}', [SectionsController::class, 'status'])->name('messages.status');
         Route::delete('/delete/{id}', [SectionsController::class, 'delete'])->name('messages.delete');

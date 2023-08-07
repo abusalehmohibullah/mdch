@@ -14,7 +14,7 @@
 
 
     <div class="col-md-5">
-        <img src="{{ asset('storage/default/about.jpg') }}" class="img-fluid" alt="...">
+        <img src="{{ asset('storage/default/' . $sectionsData->slug . '.jpg') }}" class="img-fluid" alt="...">
     </div>
 
 </div>

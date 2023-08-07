@@ -93,26 +93,26 @@
                                 About
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/education/sections/about">About Us</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/about">About</a></li>
                                 <li><a class="dropdown-item" href="/education/sections/chairman">Chairman's Message</a></li>
                                 <li><a class="dropdown-item" href="/education/sections/director">Director's Message</a></li>
                                 <li><a class="dropdown-item" href="/education/sections/principal">Principal's Message</a></li>
-                                <!-- <li><a class="dropdown-item" href="#">Administration</a></li>
-                                <li><a class="dropdown-item" href="#">Office Stuff</a></li>
-                                <li><a class="dropdown-item" href="#">Affiliaction</a></li> -->
+                                <li><a class="dropdown-item" href="/education/sections/administration">Administration</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/office-stuff">Office Stuff</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/affiliation">Affiliation</a></li>
                             </ul>
                         </li>
-                        <!-- <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             BDS Course
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">1st Phase</a></li>
-                                <li><a class="dropdown-item" href="#">2nd Phase</a></li>
-                                <li><a class="dropdown-item" href="#">3rd Phase</a></li>
-                                <li><a class="dropdown-item" href="#">4th Phase</a></li>
+                            <li><a class="dropdown-item" href="/education/sections/1st-phase">1st Phase</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/2nd-phase">2nd Phase</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/3rd-phase">3rd Phase</a></li>
+                                <li><a class="dropdown-item" href="/education/sections/4th-phase">4th Phase</a></li>
                             </ul>
-                        </li> -->
+                        </li>
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Admission

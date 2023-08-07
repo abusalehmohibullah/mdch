@@ -41,12 +41,43 @@
                                     <a href="/admin/news">
                                         <i class="fas fa-newspaper"></i>News</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('section_key', 'about') }}">
-                                        <i class="fas fa-circle-info"></i>About</a>
+
+                                <li class="has-sub">
+                                    <a class="js-arrow" href="#">
+                                    <i class="fas fa-circle-info"></i>About
+                                        <span class="arrow">
+                                            <i class="fas fa-angle-down"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled js-sub-list">
+                                        <li>
+                                            <a href="{{ route('section_key', 'about') }}">
+                                                About</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('section_key', 'administration') }}">
+                                                Administration</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('section_key', 'office-stuff') }}">
+                                                Office Stuff</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('section_key', 'affiliation') }}">
+                                                Affiliation</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('section_key', 'bds-course') }}">
+                                                BDS Course</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('section_key', 'messages') }}">
+                                                Messages</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
-                                <a href="{{ route('section_key', 'facilities') }}">
+                                    <a href="{{ route('section_key', 'facilities') }}">
                                         <i class="fas fa-rectangle-list"></i></i>Our Facilities</a>
                                 </li>
                                 <!-- <li>
@@ -61,10 +92,7 @@
                                     <a href="/admin/image_box">
                                         <i class="fas fa-image"></i>Image Box</a>
                                 </li> -->
-                                <li>
-                                <a href="{{ route('section_key', 'messages') }}">
-                                        <i class="fas fa-message"></i>Messages</a>
-                                </li>
+
                                 <!-- <li>
                                     <a href="/admin/ads">
                                         <i class="fas fa-rectangle-ad"></i>Ads</a>
@@ -264,13 +292,13 @@
             <section class="m-t-75">
                 <div class="section__content section__content--p30 p-0">
 
-                        <nav aria-label="breadcrumb bg-light">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item" aria-current="page">faq</li>
-                                <li class="breadcrumb-item active" aria-current="page">manage</li>
-                            </ol>
-                        </nav>
+                    <nav aria-label="breadcrumb bg-light">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item" aria-current="page">faq</li>
+                            <li class="breadcrumb-item active" aria-current="page">manage</li>
+                        </ol>
+                    </nav>
 
                 </div>
             </section>
