@@ -5,11 +5,16 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\FacultiesController;
+use App\Http\Controllers\DepartmentsImagesController;
+use App\Http\Controllers\AdministrationsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AlbumsController;
 use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
 
+
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,7 +47,15 @@ Route::prefix('education')->group(function () {
 
     Route::get('/albums', [HomeController::class, 'albums'])->name('albums');
 
+    Route::get('/administrations', [HomeController::class, 'administrations'])->name('administrations');
+
     Route::get('/sections/{slug}', [HomeController::class, 'sections'])->name('sections');
+
+    Route::get('/departments/{slug}', [HomeController::class, 'departments'])->name('departments');
+
+    Route::get('/departments', function () {
+        return view('education.departments');
+    });
 });
 
 
@@ -89,10 +102,30 @@ Route::group(['middleware' => 'admin_auth'], function () {
 
         Route::prefix('departments')->group(function () {
             Route::get('/', [DepartmentsController::class, 'index'])->name('departments');
-            Route::get('/manage/{id?}', [DepartmentsController::class, 'manage']);
+            Route::get('/manage/{id?}', [DepartmentsController::class, 'manage'])->name('departments.manage');
             Route::post('/process/{id?}', [DepartmentsController::class, 'process'])->name('departments.process');
             Route::put('/status/{id}', [DepartmentsController::class, 'status'])->name('departments.status');
             Route::delete('/delete/{id}', [DepartmentsController::class, 'delete'])->name('departments.delete');
+
+            Route::get('/{departmentsId}/faculties', [FacultiesController::class, 'index'])->name('faculties');
+            Route::get('/{departmentsId}/faculties/manage/{facultiesId?}', [FacultiesController::class, 'manage'])->where(['departmentsId' => '\d+', 'facultiesId' => '\d*'])->name('faculties.manage');
+            Route::post('/{departmentsId}/faculties/process/{facultiesId?}', [FacultiesController::class, 'process'])->name('faculties.process');
+            Route::put('/{departmentsId}/faculties/status/{facultiesId?}', [FacultiesController::class, 'status'])->where(['departmentsId' => '\d+', 'facultiesId' => '\d*'])->name('faculties.status');
+            Route::delete('/{departmentsId}/faculties/delete/{facultiesId?}', [FacultiesController::class, 'delete'])->name('faculties.delete');
+            
+            Route::get('/{departmentsId?}/images', [DepartmentsImagesController::class, 'index'])->where(['departmentsId' => '\d+'])->name('departmentsImages');
+            Route::get('/{departmentsId?}/images/manage/{departmentsImagesId?}', [DepartmentsImagesController::class, 'manage'])->where(['departmentsId' => '\d+', 'departmentsImagesId' => '\d*'])->name('departmentsImages.manage');
+            Route::post('/{departmentsId}/images/process/{departmentsImagesId?}', [DepartmentsImagesController::class, 'process'])->name('departmentsImages.process');
+            Route::delete('/{departmentsId}/images/delete/{departmentsImagesId}', [DepartmentsImagesController::class, 'delete'])->name('departmentsImages.delete');
+
+        });
+
+        Route::prefix('administrations')->group(function () {
+            Route::get('/', [AdministrationsController::class, 'index'])->name('administrations');
+            Route::get('/manage/{id?}', [AdministrationsController::class, 'manage']);
+            Route::post('/process/{id?}', [AdministrationsController::class, 'process'])->name('administrations.process');
+            Route::put('/status/{id}', [AdministrationsController::class, 'status'])->name('administrations.status');
+            Route::delete('/delete/{id}', [AdministrationsController::class, 'delete'])->name('administrations.delete');
         });
 
         Route::get('/image-box', function () {
@@ -108,15 +141,13 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::get('/', [AlbumsController::class, 'index'])->name('albums');
             Route::get('/manage/{id?}', [AlbumsController::class, 'manage'])->name('albums.manage');
             Route::post('/process/{id?}', [AlbumsController::class, 'process'])->name('albums.process');
+            Route::delete('/delete/{id}', [AlbumsController::class, 'delete'])->name('albums.delete');
 
             Route::get('/{albumId}', [MediaController::class, 'index'])->name('media');
             Route::get('/{albumId}/manage/{mediaId?}', [MediaController::class, 'manage'])->where(['albumId' => '\d+', 'mediaId' => '\d*'])->name('media.manage');
-
             Route::post('/{albumId}/process/{mediaId?}', [MediaController::class, 'process'])->name('media.process');
+            Route::delete('/{albumId}/delete/{mediaId?}', [MediaController::class, 'delete'])->name('media.delete');
 
-            Route::delete('/delete/{id}', [AlbumsController::class, 'delete'])->name('albums.images.delete');
-            Route::delete('/destroy/{id}', [AlbumsController::class, 'destroy'])->name('albums.destroy');
-            Route::get('/download/{id}', [AlbumsController::class, 'download'])->name('albums.download');
         });
 
         Route::get('/admission', function () {
