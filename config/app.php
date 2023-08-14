@@ -177,6 +177,8 @@ return [
 
         // for the department header navigation
         App\Providers\DepartmentNamesServiceProvider::class,
+
+        App\Providers\InformationsServiceProvider::class,
     ],
 
     /*

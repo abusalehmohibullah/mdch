@@ -71,6 +71,14 @@ class SectionsController extends Controller
                 $message = 'Sections updated successfully!';
             }
             $model->updated_by = $request->session()->get('ADMIN_ID');
+        } else {
+            // For insert operation, create a new FAQ model
+            $model = new Sections;
+            $model->title = $validatedData['title'];
+            $model->section_key = 'affiliation';
+            $model->slug = Str::slug($validatedData['title']);
+            $model->content = $validatedData['content'];
+            $message = 'Section added successfully!';
         }
 
         try {
@@ -120,15 +128,15 @@ class SectionsController extends Controller
         $model->updated_by = $request->session()->get('ADMIN_ID');
 
         if ($published) {
-            $message = 'Sections published successfully!';
+            $message = 'Section published successfully!';
         } else {
-            $message = 'Sections is hidden now!';
+            $message = 'Section is hidden now!';
         }
 
         if ($model->save()) {
-            return redirect('admin/news')->with('success', $message);
+            return redirect('admin/affiliation')->with('success', $message);
         } else {
-            return redirect('admin/news')->with('error', 'Failed to update!');
+            return redirect('admin/affiliation')->with('error', 'Failed to update!');
         }
     }
 
@@ -138,36 +146,10 @@ class SectionsController extends Controller
 
         if ($model) {
             $model->delete();
-            return redirect('admin/news')->with('success', 'Sections deleted successfully!');
+            return redirect('admin/affiliation')->with('success', 'Sections deleted successfully!');
         } else {
-            return redirect('admin/news')->with('error', 'Failed to delete Sections!');
+            return redirect('admin/affiliation')->with('error', 'Failed to delete Sections!');
         }
     }
 
-    public function download($id)
-    {
-        // Find the news record by ID
-        $newsData = Sections::findOrFail($id);
-
-        // Check if the attachment exists
-        if ($newsData->attachment) {
-            // Get the attachment path
-            $attachmentPath = storage_path('app/public/' . $newsData->attachment);
-
-            // Check if the file exists
-            if (file_exists($attachmentPath)) {
-                // Extract the filename from the path
-                $filename = pathinfo($attachmentPath, PATHINFO_BASENAME);
-
-                // Return the file for download
-                return response()->download($attachmentPath, $filename);
-            } else {
-                // File not found, redirect back with an error message
-                return redirect()->back()->with('error', 'Attachment not found.');
-            }
-        } else {
-            // No attachment, redirect back with an error message
-            return redirect()->back()->with('error', 'No attachment available.');
-        }
-    }
 }

@@ -20,3 +20,13 @@
     height: 100%;
     width: 100%;
 }
+
+
+.ck-content {
+    min-height: 500px !important;
+}
+/* Adjust indentation for lists */
+.ck-content ul,
+.ck-content ol {
+    margin-left: 20px; /* Adjust the value as needed */
+}

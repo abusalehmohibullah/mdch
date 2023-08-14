@@ -19,8 +19,8 @@ class CreateFaqsTable extends Migration
             $table->text('answer');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedTinyInteger('status')->default(0);
             $table->timestamps();
+            $table->unsignedTinyInteger('status')->default(1);
     
             $table->foreign('created_by')->references('id')->on('admins');
             $table->foreign('updated_by')->references('id')->on('admins');

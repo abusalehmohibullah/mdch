@@ -73,27 +73,37 @@
     <script src="{{ asset('admin-assets/vendor/bootstrap-4.1/popper.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
     <!-- Vendor JS       -->
-    <script src="{{ asset('admin-assets/vendor/slick/slick.min.js') }}">
-    </script>
+    <script src="{{ asset('admin-assets/vendor/slick/slick.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/wow/wow.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/animsition/animsition.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
-    </script>
+    <script src="{{ asset('admin-assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/counter-up/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/vendor/counter-up/jquery.counterup.min.js') }}">
-    </script>
+    <script src="{{ asset('admin-assets/vendor/counter-up/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/circle-progress/circle-progress.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/chartjs/Chart.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/vendor/select2/select2.min.js') }}">
-    </script>
+    <script src="{{ asset('admin-assets/vendor/select2/select2.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/vector-map/jquery.vmap.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/vector-map/jquery.vmap.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/vector-map/jquery.vmap.sampledata.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/vector-map/jquery.vmap.world.js') }}"></script>
+    <script src="{{ asset('admin-assets/vendor/ckeditor5/build/ckeditor.js') }}"></script>
 
     <!-- Main JS-->
     <script src="{{ asset('admin-assets/js/main.js') }}"></script>
+    <script src="{{ asset('admin-assets/js/js.js') }}"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                ckfinder: {
+                    uploadUrl: "{{route('ckeditor.upload', ['_token'=>csrf_token()])}}"
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 </body>
 

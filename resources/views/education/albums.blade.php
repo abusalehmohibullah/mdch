@@ -14,7 +14,7 @@
         @php
         $id = $loop->index;
         @endphp
-        <div id="album-container-{{$id}}" class="col-3 mb-2" onclick="openAlbum(<?php echo $id ?>)">
+        <div id="album-container-{{$id}}" class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-2" onclick="openAlbum(<?php echo $id ?>)">
             <div class="d-flex align-items-center position-relative w-100">
 
                 <div class="card m-2 w-100">
@@ -27,7 +27,7 @@
                         @endforeach
 
                         <div class="card-body p-2">
-                            <div class="fs-6 card-title m-0">{{$albumsData->name}}</div>
+                            <div class="card-title m-0 text-truncate mini-text"><small>{{$albumsData->name}}</small></div>
                         </div>
                     </div>
                 </div>

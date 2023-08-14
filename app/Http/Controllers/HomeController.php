@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Departments;
 use App\Models\Sections;
+use App\Models\FacilitiesImages;
 use App\Models\Faqs;
 use App\Models\News;
 use App\Models\Albums;
 use App\Models\Administrations;
+use App\Models\Advertisements;
 use App\Models\Media;
 use Illuminate\Http\Request;
 
@@ -19,10 +21,10 @@ class HomeController extends Controller
         $result['latestNews'] = News::where('status', 1)->where('latest_news', 1)->orderBy('published_at', 'desc')->get();
         $result['about'] = Sections::FindorFail(1);
         $result['facilities'] = Sections::FindorFail(2);
+        $result['facilitiesImages'] = FacilitiesImages::get();
+        $result['advertisements'] = Advertisements::get();
         $result['departments'] = Departments::where('status', 1)->get();
         $result['faqs'] = Faqs::where('status', 1)->get();
-        // $result['about'] = Sections::FindorFail(1);
-        // $result['about'] = Sections::FindorFail(1);
         $result['messages'] = Sections::where('section_key', 'messages')->get();
         $result['news'] = News::where('status', 1)->orderBy('published_at', 'desc')->take(10)->get();
 
@@ -66,12 +68,17 @@ class HomeController extends Controller
 
     public function administrations(Request $request)
     {
-
         $result['administrations'] = Administrations::where('status', 1)->get();
         // Pass the $sections variable to your view
         return view('education.administrations', $result);
     }
-
+    
+    public function affiliation(Request $request)
+    {
+        $result['affiliation'] = Sections::where('section_key', 'affiliation')->get();
+        // Pass the $sections variable to your view
+        return view('education.affiliation', $result);
+    }
     public function news(Request $request)
     {
         // Retrieve all rows with the given section_key

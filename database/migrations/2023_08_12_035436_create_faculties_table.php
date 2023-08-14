@@ -21,6 +21,9 @@ class CreateFacultiesTable extends Migration
             $table->integer('status')->default(1);
             
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+                        
+            $table->foreign('created_by')->references('id')->on('admins');
+            $table->foreign('updated_by')->references('id')->on('admins');
         });
     }
 

@@ -44,7 +44,7 @@
 
                                 <li class="has-sub">
                                     <a class="js-arrow" href="#">
-                                    <i class="fas fa-circle-info"></i>About
+                                        <i class="fas fa-circle-info"></i>About
                                         <span class="arrow">
                                             <i class="fas fa-angle-down"></i>
                                         </span>
@@ -82,7 +82,7 @@
                                 </li>
                                 <li>
                                     <a href="/admin/departments">
-                                    <i class="fas fa-building"></i>Departments</a>
+                                        <i class="fas fa-building"></i>Departments</a>
                                 </li>
                                 <li>
                                     <a href="/admin/faqs">
@@ -93,18 +93,18 @@
                                         <i class="fas fa-image"></i>Image Box</a>
                                 </li> -->
 
-                                <!-- <li>
-                                    <a href="/admin/ads">
+                                <li>
+                                    <a href="/admin/advertisements">
                                         <i class="fas fa-rectangle-ad"></i>Ads</a>
-                                </li> -->
+                                </li>
                                 <li>
                                     <a href="/admin/albums">
                                         <i class="fas fa-images"></i>Photo Album</a>
                                 </li>
-                                <!-- <li>
+                                <li>
                                     <a href="/admin/admission">
                                         <i class="fas fa-graduation-cap"></i>Admission</a>
-                                </li> -->
+                                </li>
                                 <!-- <li>
                                     <a href="/admin/opd">
                                         <i class="fas fa-hospital-user"></i>OPD</a>
@@ -125,12 +125,22 @@
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-user"></i>Account</a>
                             </a>
-                        </li>
-                        <li>
-                            <a class="js-arrow" href="#">
-                                <i class="zmdi zmdi-settings"></i>Setting</a>
-                            </a>
                         </li> -->
+                        <li>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="zmdi zmdi-settings"></i>Setting
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="/admin/settings/informations"></i>Informations</a>
+                                </li>
+                            </ul>
+                        </li>
                         <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>Pages

@@ -15,15 +15,18 @@ class CreateAdministrationsTable extends Migration
     {
         Schema::create('administrations', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->unique();
             $table->string('name');
             $table->string('designation');
+            $table->string('slug')->unique();
             $table->text('description');
             $table->string('image');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
             $table->unsignedTinyInteger('status')->default(1);
+                            
+            $table->foreign('created_by')->references('id')->on('admins');
+            $table->foreign('updated_by')->references('id')->on('admins');
         });
     }
 

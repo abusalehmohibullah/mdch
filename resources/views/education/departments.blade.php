@@ -10,30 +10,34 @@
 
         <div class="clearfix">
             <div class="img-container col-md-6 float-md-end mb-3 ms-md-3">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        @foreach($departmentsData->departmentsImages as $key => $image)
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}" aria-label="Slide {{ $key + 1 }}"></button>
-        @endforeach
-    </div>
-    <div class="carousel-inner">
-        @foreach($departmentsData->departmentsImages as $key => $image)
-        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2500">
-            <img src="{{ asset('storage/' . $image->path) }}" class="d-block w-100" alt="...">
-        </div>
-        @endforeach
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                @if(count($departmentsData->departmentsImages) > 1)
+                    <div class="carousel-indicators">
+                        @foreach($departmentsData->departmentsImages as $key => $image)
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}" aria-label="Slide {{ $key + 1 }}"></button>
+                        @endforeach
+                    </div>
+                    @endif
+                    <div class="carousel-inner">
+                        @foreach($departmentsData->departmentsImages as $key => $image)
+                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2500">
+                            <img src="{{ asset('storage/' . $image->path) }}" class="d-block w-100" alt="...">
+                        </div>
+                        @endforeach
+                    </div>
+                    @if(count($departmentsData->departmentsImages) > 1)
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    @endif
                 </div>
+
+            </div>
             <div class="text-justify">
                 <div class="card-body p-3">
                     <h5 class="card-title">{{ $departmentsData->name }}</h5>

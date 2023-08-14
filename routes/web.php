@@ -3,6 +3,8 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\FacilitiesImagesController;
+use App\Http\Controllers\AdvertisementsController;
 use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\FacultiesController;
@@ -11,6 +13,8 @@ use App\Http\Controllers\AdministrationsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AlbumsController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\InformationsController;
+use App\Http\Controllers\CKEditorController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -47,9 +51,15 @@ Route::prefix('education')->group(function () {
 
     Route::get('/albums', [HomeController::class, 'albums'])->name('albums');
 
-    Route::get('/administrations', [HomeController::class, 'administrations'])->name('administrations');
+    Route::get('/about/affiliation', [HomeController::class, 'affiliation'])->name('affiliation');
 
-    Route::get('/sections/{slug}', [HomeController::class, 'sections'])->name('sections');
+    Route::get('/about/administrations', [HomeController::class, 'administrations'])->name('administrations');
+
+    Route::get('/facilitiesImages', [HomeController::class, 'facilitiesImages'])->name('facilitiesImages');
+
+    Route::get('/about/{slug}', [HomeController::class, 'sections'])->name('sections');
+    Route::get('/bds-course/{slug}', [HomeController::class, 'sections'])->name('sections');
+    Route::get('/admission/{slug}', [HomeController::class, 'sections'])->name('sections');
 
     Route::get('/departments/{slug}', [HomeController::class, 'departments'])->name('departments');
 
@@ -78,18 +88,29 @@ Route::group(['middleware' => 'admin_auth'], function () {
             return redirect('admin');
         });
 
-        Route::get('/{section_key}', [SectionsController::class, 'index'])->name('section_key')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course');
+        Route::get('/{section_key}', [SectionsController::class, 'index'])->name('section_key')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course|admission');
 
 
-        Route::get('/{section_key}/manage/{id?}', [SectionsController::class, 'manage'])->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course');
-        Route::post('/{section_key}/process/{id?}', [SectionsController::class, 'process'])->name('sections.process')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course');
-
-        Route::put('/status/{id}', [SectionsController::class, 'status'])->name('messages.status');
-        Route::delete('/delete/{id}', [SectionsController::class, 'delete'])->name('messages.delete');
+        Route::get('/{section_key}/manage/{id?}', [SectionsController::class, 'manage'])->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course|admission');
+        Route::post('/{section_key}/process/{id?}', [SectionsController::class, 'process'])->name('sections.process')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course|admission');
 
 
-        Route::get('/facilities', function () {
-            return view('admin.facilities');
+        Route::put('/affiliation/status/{id}', [SectionsController::class, 'status'])->name('sections.status');
+        Route::delete('/affiliation/delete/{id}', [SectionsController::class, 'delete'])->name('sections.delete');
+
+
+        Route::prefix('/facilities/images')->group(function () {
+            Route::get('/', [FacilitiesImagesController::class, 'index'])->name('facilitiesImages');
+            Route::get('/manage/{id?}', [FacilitiesImagesController::class, 'manage'])->name('facilitiesImages.manage');
+            Route::post('/process/{id?}', [FacilitiesImagesController::class, 'process'])->name('facilitiesImages.process');
+            Route::delete('/delete/{id?}', [FacilitiesImagesController::class, 'delete'])->name('facilitiesImages.delete');
+        });
+
+        Route::prefix('/advertisements')->group(function () {
+            Route::get('/', [AdvertisementsController::class, 'index'])->name('advertisements');
+            Route::get('/manage/{id?}', [AdvertisementsController::class, 'manage'])->name('advertisements.manage');
+            Route::post('/process/{id?}', [AdvertisementsController::class, 'process'])->name('advertisements.process');
+            Route::delete('/delete/{id?}', [AdvertisementsController::class, 'delete'])->name('advertisements.delete');
         });
 
         Route::prefix('faqs')->group(function () {
@@ -112,12 +133,11 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::post('/{departmentsId}/faculties/process/{facultiesId?}', [FacultiesController::class, 'process'])->name('faculties.process');
             Route::put('/{departmentsId}/faculties/status/{facultiesId?}', [FacultiesController::class, 'status'])->where(['departmentsId' => '\d+', 'facultiesId' => '\d*'])->name('faculties.status');
             Route::delete('/{departmentsId}/faculties/delete/{facultiesId?}', [FacultiesController::class, 'delete'])->name('faculties.delete');
-            
+
             Route::get('/{departmentsId?}/images', [DepartmentsImagesController::class, 'index'])->where(['departmentsId' => '\d+'])->name('departmentsImages');
             Route::get('/{departmentsId?}/images/manage/{departmentsImagesId?}', [DepartmentsImagesController::class, 'manage'])->where(['departmentsId' => '\d+', 'departmentsImagesId' => '\d*'])->name('departmentsImages.manage');
             Route::post('/{departmentsId}/images/process/{departmentsImagesId?}', [DepartmentsImagesController::class, 'process'])->name('departmentsImages.process');
             Route::delete('/{departmentsId}/images/delete/{departmentsImagesId}', [DepartmentsImagesController::class, 'delete'])->name('departmentsImages.delete');
-
         });
 
         Route::prefix('administrations')->group(function () {
@@ -127,6 +147,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::put('/status/{id}', [AdministrationsController::class, 'status'])->name('administrations.status');
             Route::delete('/delete/{id}', [AdministrationsController::class, 'delete'])->name('administrations.delete');
         });
+
 
         Route::get('/image-box', function () {
             return view('admin.image-box');
@@ -147,12 +168,13 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::get('/{albumId}/manage/{mediaId?}', [MediaController::class, 'manage'])->where(['albumId' => '\d+', 'mediaId' => '\d*'])->name('media.manage');
             Route::post('/{albumId}/process/{mediaId?}', [MediaController::class, 'process'])->name('media.process');
             Route::delete('/{albumId}/delete/{mediaId?}', [MediaController::class, 'delete'])->name('media.delete');
-
         });
 
         Route::get('/admission', function () {
             return view('admin.admission');
         });
+
+        Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
         Route::prefix('news')->group(function () {
             Route::get('/', [NewsController::class, 'index'])->name('news');
@@ -164,8 +186,46 @@ Route::group(['middleware' => 'admin_auth'], function () {
         });
 
 
-        Route::get('/opd', function () {
-            return view('admin.opd');
+        Route::prefix('settings')->group(function () {
+            Route::prefix('informations')->group(function () {
+                Route::get('/', [InformationsController::class, 'index'])->name('informations');
+                Route::get('/manage/{id?}', [InformationsController::class, 'manage']);
+                Route::post('/process/{id?}', [InformationsController::class, 'process'])->name('informations.process');
+            });
         });
     });
 });
+
+
+// Route::get('/run-migrations', function () {
+//     try {
+//         \Artisan::call('migrate');
+//         return 'Migrations successfully executed.';
+//     } catch (\Exception $e) {
+//         return 'Error running migrations: ' . $e->getMessage();
+//     }
+// });
+
+// Route::get('/clear-cache', function () {
+//     try {
+//         \Artisan::call('cache:clear');
+//         return 'Cache cleared successfully.';
+//     } catch (\Exception $e) {
+//         return 'Error clearing cache: ' . $e->getMessage();
+//     }
+// });
+
+// Route::get('/clear-cache-and-seed', function () {
+//     try {
+//         // Clear cache
+//         \Artisan::call('cache:clear');
+
+//         // Run database seed(s)
+//         \Artisan::call('db:seed'); // Replace with specific seed command if needed
+
+//         return 'Cache cleared and seeds executed successfully.';
+//     } catch (\Exception $e) {
+//         return 'Error: ' . $e->getMessage();
+//     }
+// });
+

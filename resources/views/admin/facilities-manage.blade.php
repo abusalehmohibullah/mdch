@@ -4,6 +4,9 @@
 
 <x-back-btn-component title="{{ $sectionsData->id ? 'Edit' : 'Add' }} Facilities" />
 
+<div class="mb-5">
+    <a href="/admin/facilities/images" class="btn btn-info">Manage Images</a>
+</div>
 
 <form action="{{ route('sections.process', ['section_key' => 'facilities', 'id' => $sectionsData->id]) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
 
@@ -33,20 +36,6 @@
                 @enderror
             </div>
             <textarea name="content" id="content" rows="9" placeholder="Enter the content of the news..." class="form-control">{{ old('content') ? old('content') : $sectionsData->content }}</textarea>
-        </div>
-    </div>
-
-    <div class="row form-group">
-        <div class="col col-md-3">
-            <label for="attachment" class=" form-control-label">Attachment</label>
-        </div>
-        <div class="col-12 col-md-9">
-            <div class="text-danger">
-                @error('attachment')
-                {{$message}}
-                @enderror
-            </div>
-            <input type="file" id="attachment" name="attachment" class="form-control-file">
         </div>
     </div>
 

@@ -10,7 +10,7 @@
     @csrf
     <div class="row form-group">
         <div class="col col-md-3">
-            <label for="title" class=" form-control-label">Heading<span class="text-danger ml-1">*</span></label>
+            <label for="title" class=" form-control-label">Title<span class="text-danger ml-1">*</span></label>
         </div>
         <div class="col-12 col-md-9">
             <div class="text-danger">
@@ -18,7 +18,7 @@
                 {{$message}}
                 @enderror
             </div>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title of the news..." value="{{ old('title') ? old('title') : $sectionsData->title }}">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title" value="{{ old('title') ? old('title') : $sectionsData->title }}">
         </div>
     </div>
 
@@ -32,7 +32,7 @@
                 {{$message}}
                 @enderror
             </div>
-            <textarea name="content" id="content" rows="9" placeholder="Enter the content of the news..." class="form-control">{{ old('content') ? old('content') : $sectionsData->content }}</textarea>
+            <textarea name="content" id="content" rows="9" placeholder="Enter the content" class="form-control">{{ old('content') ? old('content') : $sectionsData->content }}</textarea>
         </div>
     </div>
 

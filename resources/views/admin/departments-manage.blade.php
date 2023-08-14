@@ -6,7 +6,7 @@
 @if ($departmentsData->id)
 <div class="mb-5">
     <a href="{{ route('faculties', $departmentsData->id) }}" class="btn btn-info">Manage Faculties</a>
-    <a href="{{ route('departmentsImages', $departmentsData->id) }}" class="btn btn-info">Manage Imgaes</a>
+    <a href="{{ route('departmentsImages', $departmentsData->id) }}" class="btn btn-info">Manage Images</a>
 </div>
 @endif
 <form action="{{ route('departments.process', $departmentsData->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">

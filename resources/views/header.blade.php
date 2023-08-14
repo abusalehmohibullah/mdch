@@ -8,24 +8,34 @@
             <!-- Contacts and Socials -->
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link d-flex flex-nowrap gap-2" href="#"><i class="bi bi-telephone-fill"></i> 01234567899</a>
+                    <a class="nav-link d-flex flex-nowrap gap-2 mini-text" href="#"><i class="bi bi-telephone-fill"></i> {{ config('informations.contact') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex flex-nowrap gap-2" href="#"><i class="bi bi-envelope-fill"></i> knock.mdch@gmail.com</a>
+                    <a class="nav-link d-flex flex-nowrap gap-2 mini-text" href="#"><i class="bi bi-envelope-fill"></i> {{ config('informations.email') }}</a>
                 </li>
                 <li class="nav-item d-none d-sm-block">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-twitter"></i> <!-- Twitter icon -->
+                    <a class="nav-link" href="{{ config('informations.facebook') }}">
+                        <i class="fa-brands fa-facebook-f"></i>
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-block">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-facebook"></i> <!-- Facebook icon -->
+                    <a class="nav-link" href="{{ config('informations.instagram') }}">
+                        <i class="fa-brands fa-instagram"></i> 
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-block">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-instagram"></i> <!-- Instagram icon -->
+                    <a class="nav-link" href="{{ config('informations.x') }}">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item d-none d-sm-block">
+                    <a class="nav-link" href="{{ config('informations.linkedin') }}">
+                        <i class="fa-brands fa-linkedin-in"></i> 
+                    </a>
+                </li>
+                <li class="nav-item d-none d-sm-block">
+                    <a class="nav-link" href="{{ config('informations.youtube') }}">
+                        <i class="fa-brands fa-youtube"></i> 
                     </a>
                 </li>
             </ul>
@@ -48,7 +58,7 @@
                             MANDY DENTAL COLLEGE AND HOSPITAL
                         </div>
                         <div>
-                            Institution for the study of dentistry.
+                        {{ config('informations.slogan') }}
                         </div>
                     </div>
                 </div>
@@ -76,28 +86,28 @@
                         <a class="nav-link p-2" href="/education">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link p-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             About
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/education/sections/about">About</a></li>
-                            <li><a class="dropdown-item" href="/education/administrations">Administration</a></li>
-                            <li><a class="dropdown-item" href="/education/sections/office-stuff">Office Stuff</a></li>
-                            <li><a class="dropdown-item" href="/education/sections/affiliation">Affiliation</a></li>
-                            <li><a class="dropdown-item" href="/education/sections/chairman">Chairman's Message</a></li>
-                            <li><a class="dropdown-item" href="/education/sections/director">Director's Message</a></li>
-                            <li><a class="dropdown-item" href="/education/sections/principal">Principal's Message</a></li>
+                        <ul class="dropdown-menu position-absolute">
+                            <li><a class="dropdown-item" href="/education/about/about">About</a></li>
+                            <li><a class="dropdown-item" href="/education/about/administrations">Administration</a></li>
+                            <li><a class="dropdown-item" href="/education/about/office-stuff">Office Stuff</a></li>
+                            <li><a class="dropdown-item" href="/education/about/affiliation">Affiliation</a></li>
+                            <li><a class="dropdown-item" href="/education/about/chairmans-message">Chairman's Message</a></li>
+                            <li><a class="dropdown-item" href="/education/about/directors-message">Director's Message</a></li>
+                            <li><a class="dropdown-item" href="/education/about/principals-message">Principal's Message</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link p-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             BDS Course
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/education/sections/1st-phase">1st Phase</a></li>
-                            <li><a class="dropdown-item" href="/education/sections/2nd-phase">2nd Phase</a></li>
-                            <li><a class="dropdown-item" href="/education/sections/3rd-phase">3rd Phase</a></li>
-                            <li><a class="dropdown-item" href="/education/sections/4th-phase">4th Phase</a></li>
+                        <ul class="dropdown-menu position-absolute">
+                            <li><a class="dropdown-item" href="/education/bds-course/1st-phase">1st Phase</a></li>
+                            <li><a class="dropdown-item" href="/education/bds-course/2nd-phase">2nd Phase</a></li>
+                            <li><a class="dropdown-item" href="/education/bds-course/3rd-phase">3rd Phase</a></li>
+                            <li><a class="dropdown-item" href="/education/bds-course/4th-phase">4th Phase</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -115,10 +125,10 @@
                     <!-- Menu items -->
                     <ul class="navbar-nav text-nowrap">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link p-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Departments
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
+                            <ul class="dropdown-menu">
                                 @foreach($departmentNames as $phase => $data)
                                 <li><a class="dropdown-item disabled" href="#">{{ $data['phase_label'] }} Phase</a></li>
                                 @foreach($data['departments'] as $department)
@@ -135,12 +145,12 @@
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link p-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Admission
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Local Students</a></li>
-                                <li><a class="dropdown-item" href="#">International Students</a></li>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/education/admission/local-students">Local Students</a></li>
+                                <li><a class="dropdown-item" href="/education/admission/international-students">International Students</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

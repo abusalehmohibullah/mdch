@@ -118,9 +118,35 @@ body {
 
 
 /* header responsive */
+/* xx Small devices (max 400px) */
+@media (max-width: 400px) {
+  .brand-name {
+    font-size: 0.9rem !important;
+  }
+
+  .brand-logo {
+    width: 40px !important;
+  }
+
+  .micro-text {
+    font-size: 10px !important;
+  }
+
+  .mini-text {
+    font-size: 12px !important;
+  }
+
+  .medium-text {
+    font-size: 14px !important;
+  }
+
+  .large-text {
+    font-size: 18px !important;
+  }
+}
 
 /* x Small devices (max 575px) */
-@media (max-width: 575px) {
+@media (min-width: 401px) and (max-width: 575px) {
   .brand-name {
     font-size: 1rem !important;
   }
@@ -128,19 +154,51 @@ body {
   .brand-logo {
     width: 50px !important;
   }
+
+  .micro-text {
+    font-size: 11px !important;
+  }
+
+  .mini-text {
+    font-size: 14px !important;
+  }
+
+  .medium-text {
+    font-size: 16px !important;
+  }
+
+  .large-text {
+    font-size: 20px !important;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {}
+@media (min-width: 576px) and (max-width: 767px) {
+  .micro-text {
+    font-size: 13px !important;
+  }
+
+  .mini-text {
+    font-size: 15px !important;
+  }
+
+  .medium-text {
+    font-size: 18px !important;
+  }
+
+  .large-text {
+    font-size: 22px !important;
+  }
+}
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {}
+@media (min-width: 768px) and (max-width: 991px) {}
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {}
+@media (min-width: 992px) and (max-width: 1199px) {}
 
 /* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) and (max-width: 1399px) {}
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {}
@@ -154,71 +212,6 @@ body {
 
 
 
-
-/* footer start */
-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-
-footer .col {
-  display: flex;
-  flex-direction: column;
-}
-
-footer .logo {
-  margin-bottom: 30px;
-}
-
-footer h4 {
-  font-size: 16px;
-  padding-bottom: 20px;
-}
-
-footer p {
-  font-size: 13px;
-  margin: 0 0 8px 0;
-}
-
-footer a {
-  font-size: 13px;
-  text-decoration: none;
-  color: #222;
-  margin-bottom: 10px;
-}
-
-footer .follow {
-  margin-top: 20px;
-}
-
-footer .follow .icon svg {
-  color: #465b52;
-  padding-right: 4px;
-  cursor: pointer;
-  font-size: 22px;
-}
-
-footer .install .row img {
-  border: 1px solid #1a1a1a;
-  border-radius: 3px;
-}
-
-footer .install img {
-  margin: 10px 0 15px 0;
-}
-
-footer .follow .icon svg:hover,
-footer a:hover {
-  color: #088178;
-  font-weight: bold;
-}
-
-footer .copyright {
-  width: 100%;
-  text-align: center;
-}
 
 
 
@@ -358,4 +351,20 @@ footer .copyright {
 
 .full-name {
   text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.4), 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+figure.table table {
+  width: 100%;
+}
+
+figure.table table td {
+    border: 1px solid #ccc; /* Add border to table cells */
+    padding: 10px; /* Add padding to table cells */
+
+}
+
+figure.image {
+  display: flex;
+  justify-content: center;
 }

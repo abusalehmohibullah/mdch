@@ -15,14 +15,17 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->string('section_key')->unique();
+            $table->string('section_key');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('content');
+            $table->longText('content');
             $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedTinyInteger('status')->default(1);
             $table->timestamps();
+            $table->unsignedTinyInteger('status')->default(1);
+
+            $table->foreign('updated_by')->references('id')->on('admins');
         });
+
     }
     
 
