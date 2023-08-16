@@ -7,33 +7,33 @@
         <div class="container">
             <!-- Contacts and Socials -->
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+                <li class="nav-item animate-on-scroll" data-animation="fadeInRight" data-animation-delay="0">
                     <a class="nav-link d-flex flex-nowrap gap-2 mini-text" href="#"><i class="bi bi-telephone-fill"></i> {{ config('informations.contact') }}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item animate-on-scroll" data-animation="fadeInRight" data-animation-delay="0.2">
                     <a class="nav-link d-flex flex-nowrap gap-2 mini-text" href="#"><i class="bi bi-envelope-fill"></i> {{ config('informations.email') }}</a>
                 </li>
-                <li class="nav-item d-none d-sm-block">
+                <li class="nav-item d-none d-sm-block animate-on-scroll" data-animation="fadeInRight" data-animation-delay="0.8">
                     <a class="nav-link" href="{{ config('informations.facebook') }}">
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
                 </li>
-                <li class="nav-item d-none d-sm-block">
+                <li class="nav-item d-none d-sm-block animate-on-scroll" data-animation="fadeInRight" data-animation-delay="0.9">
                     <a class="nav-link" href="{{ config('informations.instagram') }}">
                         <i class="fa-brands fa-instagram"></i> 
                     </a>
                 </li>
-                <li class="nav-item d-none d-sm-block">
+                <li class="nav-item d-none d-sm-block animate-on-scroll" data-animation="fadeInRight" data-animation-delay="1">
                     <a class="nav-link" href="{{ config('informations.x') }}">
                     <i class="fa-brands fa-x-twitter"></i>
                     </a>
                 </li>
-                <li class="nav-item d-none d-sm-block">
+                <li class="nav-item d-none d-sm-block animate-on-scroll" data-animation="fadeInRight" data-animation-delay="1.1">
                     <a class="nav-link" href="{{ config('informations.linkedin') }}">
                         <i class="fa-brands fa-linkedin-in"></i> 
                     </a>
                 </li>
-                <li class="nav-item d-none d-sm-block">
+                <li class="nav-item d-none d-sm-block animate-on-scroll" data-animation="fadeInRight" data-animation-delay="1.2">
                     <a class="nav-link" href="{{ config('informations.youtube') }}">
                         <i class="fa-brands fa-youtube"></i> 
                     </a>
@@ -63,13 +63,13 @@
                     </div>
                 </div>
                 <div>
-                    <div class="btn pink-bg text-white text-nowrap d-none d-xl-block">Patient Care</div>
+                    <div class="btn custom-btn text-white text-nowrap d-none d-xl-block">Patient Care</div>
                 </div>
                 <div>
-                    <a href="/login" class="btn btn-primary text-nowrap d-none d-xl-block">Log In</a>
+                    <a href="/login" class="btn custom-btn text-nowrap d-none d-xl-block">Log In</a>
                 </div>
                 <div>
-                    <div class="btn btn-danger text-nowrap d-none d-xl-block animate__animated animate__headShake animate__delay-3s">Apply Online</div>
+                    <div class="btn custom-btn text-nowrap d-none d-xl-block animate__animated animate__headShake animate__delay-3s">Apply Online</div>
                 </div>
             </div>
         </div>
@@ -83,31 +83,32 @@
                 <ul class="navbar-nav d-flex flex-row gap-2 flex-nowrap text-nowrap">
 
                     <li class="nav-item">
-                        <a class="nav-link p-2" href="/education">Home</a>
+                        <a class="nav-link p-2 @yield('home-active')" href="/education">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link p-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link p-2 dropdown-toggle @yield('about-sub-active')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             About
                         </a>
                         <ul class="dropdown-menu position-absolute">
-                            <li><a class="dropdown-item" href="/education/about/about">About</a></li>
-                            <li><a class="dropdown-item" href="/education/about/administrations">Administration</a></li>
-                            <li><a class="dropdown-item" href="/education/about/office-stuff">Office Stuff</a></li>
-                            <li><a class="dropdown-item" href="/education/about/affiliation">Affiliation</a></li>
-                            <li><a class="dropdown-item" href="/education/about/chairmans-message">Chairman's Message</a></li>
-                            <li><a class="dropdown-item" href="/education/about/directors-message">Director's Message</a></li>
-                            <li><a class="dropdown-item" href="/education/about/principals-message">Principal's Message</a></li>
+                            <li><a class="dropdown-item @yield('about-active')" href="/education/about/about">About</a></li>
+                            <li><a class="dropdown-item @yield('facilities-active')" href="/education/about/facilities">Facilities</a></li>
+                            <li><a class="dropdown-item @yield('administrations-active')" href="/education/about/administrations">Administration</a></li>
+                            <li><a class="dropdown-item @yield('office-stuff-active')" href="/education/about/office-stuff">Office Stuff</a></li>
+                            <li><a class="dropdown-item @yield('affiliation-active')" href="/education/about/affiliation">Affiliation</a></li>
+                            <li><a class="dropdown-item @yield('chairmans-message-active')" href="/education/about/chairmans-message">Chairman's Message</a></li>
+                            <li><a class="dropdown-item @yield('directors-message-active')" href="/education/about/directors-message">Director's Message</a></li>
+                            <li><a class="dropdown-item @yield('principals-message-active')" href="/education/about/principals-message">Principal's Message</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link p-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link p-2 dropdown-toggle @yield('bds-course-active')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             BDS Course
                         </a>
                         <ul class="dropdown-menu position-absolute">
-                            <li><a class="dropdown-item" href="/education/bds-course/1st-phase">1st Phase</a></li>
-                            <li><a class="dropdown-item" href="/education/bds-course/2nd-phase">2nd Phase</a></li>
-                            <li><a class="dropdown-item" href="/education/bds-course/3rd-phase">3rd Phase</a></li>
-                            <li><a class="dropdown-item" href="/education/bds-course/4th-phase">4th Phase</a></li>
+                            <li><a class="dropdown-item @yield('1st-phase-active')" href="/education/bds-course/1st-phase">1st Phase</a></li>
+                            <li><a class="dropdown-item @yield('2nd-phase-active')" href="/education/bds-course/2nd-phase">2nd Phase</a></li>
+                            <li><a class="dropdown-item @yield('3rd-phase-active')" href="/education/bds-course/3rd-phase">3rd Phase</a></li>
+                            <li><a class="dropdown-item @yield('4th-phase-active')" href="/education/bds-course/4th-phase">4th Phase</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -115,9 +116,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+            <div class="offcanvas offcanvas-end light-bg" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header px-4">
+                    <h5 class="offcanvas-title deep-color" id="offcanvasNavbarLabel">Menu</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -125,14 +126,14 @@
                     <!-- Menu items -->
                     <ul class="navbar-nav text-nowrap">
                         <li class="nav-item dropdown">
-                            <a class="nav-link p-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link p-2 dropdown-toggle @yield('departments-active')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Departments
                             </a>
                             <ul class="dropdown-menu">
                                 @foreach($departmentNames as $phase => $data)
                                 <li><a class="dropdown-item disabled" href="#">{{ $data['phase_label'] }} Phase</a></li>
                                 @foreach($data['departments'] as $department)
-                                <li><a class="dropdown-item" href="/education/departments/{{ $department->slug }}">{{ $department->name }}</a></li>
+                                <li><a class="dropdown-item @yield($department->slug . '-active')" href="/education/departments/{{ $department->slug }}">{{ $department->name }}</a></li>
                                 @endforeach
                                 @if (!$loop->last) <!-- Check if it's not the last phase -->
                                 <li>
@@ -145,19 +146,19 @@
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link p-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link p-2 dropdown-toggle @yield('admission-active')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Admission
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/education/admission/local-students">Local Students</a></li>
-                                <li><a class="dropdown-item" href="/education/admission/international-students">International Students</a></li>
+                                <li><a class="dropdown-item @yield('local-students-active')" href="/education/admission/local-students">Local Students</a></li>
+                                <li><a class="dropdown-item @yield('international-students-active')" href="/education/admission/international-students">International Students</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="/education/albums">Student Life</a>
+                            <a class="nav-link p-2 @yield('albums-active')" href="/education/albums">Student Life</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="/education/news">Notice</a>
+                            <a class="nav-link p-2 @yield('notice-active')" href="/education/news">Notice</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link p-2" href="#">Career</a>
@@ -169,13 +170,13 @@
                     <div class="d-flex flex-column gap-2">
 
                         <div>
-                            <div class="btn pink-bg text-white text-nowrap d-block d-xl-none">Patient Care</div>
+                            <div class="btn custom-btn text-white text-nowrap d-block d-xl-none">Patient Care</div>
                         </div>
                         <div>
-                            <a href="/login" class="btn btn-primary text-nowrap d-block d-xl-none">Log In</a>
+                            <a href="/login" class="btn custom-btn text-nowrap d-block d-xl-none">Log In</a>
                         </div>
                         <div>
-                            <div class="btn btn-danger text-nowrap d-block d-xl-none animate__animated animate__headShake animate__delay-3s">Apply Online</div>
+                            <div class="btn custom-btn text-nowrap d-block d-xl-none animate__animated animate__headShake animate__delay-3s">Apply Online</div>
                         </div>
                     </div>
 

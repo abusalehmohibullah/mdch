@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('page-title', 'MDCH: Administrations')
+@section('about-sub-active', 'active')
+@section('administrations-active', 'active')
+
 @section('content')
 
 <div class="container my-3">

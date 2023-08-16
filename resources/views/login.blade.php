@@ -1,5 +1,8 @@
 @extends('layout')
 
+@section('page-title', 'MDCH: Login')
+@section('login-active', 'active')
+
 @section('content')
 
 <div class="container shadow-sm bg-white mb-3 position-relative">

@@ -2,6 +2,9 @@
 
 @extends('layout')
 
+@section('page_title', 'Mandy Dental College and Hospital')
+@section('home-active', 'active')
+
 @section('content')
 
 <!-- Video Section -->
@@ -18,12 +21,12 @@
 <section>
     <div class="container notice-container light-bg d-flex my-3 p-0 shadow-sm animate-on-load animate__backInUp animate__delay-1s">
         <div class="title deep-bg d-flex align-items-center py-1 px-3">
-            <a href="{{ route('news.all') }}" class="text-decoration-none text-dark mini-text">Notice</a>
+            <a href="{{ route('news.all') }}" class="text-decoration-none light-color mini-text">Notice</a>
         </div>
 
         <ul class="d-flex align-items-center text-nowrap">
             @foreach($latestNews as $latestNewsData)
-            <li><a href="{{ route('news.preview', $latestNewsData->slug) }}" class="text-reset text-decoration-none mini-text">{{$latestNewsData->heading}}</a></li>
+            <li><a href="{{ route('news.preview', $latestNewsData->slug) }}" class="hover-deep text-reset text-decoration-none mini-text">{{$latestNewsData->heading}}</a></li>
             @endforeach
         </ul>
 
@@ -47,7 +50,7 @@
                     <h3 class="card-title deep-color large-text">{{$about->title}}</h3>
                     <p class="card-text mini-text">{!! nl2br(e($about->content)) !!}</p>
                 </div>
-                <a href="/education/about/{{$about->slug}}" class="btn btn-primary read-more-btn">Read More</a>
+                <a href="/education/about/{{$about->slug}}" class="btn custom-btn read-more-btn">Read More</a>
             </div>
 
         </div>
@@ -74,6 +77,9 @@
                             @foreach($facilitiesImages as $key => $image)
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2500">
                                 <img src="{{ asset('storage/' . $image->path) }}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block semitrans-bg">
+                                    <h5>{{ $image->caption }}</h5>
+                                </div>
                             </div>
                             @endforeach
                         </div>
@@ -96,7 +102,7 @@
                     <h3 class="card-title deep-color large-text">{{$facilities->title}}</h3>
                     <p class="card-text mini-text">{!! nl2br(e($facilities->content)) !!}</p>
                 </div>
-                <a href="/education/about/{{$facilities->slug}}" class="btn btn-primary read-more-btn">Read More</a>
+                <a href="/education/about/{{$facilities->slug}}" class="btn custom-btn read-more-btn">Read More</a>
             </div>
         </div>
     </div>
@@ -115,7 +121,7 @@
                         {{$faqsData->question}}
                     </button>
                 </h2>
-                <div id="flush-collapse-{{ $loop->iteration }}" class="accordion-collapse collapse" aria-labelledby="flush-heading-{{ $loop->iteration }}" data-bs-parent="#faqs-accordion">
+                <div id="flush-collapse-{{ $loop->iteration }}" class="accordion-collapse collapse bg-light" aria-labelledby="flush-heading-{{ $loop->iteration }}" data-bs-parent="#faqs-accordion">
                     <div class="accordion-body mini-text">{{$faqsData->answer}}</div>
                 </div>
             </div>
@@ -206,7 +212,7 @@
                     </div>
                     <div class="card-body p-3 text-container text-justify animate-on-scroll" data-animation="fadeInUp" data-animation-delay='{{ $delay }}'>
                         <p class="card-text mini-text">{!! $messageData->content !!}</p>
-                        <a href="/education/about/{{$messageData->slug}}" class="btn btn-primary read-more-btn">Read More</a>
+                        <a href="/education/about/{{$messageData->slug}}" class="btn custom-btn read-more-btn">Read More</a>
                     </div>
                 </div>
             </div>
@@ -218,7 +224,7 @@
 
 <!-- advertisement Section -->
 <section id="advertisement-section">
-    <div class="container mb-3 p-0 shadow-sm">
+    <div class="container mb-3 p-0 shadow-sm animate-on-scroll animate__slow" data-animation="fadeIn">
         <div id="carouselExampleIndicators-2" class="carousel slide" data-bs-ride="carousel">
             @if(count($advertisements) > 1)
             <div class="carousel-indicators">
@@ -253,40 +259,74 @@
 <section id="albums-section">
     <div class="container mb-3 py-2 animate-on-scroll" data-animation="fadeIn">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-8 shadow-sm bg-white">
-                <div class="h3 p-2 deep-color large-text">Student's Life</div>
-                <div class="row g-0">
+            <div class="col-12 col-md-6 col-lg-8 shadow-sm bg-white pt-2">
+                <div class="h3 px-0 py-2 deep-color large-text">Student's Life</div>
+                <div class="row g-0 parent-container">
                     @foreach($albums as $albumsData)
                     @php
                     $id = $loop->index;
                     @endphp
-                    <div id="album-container-{{$id}}" class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3  mb-2" onclick="openAlbum(<?php echo $id ?>)">
+                    @if(isset($albumsData->media) && count($albumsData->media) > 0)
+                    <div id="album-container-{{$id}}" class="col-6 col-sm-4 col-md-6 col-lg-4 col-xl-4 col-xxl-3 child-container mb-2 animate-on-scroll" data-animation="fadeInUp" onclick="openAlbum(<?php echo $id ?>)">
                         <div class="d-flex align-items-center position-relative w-100">
 
-                            <div class="card m-2 w-100">
-                                <div class="show-first-child w-100">
+                            <div class="show-first-child card m-2 w-100 hover-deep position-relative">
+                                @foreach($albumsData->media as $mediaData)
+                                <a data-fancybox="album-{{$id}}" href="{{ asset('storage/' . $mediaData->path) }}" class="child stretched-link" data-caption="{{ $mediaData->caption }}"></a>
+                                @endforeach
+                                <div class="w-100">
 
-                                    @foreach($albumsData->media as $mediaData)
-                                    <a data-fancybox="album-{{$id}}" href="{{ asset('storage/' . $mediaData->path) }}" class="child w-100 ratio ratio-4x3 overflow-hidden">
-                                        <img src="{{ asset('storage/' . $mediaData->path) }}" />
-                                    </a>
-                                    @endforeach
+                                    <div class="w-100 ratio ratio-4x3 overflow-hidden">
+                                        <img src="{{ asset('storage/' . $albumsData->media[0]->path) }}" />
+                                    </div>
+
 
                                     <div class="card-body p-2">
                                         <div class="card-title m-0 text-truncate mini-text"><small>{{$albumsData->name}}</small></div>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
 
                     </div>
+                    @endif
                     @endforeach
+
+                    <div id="album-container" class="col-6 col-sm-4 col-md-6 col-lg-4 col-xl-4 col-xxl-3 mb-2 animate-on-scroll" data-animation="fadeInUp">
+                        <div class="d-flex align-items-center position-relative w-100">
+
+                            <div class="show-first-child card m-2 w-100 hover-deep position-relative">
+
+                                <a href="/education/albums" class="child stretched-link"></a>
+
+                                <div class="w-100">
+
+                                    <div class="w-100 ratio ratio-4x3 overflow-hidden position-relative">
+                                        <img src="{{ asset('assets/images/album.png') }}" />
+                                        <div class="h5 trans-bg position-absolute h-100 d-flex justify-content-center align-items-center">
+                                            See All
+                                        </div>
+                                    </div>
+
+
+                                    <div class="card-body p-2">
+                                        <div class="card-title m-0 text-truncate mini-text text-center"><small>More</small></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
 
             <div class="col-12 col-md-6 col-lg-4 p-0 ps-md-2">
-                <div class="notice-box shadow-sm bg-white p-3">
+                <div class="notice-box shadow-sm bg-white px-3 py-2 h-100">
                     <div class="d-flex jusify-content-center align-items-center">
                         <h3 class="alert-heading deep-color mt-2 large-text">MDCH News</h3>
                         <div class="ms-auto"><a href="{{ route('news.all') }}">See All</a></div>
@@ -296,7 +336,7 @@
                         <ul>
                             @foreach($news as $newsData)
                             <li class="animate-on-scroll" data-animation="fadeInDown">
-                                <a href="{{ route('news.preview', $newsData->slug) }}" class="text-reset text-decoration-none text-nowrap">
+                                <a href="{{ route('news.preview', $newsData->slug) }}" class="hover-deep text-reset text-decoration-none text-nowrap">
                                     <div class="text-truncate mini-text">
                                         {{$newsData->heading}}
                                     </div>
@@ -319,8 +359,8 @@
         <div class="fs-6">Service Hour (9:00 am - 2:30 pm - Saturday - Thursday)</div>
         <div class="row my-3">
             <div class="col-md-6 my-2">
-                <div class="d-flex align-items-start justify-content-start p-4 gap-3 semitrans-bg shadow-sm h-100">
-                    <div class="btn btn-primary deep-bg border-0 rounded-circle py-2 d-inline"><i class="fa-solid fa-phone-volume animate__animated animate__swing animate__infinite infinite"></i></div>
+                <div class="d-flex align-items-start justify-content-start p-4 gap-3 light-bg shadow-sm h-100">
+                    <div class="btn deep-bg border-0 rounded-circle py-2 d-inline text-white"><i class="fa-solid fa-phone-volume animate__animated animate__swing animate__infinite infinite"></i></div>
                     <div class="d-inline text-start">
                         <div class="h2 deep-color fw-semibold d-inline">Recieption</div>
                         <div class="fs-4">{{ config('informations.recieption') }}</div>
@@ -328,8 +368,8 @@
                 </div>
             </div>
             <div class="col-md-6 my-2">
-                <div class="d-flex align-items-start justify-content-start p-4 gap-3 semitrans-bg shadow-sm h-100">
-                    <div class="btn btn-primary deep-bg border-0 rounded-circle py-1 d-inline fs-5 fw-bold"><i class="fa-solid fa-mobile-screen animate__animated animate__heartBeat animate__infinite	infinite"></i></div>
+                <div class="d-flex align-items-start justify-content-start p-4 gap-3 light-bg shadow-sm h-100">
+                    <div class="btn deep-bg border-0 rounded-circle py-1 d-inline text-white fs-5 fw-bold"><i class="fa-solid fa-mobile-screen animate__animated animate__heartBeat animate__infinite	infinite"></i></div>
                     <div class="d-inline text-start">
                         <div class="h2 deep-color fw-semibold d-inline">Patient Query</div>
                         <div class="fs-5">{{ config('informations.opd-in-charge') }}</div>
@@ -339,7 +379,7 @@
                 </div>
             </div>
         </div>
-        <div class="btn btn-primary deep-bg border-0">Read Me <i class="fa-solid fa-arrow-right"></i></div>
+        <div class="btn custom-btn deep-bg border-0">Read More</div>
     </div>
 </section>
 

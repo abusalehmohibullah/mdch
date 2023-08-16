@@ -1,5 +1,8 @@
 @extends('layout')
 
+@section('page_title', 'MDCH: Notices')
+@section('notice-active', 'active')
+
 @section('content')
 
 <div class="container my-3">

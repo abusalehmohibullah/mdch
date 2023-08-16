@@ -1,4 +1,7 @@
-@extends('layout') <!-- Assuming you have a layout blade file -->
+@extends('layout') 
+
+@section('page_title', 'MDCH: Notice Details')
+@section('notice-active', 'active')
 
 @section('content')
     <div class="container bg-white mt-3">

@@ -54,6 +54,8 @@ Route::prefix('education')->group(function () {
     Route::get('/about/affiliation', [HomeController::class, 'affiliation'])->name('affiliation');
 
     Route::get('/about/administrations', [HomeController::class, 'administrations'])->name('administrations');
+    
+    Route::get('/about/facilities', [HomeController::class, 'facilities'])->name('facilities');
 
     Route::get('/facilitiesImages', [HomeController::class, 'facilitiesImages'])->name('facilitiesImages');
 

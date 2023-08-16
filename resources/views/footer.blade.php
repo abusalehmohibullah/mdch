@@ -2,12 +2,13 @@
 
     <div class="container p-2">
         <div class="row">
-
-            <div class="col-8 col-lg-4">
-                <a class="navbar-brand fs-1 fw-semibold m-0" href="/">
-                    <img src="{{ asset('assets/images/logo.png') }}" class="brand-logo" alt="Logo" width="70px">
-                    MDCH
-                </a>
+            <div class="row col-md-12 col-lg-6">
+            
+                        <a class="navbar-brand fs-1 fw-semibold m-0" href="/">
+                            <img src="{{ asset('assets/images/logo.png') }}" class="brand-logo" alt="Logo" width="70px">
+                            MDCH
+                        </a>
+            <div class="col-8 col-lg-8">
 
                 <div class="h5 mt-3">Contact</div>
                 <div><small><strong>Address: </strong>{!! nl2br(e(config('informations.address'))) !!}</small></div>
@@ -17,24 +18,25 @@
                 <div class="follow">
                     <div class="h5 mt-3">Follow Us</div>
                     <div class="icon">
-                        <a class="btn p-1" href="{{ config('informations.facebook') }}"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a class="btn p-1" href="{{ config('informations.instagram') }}"><i class="fa-brands fa-instagram"></i></a>
-                        <a class="btn p-1" href="{{ config('informations.x') }}"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a class="btn p-1" href="{{ config('informations.linkedin') }}"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a class="btn p-1" href="{{ config('informations.youtube') }}"><i class="fa-brands fa-youtube"></i></a>
+                        <a class="btn p-1" href="{{ config('informations.facebook') }}"><i class="footer-link fa-brands fa-facebook-f"></i></a>
+                        <a class="btn p-1" href="{{ config('informations.instagram') }}"><i class="footer-link fa-brands fa-instagram"></i></a>
+                        <a class="btn p-1" href="{{ config('informations.x') }}"><i class="footer-link fa-brands fa-x-twitter"></i></a>
+                        <a class="btn p-1" href="{{ config('informations.linkedin') }}"><i class="footer-link fa-brands fa-linkedin-in"></i></a>
+                        <a class="btn p-1" href="{{ config('informations.youtube') }}"><i class="footer-link fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-4 col-lg-2">
+            <div class="col-4 col-lg-4">
                 <div class="h5 mt-3">About</div>
                 <div class="d-flex flex-column gap-2">
-                    <a class="text-reset text-decoration-none" href="#"><small>About Us</small></a>
-                    <a class="text-reset text-decoration-none" href="#"><small>Facilities</small></a>
-                    <a class="text-reset text-decoration-none" href="#"><small>Notices</small></a>
-                    <a class="text-reset text-decoration-none" href="#"><small>Career</small></a>
-                    <a class="text-reset text-decoration-none" href="#"><small>Contact Us</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="#"><small>About Us</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="#"><small>Facilities</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="#"><small>Notices</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="#"><small>Career</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="#"><small>Contact Us</small></a>
                 </div>
+            </div>
             </div>
 
             <div class="col-md-12 col-lg-6">

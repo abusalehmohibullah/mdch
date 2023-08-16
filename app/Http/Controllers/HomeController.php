@@ -26,9 +26,9 @@ class HomeController extends Controller
         $result['departments'] = Departments::where('status', 1)->get();
         $result['faqs'] = Faqs::where('status', 1)->get();
         $result['messages'] = Sections::where('section_key', 'messages')->get();
-        $result['news'] = News::where('status', 1)->orderBy('published_at', 'desc')->take(10)->get();
+        $result['news'] = News::where('status', 1)->orderBy('published_at', 'desc')->take(12)->get();
 
-        $result['albums'] = Albums::with('media')->orderBy('created_at', 'desc')->get();
+        $result['albums'] = Albums::with('media')->orderBy('created_at', 'desc')->take(11)->get();
 
         return view('education.home', $result);
         
@@ -55,6 +55,13 @@ class HomeController extends Controller
     {
         $departmentsData = Departments::where('slug', $slug)->with(['departmentsImages', 'faculties'])->firstOrFail();
         return view('education.departments', compact('departmentsData'));
+    }
+
+    public function facilities()
+    {
+        $facilitiesData = Sections::where('slug', 'facilities')->firstOrFail();
+        $facilitiesImages = FacilitiesImages::get();
+        return view('education.facilities', compact('facilitiesData', 'facilitiesImages'));
     }
     
 

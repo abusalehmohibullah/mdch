@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('page_title', 'MDCH: Affiliation')
+@section('about-sub-active', 'active')
+@section('affiliation-active', 'active')
+
 @section('content')
 
 
