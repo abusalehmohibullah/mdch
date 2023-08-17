@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\Informations;
+use App\Models\Admin\Informations;
 
 class InformationsServiceProvider extends ServiceProvider
 {

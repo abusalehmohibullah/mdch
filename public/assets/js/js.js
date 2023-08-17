@@ -47,21 +47,10 @@ window.onload = function () {
     $text.css('height', imageHeight + 'px');
     $text.css('display', 'block');
   });
-}
 
 
 
-$(document).ready(function () {
-
-  // Show the modal
-  $('#sectionModal').modal('show');
-
-
-});
-
-
-
-
+  
 const ul = document.querySelector(".notice-container ul");
 const container = document.querySelector(".notice-container");
 const ulWidth = ul.scrollWidth;
@@ -90,6 +79,21 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+}
+
+
+
+$(document).ready(function () {
+
+  // Show the modal
+  $('#sectionModal').modal('show');
+
+
+});
+
+
+
+
 
 
 

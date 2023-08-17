@@ -1,20 +1,20 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\SectionsController;
-use App\Http\Controllers\FacilitiesImagesController;
-use App\Http\Controllers\AdvertisementsController;
-use App\Http\Controllers\FaqsController;
-use App\Http\Controllers\DepartmentsController;
-use App\Http\Controllers\FacultiesController;
-use App\Http\Controllers\DepartmentsImagesController;
-use App\Http\Controllers\AdministrationsController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\AlbumsController;
-use App\Http\Controllers\MediaController;
-use App\Http\Controllers\InformationsController;
-use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\SectionsController;
+use App\Http\Controllers\Admin\FacilitiesImagesController;
+use App\Http\Controllers\Admin\AdvertisementsController;
+use App\Http\Controllers\Admin\FaqsController;
+use App\Http\Controllers\Admin\DepartmentsController;
+use App\Http\Controllers\Admin\FacultiesController;
+use App\Http\Controllers\Admin\DepartmentsImagesController;
+use App\Http\Controllers\Admin\AdministrationsController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\AlbumsController;
+use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\InformationsController;
+use App\Http\Controllers\Admin\CKEditorController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -54,7 +54,7 @@ Route::prefix('education')->group(function () {
     Route::get('/about/affiliation', [HomeController::class, 'affiliation'])->name('affiliation');
 
     Route::get('/about/administrations', [HomeController::class, 'administrations'])->name('administrations');
-    
+
     Route::get('/about/facilities', [HomeController::class, 'facilities'])->name('facilities');
 
     Route::get('/facilitiesImages', [HomeController::class, 'facilitiesImages'])->name('facilitiesImages');

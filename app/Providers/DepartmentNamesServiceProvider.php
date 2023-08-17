@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\Departments;
+use App\Models\Admin\Departments;
 use Illuminate\Support\Facades\View;
 
 class DepartmentNamesServiceProvider extends ServiceProvider

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Departments;
-use App\Models\Sections;
-use App\Models\FacilitiesImages;
-use App\Models\Faqs;
-use App\Models\News;
-use App\Models\Albums;
-use App\Models\Administrations;
-use App\Models\Advertisements;
-use App\Models\Media;
+use App\Models\Admin\Departments;
+use App\Models\Admin\Sections;
+use App\Models\Admin\FacilitiesImages;
+use App\Models\Admin\Faqs;
+use App\Models\Admin\News;
+use App\Models\Admin\Albums;
+use App\Models\Admin\Administrations;
+use App\Models\Admin\Advertisements;
+use App\Models\Admin\Media;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

@@ -43,7 +43,7 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="{{ asset('admin-assets/images/icon/logo.png') }}" alt="CoolAdmin">
+                                <img src="{{ asset('admin-assets/images/icon/logo.png') }}" alt="MDCH Admin" width="150px">
                             </a>
                         </div>
                         <div class="login-form">

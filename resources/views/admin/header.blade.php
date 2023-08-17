@@ -1,8 +1,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar2 js-right-sidebar ">
-            <div class="logo">
-                <a href="#">
-                    <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="Cool Admin" />
+            <div class="logo d-flex justify-content-center align-items-center">
+                <a href="/admin">
+                    <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="MDCH Admin" width="150px"/>
                 </a>
             </div>
             <div class="menu-sidebar2__content js-scrollbar1">
@@ -233,9 +233,9 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap2">
-                            <div class="logo d-block d-lg-none">
-                                <a href="#">
-                                    <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="CoolAdmin" />
+                            <div class="logo d-block d-lg-none py-3">
+                                <a href="/admin">
+                                    <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="MDCH Admin" width="150px"/>
                                 </a>
                             </div>
                             <div class="header-button2">
@@ -288,7 +288,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="header-button-item mr-0 js-sidebar-btn">
+                                <div class="d-lg-none header-button-item mr-0 js-sidebar-btn">
                                     <i class="zmdi zmdi-menu"></i>
                                 </div>
                             </div>
