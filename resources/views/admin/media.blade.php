@@ -1,5 +1,16 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('albums-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.albums'), 'title' => 'Albums'],
+    ['route' => route('admin.media', ['albumId' => $album->id]), 'title' => $album->name],
+];
+@endphp
+
 @section('content')
 
 <x-add-btn-component title="{{$album->name}}" route="{{$album->id}}/manage" icon="fas fa-plus" type="Add" />
@@ -22,7 +33,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right p-0">
                     <li>
-                        <a class="dropdown-item p-3" href="{{ route('media.manage', ['albumId' => $album->id, 'mediaId' => $mediaItem->id]) }}">Edit</a>
+                        <a class="dropdown-item p-3" href="{{ route('admin.media.manage', ['albumId' => $album->id, 'mediaId' => $mediaItem->id]) }}">Edit</a>
                     </li>
                     <li>
                         <div class="btn btn-outline-danger text-danger dropdown-item p-3" data-toggle="modal" data-target="#confirmDeleteModal{{ $mediaItem->id }}">Delete</div>
@@ -47,7 +58,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <form action="{{ route('media.delete', ['albumId' => $album->id, 'mediaId' => $mediaItem->id]) }}" method="POST">
+                    <form action="{{ route('admin.media.delete', ['albumId' => $album->id, 'mediaId' => $mediaItem->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

@@ -1,11 +1,23 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('albums-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.albums'), 'title' => 'Albums'],
+    ['route' => route('admin.media', ['albumId' => $albumData->id]), 'title' => $albumData->name],
+    ['route' => route('admin.media.manage', ['albumId' => $albumData, 'mediaId' => $mediaData->id]), 'title' => $mediaData->id ? 'Edit' : 'Add' ],
+];
+@endphp
+
 @section('content')
 
 
     <x-back-btn-component title="{{ $mediaData->id ? 'Edit' : 'Add' }} Image" />
 
-    <form action="{{ route('media.process', ['albumId' => $albumData->id, 'mediaId' => $mediaData->id ?? null]) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.media.process', ['albumId' => $albumData->id, 'mediaId' => $mediaData->id ?? null]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row form-group">
             <div class="col col-md-3">

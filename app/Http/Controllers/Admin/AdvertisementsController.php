@@ -99,7 +99,7 @@ class AdvertisementsController extends Controller
 
             // Save the model
             if ($model->save()) {
-                return redirect()->route('advertisements',  $advertisementsId)->with('success', $message);
+                return redirect()->route('admin.advertisements',  $advertisementsId)->with('success', $message);
             } else {
                 throw new \Exception('Failed to save news.');
             }
@@ -122,9 +122,9 @@ class AdvertisementsController extends Controller
             }
 
             $model->delete();
-            return redirect()->route('advertisements')->with('success', 'Image deleted successfully!');
+            return redirect()->route('admin.advertisements')->with('success', 'Image deleted successfully!');
         } else {
-            return redirect()->route('advertisements')->with('error', 'Failed to delete Image!');
+            return redirect()->route('admin.advertisements')->with('error', 'Failed to delete Image!');
         }
     }
 }

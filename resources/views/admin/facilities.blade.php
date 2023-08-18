@@ -1,5 +1,16 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('about-active', 'active')
+@section('facilities-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.section_key', ['section_key' => 'facilities']), 'title' => 'Facilities'],
+];
+@endphp
+
 @section('content')
 
 
@@ -14,6 +25,12 @@
         </div>
 
 </div>
+
+
+<div class="mb-5">
+    <a href="/admin/facilities/images" class="btn btn-info">Manage Images</a>
+</div>
+
 @endforeach
 
 @endsection

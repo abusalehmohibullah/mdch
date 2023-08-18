@@ -41,6 +41,8 @@
 <body class="animsition">
 
     @include('admin/header') <!-- Include the header partial -->
+    
+    <x-breadcrumb :breadcrumbs="$breadcrumbs" />
 
     <main class="bg-white py-3">
 

@@ -1,5 +1,16 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('about-active', 'active')
+@section('affiliation-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.section_key', ['section_key' => 'affiliation']), 'title' => 'Affiliation'],
+];
+@endphp
+
 @section('content')
 
 <x-add-btn-component title="Affiliation" route="affiliation/manage" icon="fas fa-plus" type="Add" />
@@ -40,7 +51,7 @@
                 </td>
                 <td width="1%">
                     <div class="d-flex overview-wrap">
-                    <form action="{{ route('sections.status', $sectionsData->id) }}" method="POST">
+                    <form action="{{ route('admin.sections.status', $sectionsData->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <label class="switch switch-text switch-success">
@@ -71,7 +82,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                        <form action="{{ route('sections.delete', ['id' => $sectionsData->id]) }}" method="POST">
+                                        <form action="{{ route('admin.sections.delete', ['id' => $sectionsData->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>

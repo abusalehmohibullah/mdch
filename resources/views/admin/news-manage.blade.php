@@ -1,11 +1,22 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('news-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.news'), 'title' => 'News'],
+    ['route' => route('admin.news'), 'title' => $newsData->id ? 'Edit' : 'Add'],
+];
+@endphp
+
 @section('content')
 
 <x-back-btn-component title="{{ $newsData->id ? 'EDIT' : 'ADD' }} NEWS" />
 
 
-<form action="{{ route('news.process', $newsData->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ route('admin.news.process', $newsData->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
     @csrf
     <div class="row form-group">
         <div class="col col-md-3">

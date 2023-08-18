@@ -2,7 +2,7 @@
         <aside class="menu-sidebar2 js-right-sidebar ">
             <div class="logo d-flex justify-content-center align-items-center">
                 <a href="/admin">
-                    <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="MDCH Admin" width="150px"/>
+                    <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="MDCH Admin" width="150px" />
                 </a>
             </div>
             <div class="menu-sidebar2__content js-scrollbar1">
@@ -15,7 +15,7 @@
                 </div>
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active">
+                        <li class="@yield('dashboard-active')">
                             <a class="js-arrow" href="/admin/dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
@@ -29,7 +29,7 @@
                             <a href="#">
                                 <i class="fas fa-shopping-basket"></i>eCommerce</a>
                             </li> -->
-                        <li class="has-sub">
+                        <li class="has-sub @yield('contents-active')">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-chart-bar"></i>Contents
                                 <span class="arrow">
@@ -37,12 +37,12 @@
                                 </span>
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
+                                <li class="@yield('news-active')">
                                     <a href="/admin/news">
                                         <i class="fas fa-newspaper"></i>News</a>
                                 </li>
 
-                                <li class="has-sub">
+                                <li class="has-sub @yield('about-active')">
                                     <a class="js-arrow" href="#">
                                         <i class="fas fa-circle-info"></i>About
                                         <span class="arrow">
@@ -50,41 +50,41 @@
                                         </span>
                                     </a>
                                     <ul class="list-unstyled js-sub-list">
-                                        <li>
-                                            <a href="{{ route('section_key', 'about') }}">
+                                        <li class="@yield('about-sub-active')">
+                                            <a href="{{ route('admin.section_key', 'about') }}">
                                                 About</a>
                                         </li>
-                                        <li>
+                                        <li class="@yield('facilities-active')">
+                                            <a href="{{ route('admin.section_key', 'facilities') }}">
+                                                Our Facilities</a>
+                                        </li>
+                                        <li class="@yield('administrations-active')">
                                             <a href="/admin/administrations">
                                                 Administrations</a>
                                         </li>
-                                        <li>
-                                            <a href="{{ route('section_key', 'office-stuff') }}">
+                                        <li class="@yield('office-stuff-active')">
+                                            <a href="{{ route('admin.section_key', 'office-stuff') }}">
                                                 Office Stuff</a>
                                         </li>
-                                        <li>
-                                            <a href="{{ route('section_key', 'affiliation') }}">
+                                        <li class="@yield('affiliation-active')">
+                                            <a href="{{ route('admin.section_key', 'affiliation') }}">
                                                 Affiliation</a>
                                         </li>
-                                        <li>
-                                            <a href="{{ route('section_key', 'bds-course') }}">
-                                                BDS Course</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('section_key', 'messages') }}">
+                                        <li class="@yield('messages-active')">
+                                            <a href="{{ route('admin.section_key', 'messages') }}">
                                                 Messages</a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="{{ route('section_key', 'facilities') }}">
-                                        <i class="fas fa-rectangle-list"></i></i>Our Facilities</a>
+                                <li class="@yield('bds-course-active')">
+                                    <a href="{{ route('admin.section_key', 'bds-course') }}">
+                                    <i class="fas fa-rectangle-list"></i>BDS Course</a>
                                 </li>
-                                <li>
+                                <li class="@yield('departments-active')">
                                     <a href="/admin/departments">
                                         <i class="fas fa-building"></i>Departments</a>
                                 </li>
-                                <li>
+                                <li class="@yield('faqs-active')">
                                     <a href="/admin/faqs">
                                         <i class="fas fa-file-circle-question"></i>FAQs</a>
                                 </li>
@@ -93,15 +93,15 @@
                                         <i class="fas fa-image"></i>Image Box</a>
                                 </li> -->
 
-                                <li>
+                                <li class="@yield('advertisements-active')">
                                     <a href="/admin/advertisements">
                                         <i class="fas fa-rectangle-ad"></i>Ads</a>
                                 </li>
-                                <li>
+                                <li class="@yield('albums-active')">
                                     <a href="/admin/albums">
                                         <i class="fas fa-images"></i>Photo Album</a>
                                 </li>
-                                <li>
+                                <li class="@yield('admission-active')">
                                     <a href="/admin/admission">
                                         <i class="fas fa-graduation-cap"></i>Admission</a>
                                 </li>
@@ -128,7 +128,7 @@
                         </li> -->
                         <li>
                         </li>
-                        <li class="has-sub">
+                        <li class="has-sub @yield('setting-active')">
                             <a class="js-arrow" href="#">
                                 <i class="zmdi zmdi-settings"></i>Setting
                                 <span class="arrow">
@@ -136,7 +136,7 @@
                                 </span>
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
+                                <li class="@yield('informations-active')">
                                     <a href="/admin/settings/informations"></i>Informations</a>
                                 </li>
                             </ul>
@@ -235,7 +235,7 @@
                         <div class="header-wrap2">
                             <div class="logo d-block d-lg-none py-3">
                                 <a href="/admin">
-                                    <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="MDCH Admin" width="150px"/>
+                                    <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="MDCH Admin" width="150px" />
                                 </a>
                             </div>
                             <div class="header-button2">
@@ -297,19 +297,3 @@
                 </div>
             </header>
             <!-- END HEADER DESKTOP-->
-
-            <!-- BREADCRUMB-->
-            <section class="m-t-75">
-                <div class="section__content section__content--p30 p-0">
-
-                    <nav aria-label="breadcrumb bg-light">
-                        <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item" aria-current="page">faq</li>
-                            <li class="breadcrumb-item active" aria-current="page">manage</li>
-                        </ol>
-                    </nav>
-
-                </div>
-            </section>
-            <!-- END BREADCRUMB-->

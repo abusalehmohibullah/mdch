@@ -81,7 +81,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
 
     Route::prefix('admin')->group(function () {
 
-        Route::get('/dashboard', [AdminController::class, 'dashboard']);
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         // Route::get('/update_password', [AdminController::class, 'update_password']);
         Route::get('/logout', function () {
             session()->forget('ADMIN_LOGIN');
@@ -90,86 +90,77 @@ Route::group(['middleware' => 'admin_auth'], function () {
             return redirect('admin');
         });
 
-        Route::get('/{section_key}', [SectionsController::class, 'index'])->name('section_key')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course|admission');
+        Route::get('/{section_key}', [SectionsController::class, 'index'])->name('admin.section_key')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course|admission');
 
 
-        Route::get('/{section_key}/manage/{id?}', [SectionsController::class, 'manage'])->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course|admission');
-        Route::post('/{section_key}/process/{id?}', [SectionsController::class, 'process'])->name('sections.process')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course|admission');
+        Route::get('/{section_key}/manage/{id?}', [SectionsController::class, 'manage'])->name('admin.sections.manage')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course|admission');
+        Route::post('/{section_key}/process/{id?}', [SectionsController::class, 'process'])->name('admin.sections.process')->where('section_key', 'about|administration|office-stuff|affiliation|facilities|messages|bds-course|admission');
 
 
-        Route::put('/affiliation/status/{id}', [SectionsController::class, 'status'])->name('sections.status');
-        Route::delete('/affiliation/delete/{id}', [SectionsController::class, 'delete'])->name('sections.delete');
+        Route::put('/affiliation/status/{id}', [SectionsController::class, 'status'])->name('admin.sections.status');
+        Route::delete('/affiliation/delete/{id}', [SectionsController::class, 'delete'])->name('admin.sections.delete');
 
 
         Route::prefix('/facilities/images')->group(function () {
-            Route::get('/', [FacilitiesImagesController::class, 'index'])->name('facilitiesImages');
-            Route::get('/manage/{id?}', [FacilitiesImagesController::class, 'manage'])->name('facilitiesImages.manage');
-            Route::post('/process/{id?}', [FacilitiesImagesController::class, 'process'])->name('facilitiesImages.process');
-            Route::delete('/delete/{id?}', [FacilitiesImagesController::class, 'delete'])->name('facilitiesImages.delete');
+            Route::get('/', [FacilitiesImagesController::class, 'index'])->name('admin.facilitiesImages');
+            Route::get('/manage/{id?}', [FacilitiesImagesController::class, 'manage'])->name('admin.facilitiesImages.manage');
+            Route::post('/process/{id?}', [FacilitiesImagesController::class, 'process'])->name('admin.facilitiesImages.process');
+            Route::delete('/delete/{id?}', [FacilitiesImagesController::class, 'delete'])->name('admin.facilitiesImages.delete');
         });
 
         Route::prefix('/advertisements')->group(function () {
-            Route::get('/', [AdvertisementsController::class, 'index'])->name('advertisements');
-            Route::get('/manage/{id?}', [AdvertisementsController::class, 'manage'])->name('advertisements.manage');
-            Route::post('/process/{id?}', [AdvertisementsController::class, 'process'])->name('advertisements.process');
-            Route::delete('/delete/{id?}', [AdvertisementsController::class, 'delete'])->name('advertisements.delete');
+            Route::get('/', [AdvertisementsController::class, 'index'])->name('admin.advertisements');
+            Route::get('/manage/{id?}', [AdvertisementsController::class, 'manage'])->name('admin.advertisements.manage');
+            Route::post('/process/{id?}', [AdvertisementsController::class, 'process'])->name('admin.advertisements.process');
+            Route::delete('/delete/{id?}', [AdvertisementsController::class, 'delete'])->name('admin.advertisements.delete');
         });
 
         Route::prefix('faqs')->group(function () {
-            Route::get('/', [FaqsController::class, 'index'])->name('faqs');
-            Route::get('/manage/{id?}', [FaqsController::class, 'manage']);
-            Route::post('/process/{id?}', [FaqsController::class, 'process'])->name('faqs.process');
-            Route::put('/status/{id}', [FaqsController::class, 'status'])->name('faqs.status');
-            Route::delete('/delete/{id}', [FaqsController::class, 'delete'])->name('faqs.delete');
+            Route::get('/', [FaqsController::class, 'index'])->name('admin.faqs');
+            Route::get('/manage/{id?}', [FaqsController::class, 'manage'])->name('admin.faqs.manage');
+            Route::post('/process/{id?}', [FaqsController::class, 'process'])->name('admin.faqs.process');
+            Route::put('/status/{id}', [FaqsController::class, 'status'])->name('admin.faqs.status');
+            Route::delete('/delete/{id}', [FaqsController::class, 'delete'])->name('admin.faqs.delete');
         });
 
         Route::prefix('departments')->group(function () {
-            Route::get('/', [DepartmentsController::class, 'index'])->name('departments');
-            Route::get('/manage/{id?}', [DepartmentsController::class, 'manage'])->name('departments.manage');
-            Route::post('/process/{id?}', [DepartmentsController::class, 'process'])->name('departments.process');
-            Route::put('/status/{id}', [DepartmentsController::class, 'status'])->name('departments.status');
-            Route::delete('/delete/{id}', [DepartmentsController::class, 'delete'])->name('departments.delete');
+            Route::get('/', [DepartmentsController::class, 'index'])->name('admin.departments');
+            Route::get('/manage/{id?}', [DepartmentsController::class, 'manage'])->name('admin.departments.manage');
+            Route::post('/process/{id?}', [DepartmentsController::class, 'process'])->name('admin.departments.process');
+            Route::put('/status/{id}', [DepartmentsController::class, 'status'])->name('admin.departments.status');
+            Route::delete('/delete/{id}', [DepartmentsController::class, 'delete'])->name('admin.departments.delete');
 
-            Route::get('/{departmentsId}/faculties', [FacultiesController::class, 'index'])->name('faculties');
-            Route::get('/{departmentsId}/faculties/manage/{facultiesId?}', [FacultiesController::class, 'manage'])->where(['departmentsId' => '\d+', 'facultiesId' => '\d*'])->name('faculties.manage');
-            Route::post('/{departmentsId}/faculties/process/{facultiesId?}', [FacultiesController::class, 'process'])->name('faculties.process');
-            Route::put('/{departmentsId}/faculties/status/{facultiesId?}', [FacultiesController::class, 'status'])->where(['departmentsId' => '\d+', 'facultiesId' => '\d*'])->name('faculties.status');
-            Route::delete('/{departmentsId}/faculties/delete/{facultiesId?}', [FacultiesController::class, 'delete'])->name('faculties.delete');
+            Route::get('/{departmentsId}/faculties', [FacultiesController::class, 'index'])->name('admin.faculties');
+            Route::get('/{departmentsId}/faculties/manage/{facultiesId?}', [FacultiesController::class, 'manage'])->where(['departmentsId' => '\d+', 'facultiesId' => '\d*'])->name('admin.faculties.manage');
+            Route::post('/{departmentsId}/faculties/process/{facultiesId?}', [FacultiesController::class, 'process'])->name('admin.faculties.process');
+            Route::put('/{departmentsId}/faculties/status/{facultiesId?}', [FacultiesController::class, 'status'])->where(['departmentsId' => '\d+', 'facultiesId' => '\d*'])->name('admin.faculties.status');
+            Route::delete('/{departmentsId}/faculties/delete/{facultiesId?}', [FacultiesController::class, 'delete'])->name('admin.faculties.delete');
 
-            Route::get('/{departmentsId?}/images', [DepartmentsImagesController::class, 'index'])->where(['departmentsId' => '\d+'])->name('departmentsImages');
-            Route::get('/{departmentsId?}/images/manage/{departmentsImagesId?}', [DepartmentsImagesController::class, 'manage'])->where(['departmentsId' => '\d+', 'departmentsImagesId' => '\d*'])->name('departmentsImages.manage');
-            Route::post('/{departmentsId}/images/process/{departmentsImagesId?}', [DepartmentsImagesController::class, 'process'])->name('departmentsImages.process');
-            Route::delete('/{departmentsId}/images/delete/{departmentsImagesId}', [DepartmentsImagesController::class, 'delete'])->name('departmentsImages.delete');
+            Route::get('/{departmentsId?}/images', [DepartmentsImagesController::class, 'index'])->where(['departmentsId' => '\d+'])->name('admin.departmentsImages');
+            Route::get('/{departmentsId?}/images/manage/{departmentsImagesId?}', [DepartmentsImagesController::class, 'manage'])->where(['departmentsId' => '\d+', 'departmentsImagesId' => '\d*'])->name('admin.departmentsImages.manage');
+            Route::post('/{departmentsId}/images/process/{departmentsImagesId?}', [DepartmentsImagesController::class, 'process'])->name('admin.departmentsImages.process');
+            Route::delete('/{departmentsId}/images/delete/{departmentsImagesId}', [DepartmentsImagesController::class, 'delete'])->name('admin.departmentsImages.delete');
         });
 
         Route::prefix('administrations')->group(function () {
-            Route::get('/', [AdministrationsController::class, 'index'])->name('administrations');
-            Route::get('/manage/{id?}', [AdministrationsController::class, 'manage']);
-            Route::post('/process/{id?}', [AdministrationsController::class, 'process'])->name('administrations.process');
-            Route::put('/status/{id}', [AdministrationsController::class, 'status'])->name('administrations.status');
-            Route::delete('/delete/{id}', [AdministrationsController::class, 'delete'])->name('administrations.delete');
-        });
-
-
-        Route::get('/image-box', function () {
-            return view('admin.image-box');
-        });
-
-        Route::get('/ads', function () {
-            return view('admin.ads');
+            Route::get('/', [AdministrationsController::class, 'index'])->name('admin.administrations');
+            Route::get('/manage/{id?}', [AdministrationsController::class, 'manage'])->name('admin.administrations.manage');
+            Route::post('/process/{id?}', [AdministrationsController::class, 'process'])->name('admin.administrations.process');
+            Route::put('/status/{id}', [AdministrationsController::class, 'status'])->name('admin.administrations.status');
+            Route::delete('/delete/{id}', [AdministrationsController::class, 'delete'])->name('admin.administrations.delete');
         });
 
 
         Route::prefix('albums')->group(function () {
-            Route::get('/', [AlbumsController::class, 'index'])->name('albums');
-            Route::get('/manage/{id?}', [AlbumsController::class, 'manage'])->name('albums.manage');
-            Route::post('/process/{id?}', [AlbumsController::class, 'process'])->name('albums.process');
-            Route::delete('/delete/{id}', [AlbumsController::class, 'delete'])->name('albums.delete');
+            Route::get('/', [AlbumsController::class, 'index'])->name('admin.albums');
+            Route::get('/manage/{id?}', [AlbumsController::class, 'manage'])->name('admin.albums.manage');
+            Route::post('/process/{id?}', [AlbumsController::class, 'process'])->name('admin.albums.process');
+            Route::delete('/delete/{id}', [AlbumsController::class, 'delete'])->name('admin.albums.delete');
 
-            Route::get('/{albumId}', [MediaController::class, 'index'])->name('media');
-            Route::get('/{albumId}/manage/{mediaId?}', [MediaController::class, 'manage'])->where(['albumId' => '\d+', 'mediaId' => '\d*'])->name('media.manage');
-            Route::post('/{albumId}/process/{mediaId?}', [MediaController::class, 'process'])->name('media.process');
-            Route::delete('/{albumId}/delete/{mediaId?}', [MediaController::class, 'delete'])->name('media.delete');
+            Route::get('/{albumId}', [MediaController::class, 'index'])->name('admin.media');
+            Route::get('/{albumId}/manage/{mediaId?}', [MediaController::class, 'manage'])->where(['albumId' => '\d+', 'mediaId' => '\d*'])->name('admin.media.manage');
+            Route::post('/{albumId}/process/{mediaId?}', [MediaController::class, 'process'])->name('admin.media.process');
+            Route::delete('/{albumId}/delete/{mediaId?}', [MediaController::class, 'delete'])->name('admin.media.delete');
         });
 
         Route::get('/admission', function () {
@@ -179,20 +170,20 @@ Route::group(['middleware' => 'admin_auth'], function () {
         Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
         Route::prefix('news')->group(function () {
-            Route::get('/', [NewsController::class, 'index'])->name('news');
-            Route::get('/manage/{id?}', [NewsController::class, 'manage']);
-            Route::post('/process/{id?}', [NewsController::class, 'process'])->name('news.process');
-            Route::put('/status/{id}', [NewsController::class, 'status'])->name('news.status');
-            Route::delete('/delete/{id}', [NewsController::class, 'delete'])->name('news.delete');
-            Route::get('/download/{id}', [NewsController::class, 'download'])->name('news.download');
+            Route::get('/', [NewsController::class, 'index'])->name('admin.news');
+            Route::get('/manage/{id?}', [NewsController::class, 'manage'])->name('admin.news.manage');
+            Route::post('/process/{id?}', [NewsController::class, 'process'])->name('admin.news.process');
+            Route::put('/status/{id}', [NewsController::class, 'status'])->name('admin.news.status');
+            Route::delete('/delete/{id}', [NewsController::class, 'delete'])->name('admin.news.delete');
+            Route::get('/download/{id}', [NewsController::class, 'download'])->name('admin.news.download');
         });
 
 
         Route::prefix('settings')->group(function () {
             Route::prefix('informations')->group(function () {
-                Route::get('/', [InformationsController::class, 'index'])->name('informations');
-                Route::get('/manage/{id?}', [InformationsController::class, 'manage']);
-                Route::post('/process/{id?}', [InformationsController::class, 'process'])->name('informations.process');
+                Route::get('/', [InformationsController::class, 'index'])->name('admin.informations');
+                Route::get('/manage/{id?}', [InformationsController::class, 'manage'])->name('admin.informations.manage');
+                Route::post('/process/{id?}', [InformationsController::class, 'process'])->name('admin.informations.process');
             });
         });
     });

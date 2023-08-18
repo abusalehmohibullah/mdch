@@ -1,5 +1,15 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('departments-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.departments'), 'title' => 'Departments'],
+];
+@endphp
+
 @section('content')
 
 
@@ -39,7 +49,7 @@
                 </td>
                 <td width="1%">
                     <div class="d-flex overview-wrap">
-                        <form action="{{ route('departments.status', $departmentsData->id) }}" method="POST">
+                        <form action="{{ route('admin.departments.status', $departmentsData->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <label class="switch switch-text switch-success">
@@ -70,7 +80,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                        <form action="{{ route('departments.delete', ['id' => $departmentsData->id]) }}" method="POST">
+                                        <form action="{{ route('admin.departments.delete', ['id' => $departmentsData->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -89,7 +99,7 @@
 </div>
 <hr class="mt-0">
 <div class="d-flex justify-content-between overview-wrap">
-    <form action="{{ route('departments') }}" method="GET">
+    <form action="{{ route('admin.departments') }}" method="GET">
         <label for="perPage">Show Per Page:</label>
         <select name="perPage" id="perPage" onchange="this.form.submit()">
             <option value="10" {{ request()->input('perPage') == 10 ? 'selected' : '' }}>10</option>

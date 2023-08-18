@@ -1,5 +1,15 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('news-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.news'), 'title' => 'News'],
+];
+@endphp
+
 @section('content')
 
 
@@ -50,7 +60,7 @@
                     <div class="table-data__info d-flex justify-content-center align-items-center">
                         @if ($newsData->attachment)
                         <a href="{{ asset('storage/' . $newsData->attachment) }}" target="_blank"><i class="fa-solid fa-eye fa-lg p-2 text-dark"></i></a>
-                        <a href="{{ route('news.download', $newsData->id) }}"><i class="fa-solid fa-download fa-lg p-2 text-dark"></i></a>
+                        <a href="{{ route('admin.news.download', $newsData->id) }}"><i class="fa-solid fa-download fa-lg p-2 text-dark"></i></a>
                         @else
                         -
                         @endif
@@ -59,7 +69,7 @@
                 </td>
                 <td width="1%">
                     <div class="d-flex overview-wrap">
-                        <form action="{{ route('news.status', $newsData->id) }}" method="POST">
+                        <form action="{{ route('admin.news.status', $newsData->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <label class="switch switch-text switch-success">
@@ -90,7 +100,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                        <form action="{{ route('news.delete', ['id' => $newsData->id]) }}" method="POST">
+                                        <form action="{{ route('admin.news.delete', ['id' => $newsData->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -109,7 +119,7 @@
 </div>
 <hr class="mt-0">
 <div class="d-flex justify-content-between overview-wrap">
-    <form action="{{ route('news') }}" method="GET">
+    <form action="{{ route('admin.news') }}" method="GET">
         <label for="perPage">Show Per Page:</label>
         <select name="perPage" id="perPage" onchange="this.form.submit()">
             <option value="10" {{ request()->input('perPage') == 10 ? 'selected' : '' }}>10</option>

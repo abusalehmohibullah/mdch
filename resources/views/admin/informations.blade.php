@@ -1,5 +1,15 @@
 @extends('admin/layout')
 
+@section('setting-active', 'active')
+@section('informations-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.informations'), 'title' => 'Informations'],
+];
+@endphp
+
 @section('content')
 
 

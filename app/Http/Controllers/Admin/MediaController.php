@@ -123,9 +123,9 @@ class MediaController extends Controller
             }
 
             $model->delete();
-            return redirect()->route('media',  $albumId)->with('success', 'Image deleted successfully!');
+            return redirect()->route('admin.media',  $albumId)->with('success', 'Image deleted successfully!');
         } else {
-            return redirect()->route('media',  $albumId)->with('error', 'Failed to delete Image!');
+            return redirect()->route('admin.media',  $albumId)->with('error', 'Failed to delete Image!');
         }
     }
 }

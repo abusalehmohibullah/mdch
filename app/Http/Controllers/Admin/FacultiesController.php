@@ -120,7 +120,7 @@ class FacultiesController extends Controller
 
             // Save the model
             if ($departments->faculties()->save($model)) {
-                return redirect()->route('faculties',  $departmentsId)->with('success', $message);
+                return redirect()->route('admin.faculties',  $departmentsId)->with('success', $message);
             } else {
                 throw new \Exception('Failed to save Faculty.');
             }
@@ -152,7 +152,7 @@ class FacultiesController extends Controller
         }
 
         if ($model->save()) {
-            return redirect()->route('faculties',  $departmentsId)->with('success', $message);
+            return redirect()->route('admin.faculties',  $departmentsId)->with('success', $message);
         } else {
             return redirect('admin/faculties')->with('error', 'Failed to update!');
         }
@@ -172,9 +172,9 @@ class FacultiesController extends Controller
             }
 
             $model->delete();
-            return redirect()->route('faculties',  $departmentsId)->with('success', 'Faculty deleted successfully!');
+            return redirect()->route('admin.faculties',  $departmentsId)->with('success', 'Faculty deleted successfully!');
         } else {
-            return redirect()->route('faculties',  $departmentsId)->with('error', 'Failed to delete Faculty!');
+            return redirect()->route('admin.faculties',  $departmentsId)->with('error', 'Failed to delete Faculty!');
         }
     }
 }

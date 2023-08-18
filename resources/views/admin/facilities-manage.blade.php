@@ -1,14 +1,22 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('about-active', 'active')
+@section('facilities-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.section_key', ['section_key' => 'facilities']), 'title' => 'Facilities'],
+    ['route' => route('admin.section_key', ['section_key' => 'facilities', 'slug' => $sectionsData->slug]), 'title' => $sectionsData->id ? 'Edit' : 'Add' ],
+];
+@endphp
+
 @section('content')
 
 <x-back-btn-component title="{{ $sectionsData->id ? 'Edit' : 'Add' }} Facilities" />
 
-<div class="mb-5">
-    <a href="/admin/facilities/images" class="btn btn-info">Manage Images</a>
-</div>
-
-<form action="{{ route('sections.process', ['section_key' => 'facilities', 'id' => $sectionsData->id]) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ route('admin.sections.process', ['section_key' => 'facilities', 'id' => $sectionsData->id]) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
 
     @csrf
     <div class="row form-group">

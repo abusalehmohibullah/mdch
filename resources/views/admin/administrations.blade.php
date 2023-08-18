@@ -1,5 +1,16 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('about-active', 'active')
+@section('administrations-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.section_key', ['section_key' => 'administrations']), 'title' => 'Administrations'],
+];
+@endphp
+
 @section('content')
 
 
@@ -46,7 +57,7 @@
                 </td>
                 <td width="1%">
                     <div class="d-flex overview-wrap">
-                        <form action="{{ route('administrations.status', $administrationsData->id) }}" method="POST">
+                        <form action="{{ route('admin.administrations.status', $administrationsData->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <label class="switch switch-text switch-success">
@@ -77,7 +88,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                        <form action="{{ route('administrations.delete', ['id' => $administrationsData->id]) }}" method="POST">
+                                        <form action="{{ route('admin.administrations.delete', ['id' => $administrationsData->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -96,7 +107,7 @@
 </div>
 <hr class="mt-0">
 <div class="d-flex justify-content-between overview-wrap">
-    <form action="{{ route('administrations') }}" method="GET">
+    <form action="{{ route('admin.administrations') }}" method="GET">
         <label for="perPage">Show Per Page:</label>
         <select name="perPage" id="perPage" onchange="this.form.submit()">
             <option value="10" {{ request()->input('perPage') == 10 ? 'selected' : '' }}>10</option>

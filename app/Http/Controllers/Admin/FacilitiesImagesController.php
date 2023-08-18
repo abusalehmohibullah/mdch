@@ -99,7 +99,7 @@ class FacilitiesImagesController extends Controller
 
             // Save the model
             if ($model->save()) {
-                return redirect()->route('facilitiesImages',  $facilitiesImagesId)->with('success', $message);
+                return redirect()->route('admin.facilitiesImages',  $facilitiesImagesId)->with('success', $message);
             } else {
                 throw new \Exception('Failed to save news.');
             }
@@ -122,9 +122,9 @@ class FacilitiesImagesController extends Controller
             }
 
             $model->delete();
-            return redirect()->route('facilitiesImages')->with('success', 'Image deleted successfully!');
+            return redirect()->route('admin.facilitiesImages')->with('success', 'Image deleted successfully!');
         } else {
-            return redirect()->route('facilitiesImages')->with('error', 'Failed to delete Image!');
+            return redirect()->route('admin.facilitiesImages')->with('error', 'Failed to delete Image!');
         }
     }
 }

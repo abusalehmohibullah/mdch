@@ -1,9 +1,20 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('departments-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.departments'), 'title' => 'Departments'],
+    ['route' => route('admin.departmentsImages'), 'title' => 'Images'],
+];
+@endphp
+
 @section('content')
 
 
-<x-add-btn-component title="Manage Images" route="{{ route('departmentsImages.manage', $departments->id) }}" icon="fas fa-plus" type="Add" />
+<x-add-btn-component title="Manage Images" route="{{ route('admin.departmentsImages.manage', $departments->id) }}" icon="fas fa-plus" type="Add" />
 
 
 
@@ -25,7 +36,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right p-0">
                     <li>
-                        <a class="dropdown-item p-3" href="{{ route('departmentsImages.manage', ['departmentsId' => $departments->id, 'departmentsImagesId' => $imagesItem->id]) }}">Edit</a>
+                        <a class="dropdown-item p-3" href="{{ route('admin.departmentsImages.manage', ['departmentsId' => $departments->id, 'departmentsImagesId' => $imagesItem->id]) }}">Edit</a>
                     </li>
                     <li>
                         <div class="btn btn-outline-danger text-danger dropdown-item p-3" data-toggle="modal" data-target="#confirmDeleteModal{{ $imagesItem->id }}">Delete</div>
@@ -50,7 +61,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <form action="{{ route('departmentsImages.delete', ['departmentsId' => $departments->id, 'departmentsImagesId' => $imagesItem->id]) }}" method="POST">
+                    <form action="{{ route('admin.departmentsImages.delete', ['departmentsId' => $departments->id, 'departmentsImagesId' => $imagesItem->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

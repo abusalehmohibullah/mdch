@@ -1,5 +1,15 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('albums-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.albums'), 'title' => 'Albums'],
+];
+@endphp
+
 @section('content')
 
 <x-add-btn-component title="Albums" route="albums/manage" icon="fas fa-plus" type="Add" />
@@ -9,7 +19,7 @@
 
     @foreach ($albums as $album)
     <div class="col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2 p-1">
-        <a href="{{ route('media', $album->id) }}" class="w-100">
+        <a href="{{ route('admin.media', $album->id) }}" class="w-100">
             <div class="d-flex align-items-center position-relative">
                 <div class="d-flex justify-content-center position-relative">
                     <div class="card m-2 mb-0">
@@ -29,10 +39,10 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right p-0">
                     <li>
-                        <a class="dropdown-item p-3" href="{{ route('media', $album->id) }}">Open</a>
+                        <a class="dropdown-item p-3" href="{{ route('admin.media', $album->id) }}">Open</a>
                     </li>
                     <li>
-                        <a class="dropdown-item p-3" href="{{ route('albums.manage', $album->id) }}">Edit</a>
+                        <a class="dropdown-item p-3" href="{{ route('admin.albums.manage', $album->id) }}">Edit</a>
                     </li>
                     <li>
                         <div class="btn btn-outline-danger text-danger dropdown-item p-3" data-toggle="modal" data-target="#confirmDeleteModal{{ $album->id }}">Delete</div>
@@ -57,7 +67,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <form action="{{ route('albums.delete', ['id' => $album->id]) }}" method="POST">
+                    <form action="{{ route('admin.albums.delete', ['id' => $album->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

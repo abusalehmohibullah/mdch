@@ -104,7 +104,7 @@ class DepartmentsImagesController extends Controller
 
             // Save the model
             if ($departments->departmentsImages()->save($model)) {
-                return redirect()->route('departmentsImages',  $departmentsId)->with('success', $message);
+                return redirect()->route('admin.departmentsImages',  $departmentsId)->with('success', $message);
             } else {
                 throw new \Exception('Failed to save news.');
             }
@@ -127,9 +127,9 @@ class DepartmentsImagesController extends Controller
             }
 
             $model->delete();
-            return redirect()->route('departmentsImages',  $departmentsId)->with('success', 'Image deleted successfully!');
+            return redirect()->route('admin.departmentsImages',  $departmentsId)->with('success', 'Image deleted successfully!');
         } else {
-            return redirect()->route('departmentsImages',  $departmentsId)->with('error', 'Failed to delete Image!');
+            return redirect()->route('admin.departmentsImages',  $departmentsId)->with('error', 'Failed to delete Image!');
         }
     }
 }

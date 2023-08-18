@@ -1,5 +1,15 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('faqs-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.faqs'), 'title' => 'FAQs'],
+];
+@endphp
+
 @section('content')
 
 
@@ -30,7 +40,7 @@
                 </td>
                 <td width="1%">
                     <div class="d-flex overview-wrap">
-                    <form action="{{ route('faqs.status', $faqsData->id) }}" method="POST">
+                    <form action="{{ route('admin.faqs.status', $faqsData->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <label class="switch switch-text switch-success">
@@ -61,7 +71,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                        <form action="{{ route('faqs.delete', ['id' => $faqsData->id]) }}" method="POST">
+                                        <form action="{{ route('admin.faqs.delete', ['id' => $faqsData->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -80,7 +90,7 @@
 </div>
 <hr class="mt-0">
 <div class="d-flex justify-content-between overview-wrap">
-    <form action="{{ route('faqs') }}" method="GET">
+    <form action="{{ route('admin.faqs') }}" method="GET">
         <label for="perPage">Show Per Page:</label>
         <select name="perPage" id="perPage" onchange="this.form.submit()">
             <option value="10" {{ request()->input('perPage') == 10 ? 'selected' : '' }}>10</option>

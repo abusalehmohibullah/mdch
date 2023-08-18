@@ -1,9 +1,19 @@
 @extends('admin/layout')
 
+@section('contents-active', 'active')
+@section('advertisements-active', 'active')
+
+@php
+$breadcrumbs = [
+    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+    ['route' => route('admin.advertisements'), 'title' => 'Advertisements'],
+];
+@endphp
+
 @section('content')
 
 
-<x-add-btn-component title="Manage Ads" route="{{ route('advertisements.manage') }}" icon="fas fa-plus" type="Add" />
+<x-add-btn-component title="Manage Ads" route="{{ route('admin.advertisements.manage') }}" icon="fas fa-plus" type="Add" />
 
 
 
@@ -25,7 +35,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right p-0">
                     <li>
-                        <a class="dropdown-item p-3" href="{{ route('advertisements.manage', $imagesItem->id) }}">Edit</a>
+                        <a class="dropdown-item p-3" href="{{ route('admin.advertisements.manage', $imagesItem->id) }}">Edit</a>
                     </li>
                     <li>
                         <div class="btn btn-outline-danger text-danger dropdown-item p-3" data-toggle="modal" data-target="#confirmDeleteModal{{ $imagesItem->id }}">Delete</div>
@@ -50,7 +60,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <form action="{{ route('advertisements.delete', $imagesItem->id) }}" method="POST">
+                    <form action="{{ route('admin.advertisements.delete', $imagesItem->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
