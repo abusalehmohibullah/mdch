@@ -47,30 +47,17 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="{{route('admin.auth')}}" method="post">
-                                @csrf
-                                @if(session('error'))
-                                <div class="alert alert-danger" role="alert">
-                                    {{session('error')}}
-                                </div>
-                                @endif
+                            <form action="" method="post">
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
                                 </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password" value="{{ old('password') }}">
-                                </div>
-                                <div class="login-checkbox">
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">submit</button>
+                                <div>
                                     <label>
-                                        <input type="checkbox" name="remember">Remember Me
-                                    </label>
-                                    <label>
-                                        <a href="/admin/forgotten-password">Forgotten Password?</a>
+                                        Back to <a href="/admin">Log In</a> page.
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
                             </form>
                         </div>
                     </div>

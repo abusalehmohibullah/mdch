@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\AlbumsController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\InformationsController;
 use App\Http\Controllers\Admin\CKEditorController;
+use App\Http\Controllers\Admin\AdminPasswordController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -76,6 +78,11 @@ Route::get('/entertainment', [HomeController::class, 'entertainment'])->name('en
 
 // admin panel 
 Route::get('/admin', [AdminController::class, 'index']);
+
+Route::get('/admin/forgotten-password', function () {
+    return view('admin.forgotten-password');
+});
+
 Route::post('/admin/auth', [AdminController::class, 'auth'])->name('admin.auth');
 Route::group(['middleware' => 'admin_auth'], function () {
 
@@ -184,6 +191,22 @@ Route::group(['middleware' => 'admin_auth'], function () {
                 Route::get('/', [InformationsController::class, 'index'])->name('admin.informations');
                 Route::get('/manage/{id?}', [InformationsController::class, 'manage'])->name('admin.informations.manage');
                 Route::post('/process/{id?}', [InformationsController::class, 'process'])->name('admin.informations.process');
+            });
+            // Route::prefix('change-password')->group(function () {
+            //     Route::get('/', [AdminPasswordController::class, 'index'])->name('admin.password');
+            //     Route::get('/manage/{id?}', [AdminPasswordController::class, 'manage'])->name('admin.password.manage');
+            //     Route::post('/process/{id?}', [AdminPasswordController::class, 'process'])->name('admin.password.process');
+            // });
+            // Route::prefix('change-email')->group(function () {
+            //     Route::get('/', [AdminPasswordController::class, 'index'])->name('admin.email');
+            //     Route::get('/manage/{id?}', [AdminPasswordController::class, 'manage'])->name('admin.email.manage');
+            //     Route::post('/process/{id?}', [AdminPasswordController::class, 'process'])->name('admin.email.process');
+            // });
+            Route::get('/change-email', function () {
+                return view('admin.change-email');
+            });
+            Route::get('/change-password', function () {
+                return view('admin.change-password');
             });
         });
     });

@@ -5,14 +5,14 @@
                     <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="MDCH Admin" width="150px" />
                 </a>
             </div>
-            <div class="menu-sidebar2__content js-scrollbar1">
-                <div class="account2">
+            <div class="menu-sidebar2__content js-scrollbar1 d-flex flex-column justify-content-between">
+                <!-- <div class="account2">
                     <div class="image img-cir img-120">
                         <img src="{{ asset('admin-assets/images/icon/avatar-big-01.jpg') }}" alt="John Doe" />
                     </div>
                     <h4 class="name">john doe</h4>
                     <a href="/admin/logout">Sign out</a>
-                </div>
+                </div> -->
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
                         <li class="@yield('dashboard-active')">
@@ -78,7 +78,7 @@
                                 </li>
                                 <li class="@yield('bds-course-active')">
                                     <a href="{{ route('admin.section_key', 'bds-course') }}">
-                                    <i class="fas fa-rectangle-list"></i>BDS Course</a>
+                                        <i class="fas fa-rectangle-list"></i>BDS Course</a>
                                 </li>
                                 <li class="@yield('departments-active')">
                                     <a href="/admin/departments">
@@ -138,6 +138,12 @@
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class="@yield('informations-active')">
                                     <a href="/admin/settings/informations"></i>Informations</a>
+                                </li>
+                                <li class="@yield('change-password-active')">
+                                    <a href="/admin/settings/change-password"></i>Change Password</a>
+                                </li>
+                                <li class="@yield('change-email-active')">
+                                    <a href="/admin/settings/change-email"></i>Change Email Address</a>
                                 </li>
                             </ul>
                         </li>
@@ -219,6 +225,10 @@
                         </li> -->
                     </ul>
                 </nav>
+
+                <div class="p-2">
+                    <a class="btn btn-danger w-100" href="/admin/logout"><i class="fas fa-power-off"></i> Sign out</a>
+                </div>
             </div>
         </aside>
         <!-- END MENU SIDEBAR-->
