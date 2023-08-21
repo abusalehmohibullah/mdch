@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'Manage About')
+
 @section('contents-active', 'active')
 @section('about-active', 'active')
 @section('about-sub-active', 'active')

@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'Change Password')
+
 @section('setting-active', 'active')
 @section('change-password-active', 'active')
 

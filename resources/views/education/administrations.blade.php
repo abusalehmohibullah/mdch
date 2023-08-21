@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('page-title', 'MDCH: Administrations')
+@section('page-title', 'Administrations')
 @section('about-sub-active', 'active')
 @section('administrations-active', 'active')
 

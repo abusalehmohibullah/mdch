@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'Manage FAQs')
+
 @section('contents-active', 'active')
 @section('faqs-active', 'active')
 

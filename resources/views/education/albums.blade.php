@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('page-title', 'MDCH: Albums')
+@section('page-title', 'Albums')
 @section('albums-active', 'active')
 
 @section('content')

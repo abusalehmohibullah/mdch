@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'Album')
+
 @section('contents-active', 'active')
 @section('albums-active', 'active')
 

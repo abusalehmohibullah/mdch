@@ -1,24 +1,24 @@
 @extends('admin/layout')
 
-@section('page-title', 'Manage News')
+@section('page-title', 'Manage Career')
 
 @section('contents-active', 'active')
-@section('news-active', 'active')
+@section('career-active', 'active')
 
 @php
 $breadcrumbs = [
     ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
-    ['route' => route('admin.news'), 'title' => 'News'],
-    ['route' => route('admin.news'), 'title' => $newsData->id ? 'Edit' : 'Add'],
+    ['route' => route('admin.career'), 'title' => 'Career'],
+    ['route' => route('admin.career'), 'title' => $careerData->id ? 'Edit' : 'Add'],
 ];
 @endphp
 
 @section('content')
 
-<x-back-btn-component title="{{ $newsData->id ? 'EDIT' : 'ADD' }} NEWS" />
+<x-back-btn-component title="{{ $careerData->id ? 'EDIT' : 'ADD' }} CAREER" />
 
 
-<form action="{{ route('admin.news.process', $newsData->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ route('admin.career.process', $careerData->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
     @csrf
     <div class="row form-group">
         <div class="col col-md-3">
@@ -30,7 +30,7 @@ $breadcrumbs = [
                 {{$message}}
                 @enderror
             </div>
-            <input type="text" class="form-control" id="heading" name="heading" placeholder="Enter a heading of the news..." value="{{ old('heading') ? old('heading') : $newsData->heading }}">
+            <input type="text" class="form-control" id="heading" name="heading" placeholder="Enter a heading of the career..." value="{{ old('heading') ? old('heading') : $careerData->heading }}">
         </div>
     </div>
 
@@ -44,7 +44,7 @@ $breadcrumbs = [
                 {{$message}}
                 @enderror
             </div>
-            <textarea name="content" id="content" rows="9" placeholder="Enter the content of the news..." class="form-control">{{ old('content') ? old('content') : $newsData->content }}</textarea>
+            <textarea name="content" id="content" rows="9" placeholder="Enter the content of the career..." class="form-control">{{ old('content') ? old('content') : $careerData->content }}</textarea>
         </div>
     </div>
 
@@ -59,29 +59,25 @@ $breadcrumbs = [
                 {{$message}}
                 @enderror
             </div>
-            <input type="date" name="published_at" class="border border-secondary px-2" value="{{ old('published_at') ? old('published_at') : ($newsData->published_at ?? now()->toDateString()) }}">
+            <input type="date" name="published_at" class="border border-secondary px-2" value="{{ old('published_at') ? old('published_at') : ($careerData->published_at ?? now()->toDateString()) }}">
 
 
             </div>
         </div>
         <div class="col col-md-3">
-            <label class=" form-control-label">Latest news?<span class="text-danger ml-1">*</span></label>
+            <label class=" form-control-label">Deadline<span class="text-danger ml-1">*</span></label>
         </div>
         <div class="col-12 col-md-3">
+            <div class="input-group">
             <div class="text-danger">
-                @error('latest_news')
+                @error('deadline')
                 {{$message}}
                 @enderror
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="latest_news" id="latestNewsYes" value="1" {{ ($newsData->latest_news === 1 && $newsData->latest_news !== null) ? 'checked' : '' }}>
-                <label class="form-check-label" for="latestNewsYes">Yes</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="latest_news" id="latestNewsNo" value="0" {{ ($newsData->latest_news === 0 && $newsData->latest_news !== null) ? 'checked' : '' }}>
-                <label class="form-check-label" for="latestNewsNo">No</label>
-            </div>
+            <input type="date" name="deadline" class="border border-secondary px-2" value="{{ old('deadline') ? old('deadline') : ($careerData->deadline ?? now()->toDateString()) }}">
 
+
+            </div>
         </div>
 
     </div>

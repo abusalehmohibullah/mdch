@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'Manage Messages')
+
 @section('contents-active', 'active')
 @section('about-active', 'active')
 @section('messages-active', 'active')

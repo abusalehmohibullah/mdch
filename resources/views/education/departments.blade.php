@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('page_title', 'MDCH: Departments')
+@section('page-title', 'Departments')
 @section('departments-active', 'active')
 @section($departmentsData->slug . '-active', 'active')
 

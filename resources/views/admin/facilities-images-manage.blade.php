@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'Manage Facilities Images')
+
 @section('contents-active', 'active')
 @section('about-active', 'active')
 @section('facilities-active', 'active')

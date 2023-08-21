@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'Change Email')
+
 @section('setting-active', 'active')
 @section('change-email-active', 'active')
 

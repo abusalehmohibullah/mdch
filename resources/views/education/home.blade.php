@@ -2,7 +2,7 @@
 
 @extends('layout')
 
-@section('page_title', 'Mandy Dental College and Hospital')
+@section('page-title', 'Mandy Dental College and Hospital')
 @section('home-active', 'active')
 
 @section('content')

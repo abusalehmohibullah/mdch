@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'Ads')
+
 @section('contents-active', 'active')
 @section('advertisements-active', 'active')
 

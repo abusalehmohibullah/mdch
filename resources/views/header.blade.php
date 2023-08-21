@@ -160,11 +160,11 @@
                         <li class="nav-item">
                             <a class="nav-link p-2 @yield('notice-active')" href="/education/news">Notice</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link p-2" href="#">Career</a>
-                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#">Contact</a>
+                            <a class="nav-link p-2 @yield('career-active')" href="/education/career">Career</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="/education/contact">Contact</a>
                         </li>
                     </ul>
                     <div class="d-flex flex-column gap-2">

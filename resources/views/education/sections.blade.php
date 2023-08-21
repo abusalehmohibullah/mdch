@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('page_title', 'MDCH: ' . $sections->title)
+@section('page-title', $sections->title)
 @section(
     in_array($sections->section_key, ['about', 'facilities', 'office-stuff', 'messages']) ? 'about-sub-active' : $sections->section_key . '-active',
     'active'

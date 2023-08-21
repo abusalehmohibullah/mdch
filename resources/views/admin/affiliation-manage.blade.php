@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'Manage Affiliations')
+
 @section('contents-active', 'active')
 @section('about-active', 'active')
 @section('affiliation-active', 'active')

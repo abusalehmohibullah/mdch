@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard 2</title>
+    <title>MDCH Admin | @yield('page-title')</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('admin-assets/css/font-face.css') }}" rel="stylesheet" media="all">

@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('page_title', 'MDCH: Facilities')
+@section('page-title', 'Facilities')
 @section('about-sub-active', 'active')
 @section($facilitiesData->slug . '-active', 'active')
 

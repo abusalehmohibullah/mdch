@@ -1,5 +1,7 @@
 @extends('admin/layout')
 
+@section('page-title', 'BDS Courses')
+
 @section('contents-active', 'active')
 @section('bds-course-active', 'active')
 

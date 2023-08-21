@@ -30,11 +30,11 @@
             <div class="col-4 col-lg-4">
                 <div class="h5 mt-3">About</div>
                 <div class="d-flex flex-column gap-2">
-                    <a class="footer-link text-reset text-decoration-none" href="#"><small>About Us</small></a>
-                    <a class="footer-link text-reset text-decoration-none" href="#"><small>Facilities</small></a>
-                    <a class="footer-link text-reset text-decoration-none" href="#"><small>Notices</small></a>
-                    <a class="footer-link text-reset text-decoration-none" href="#"><small>Career</small></a>
-                    <a class="footer-link text-reset text-decoration-none" href="#"><small>Contact Us</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="/education/about/about"><small>About Us</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="/education/about/facilities"><small>Facilities</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="/education/news"><small>Notices</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="/education/career"><small>Career</small></a>
+                    <a class="footer-link text-reset text-decoration-none" href="/education/contact"><small>Contact Us</small></a>
                 </div>
             </div>
             </div>

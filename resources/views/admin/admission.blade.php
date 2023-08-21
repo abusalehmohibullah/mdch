@@ -1,6 +1,8 @@
 
 @extends('admin/layout')
 
+@section('page-title', 'Admission')
+
 @section('contents-active', 'active')
 @section('admission-active', 'active')
 

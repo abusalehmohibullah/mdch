@@ -1,13 +1,11 @@
 @extends('layout') 
 
-@section('page_title', 'MDCH: Notice Details')
+@section('page-title', 'Notice Details')
 @section('notice-active', 'active')
 
 @section('content')
     <div class="container bg-white mt-3">
-        
-    <a href="{{ redirect()->back()->getTargetUrl() }}" type="button" class="btn btn-outline-secondary my-2"><i class="fas fa-arrow-left"></i> Back</a>
-    
+            
     <h3>{{ $newsData->heading }}</h3>
         <p>{{ $newsData->content }}</p>
         @if ($newsData->attachment)

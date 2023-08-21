@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('page-title', 'MDCH: Login')
+@section('page-title', 'MDCH|Login')
 @section('login-active', 'active')
 
 @section('content')

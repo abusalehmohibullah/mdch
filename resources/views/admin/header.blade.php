@@ -105,10 +105,10 @@
                                     <a href="/admin/admission">
                                         <i class="fas fa-graduation-cap"></i>Admission</a>
                                 </li>
-                                <!-- <li>
-                                    <a href="/admin/opd">
-                                        <i class="fas fa-hospital-user"></i>OPD</a>
-                                </li> -->
+                                <li class="@yield('career-active')">
+                                    <a href="/admin/career">
+                                        <i class="fas fa-briefcase"></i>Career</a>
+                                </li>
                             </ul>
                         </li>
                         <!-- <li>

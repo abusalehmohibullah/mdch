@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdministrationsController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\AlbumsController;
 use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\InformationsController;
 use App\Http\Controllers\Admin\CKEditorController;
 use App\Http\Controllers\Admin\AdminPasswordController;
@@ -49,7 +50,10 @@ Route::prefix('education')->group(function () {
 Route::prefix('education')->group(function () {
     // Route::get('/{section_key}', [HomeController::class, 'show'])->name('section_key')->where('section_key', 'about|facilities|messages|news');
     Route::get('/news', [HomeController::class, 'news'])->name('news.all');
-    Route::get('/news/{slug}', [HomeController::class, 'previewNews'])->name('news.preview');
+    Route::get('/news/{slug}', [HomeController::class, 'newsPreview'])->name('news.preview');
+    
+    Route::get('/career', [HomeController::class, 'career'])->name('career.all');
+    Route::get('/career/{slug}', [HomeController::class, 'careerPreview'])->name('career.preview');
 
     Route::get('/albums', [HomeController::class, 'albums'])->name('albums');
 
@@ -69,6 +73,10 @@ Route::prefix('education')->group(function () {
 
     Route::get('/departments', function () {
         return view('education.departments');
+    });
+
+    Route::get('/contact', function () {
+        return view('education.contact');
     });
 });
 
@@ -183,6 +191,15 @@ Route::group(['middleware' => 'admin_auth'], function () {
             Route::put('/status/{id}', [NewsController::class, 'status'])->name('admin.news.status');
             Route::delete('/delete/{id}', [NewsController::class, 'delete'])->name('admin.news.delete');
             Route::get('/download/{id}', [NewsController::class, 'download'])->name('admin.news.download');
+        });
+
+        Route::prefix('career')->group(function () {
+            Route::get('/', [CareerController::class, 'index'])->name('admin.career');
+            Route::get('/manage/{id?}', [CareerController::class, 'manage'])->name('admin.career.manage');
+            Route::post('/process/{id?}', [CareerController::class, 'process'])->name('admin.career.process');
+            Route::put('/status/{id}', [CareerController::class, 'status'])->name('admin.career.status');
+            Route::delete('/delete/{id}', [CareerController::class, 'delete'])->name('admin.career.delete');
+            Route::get('/download/{id}', [CareerController::class, 'download'])->name('admin.career.download');
         });
 
 

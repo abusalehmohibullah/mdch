@@ -7,6 +7,7 @@ use App\Models\Admin\Sections;
 use App\Models\Admin\FacilitiesImages;
 use App\Models\Admin\Faqs;
 use App\Models\Admin\News;
+use App\Models\Admin\Career;
 use App\Models\Admin\Albums;
 use App\Models\Admin\Administrations;
 use App\Models\Admin\Advertisements;
@@ -95,18 +96,42 @@ class HomeController extends Controller
         return view('education.news', $result);
     }
 
-    public function previewNews($slug)
+    public function newsPreview($slug)
     {
         // Retrieve the news item based on the provided slug
         $newsData = News::where('slug', $slug)->first();
 
         // Check if the news item exists
         if ($newsData) {
-            return view('education.preview', compact('newsData'));
+            return view('education.news-preview', compact('newsData'));
         } else {
             abort(404); // Show a 404 page if the news item with the given slug is not found
         }
     }
+
+    public function career(Request $request)
+    {
+        // Retrieve all rows with the given section_key
+        $perPage = $request->input('perPage', 10);
+        $result['career'] = Career::orderBy('published_at', 'desc')->paginate($perPage);
+        // Pass the $sections variable to your view
+        return view('education.career', $result);
+    }
+
+    public function careerPreview($slug)
+    {
+        // Retrieve the news item based on the provided slug
+        $careerData = Career::where('slug', $slug)->first();
+
+        // Check if the news item exists
+        if ($careerData) {
+            return view('education.career-preview', compact('careerData'));
+        } else {
+            abort(404); // Show a 404 page if the news item with the given slug is not found
+        }
+    }
+
+
     public function entertainment()
     {
         return view('entertainment');
