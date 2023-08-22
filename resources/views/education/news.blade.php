@@ -21,6 +21,11 @@
             </tr>
         </thead>
         <tbody>
+        @if($news->isEmpty())
+            <tr>
+                <td colspan="4" class="text-center">No data found.</td>
+            </tr>
+            @else
             @foreach ($news as $newsData)
             <tr class="{{ $newsData->status == 0 ? 'bg-light' : '' }}">
                 <td>
@@ -45,6 +50,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 </div>

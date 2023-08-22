@@ -16,7 +16,7 @@
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
                         <li class="@yield('dashboard-active')">
-                            <a class="js-arrow" href="/admin/dashboard">
+                            <a href="/admin/dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>

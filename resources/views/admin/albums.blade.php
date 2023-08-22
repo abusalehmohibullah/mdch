@@ -18,7 +18,9 @@ $breadcrumbs = [
 
 <div class="row">
 
-
+@if ($albums->isEmpty())
+    <div class="text-center w-100">No album found.</div>
+    @else
     @foreach ($albums as $album)
     <div class="col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2 p-1">
         <a href="{{ route('admin.media', $album->id) }}" class="w-100">
@@ -80,6 +82,7 @@ $breadcrumbs = [
     </div>
 
     @endforeach
+    @endif
 </div>
 
 

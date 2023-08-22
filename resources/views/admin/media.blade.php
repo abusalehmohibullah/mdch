@@ -18,7 +18,9 @@ $breadcrumbs = [
 <x-add-btn-component title="{{$album->name}}" route="{{$album->id}}/manage" icon="fas fa-plus" type="Add" />
 
 <div class="row">
-
+@if ($mediaItems->isEmpty())
+    <div class="text-center w-100">No image found.</div>
+    @else
     @foreach ($mediaItems as $mediaItem)
     <div class="col-12 col-sm-6 col-md-4 col-xl-3 p-2">
         <div class="thumbnail">
@@ -72,7 +74,7 @@ $breadcrumbs = [
 
 
     @endforeach
-
+@endif
 </div>
 
 

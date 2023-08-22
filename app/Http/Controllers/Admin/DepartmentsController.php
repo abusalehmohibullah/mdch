@@ -80,7 +80,7 @@ class DepartmentsController extends Controller
                 $model->slug = Str::slug($request->input('name'));
                 $model->description = $request->input('description');
                 $message = 'Department updated successfully!';
-                $route = 'departments';
+                $route = 'admin.departments';
             }
             $model->updated_by = $request->session()->get('ADMIN_ID');
         } else {
@@ -92,7 +92,7 @@ class DepartmentsController extends Controller
             $model->description = $validatedData['description'];
             $model->created_by = $request->session()->get('ADMIN_ID');
             $message = 'Department added successfully!';
-            $route = 'departments.manage';
+            $route = 'admin.departments.manage';
         }
 
         try {

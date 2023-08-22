@@ -10,6 +10,9 @@
 
 <div class="container mb-3">
     <x-back-btn-component title="Afiiliation" />
+    @if ($affiliation->isEmpty())
+    <div class="text-center w-100">No data found.</div>
+    @else
     @foreach ($affiliation as $index => $affiliationData)
 <div class="container shadow-sm bg-white my-3">
 
@@ -25,6 +28,7 @@
     </div>
 </div>
 @endforeach
+@endif
 
 </div>
 

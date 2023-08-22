@@ -31,6 +31,11 @@ $breadcrumbs = [
             </tr>
         </thead>
         <tbody>
+        @if($administrations->isEmpty())
+            <tr>
+                <td colspan="6" class="text-center">No data found.</td>
+            </tr>
+            @else
             @foreach ($administrations as $administrationsData)
             <tr class="{{ $administrationsData->status == 0 ? 'bg-light' : '' }}">
                 <td width="1%">
@@ -104,6 +109,7 @@ $breadcrumbs = [
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 </div>

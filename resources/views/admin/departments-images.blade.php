@@ -7,9 +7,9 @@
 
 @php
 $breadcrumbs = [
-    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
-    ['route' => route('admin.departments'), 'title' => 'Departments'],
-    ['route' => route('admin.departmentsImages'), 'title' => 'Images'],
+['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+['route' => route('admin.departments'), 'title' => 'Departments'],
+['route' => route('admin.departmentsImages'), 'title' => 'Images'],
 ];
 @endphp
 
@@ -21,7 +21,9 @@ $breadcrumbs = [
 
 
 <div class="row">
-
+    @if ($departmentsImagesItems->isEmpty())
+    <div class="text-center w-100">No image found.</div>
+    @else
     @foreach ($departmentsImagesItems as $imagesItem)
     <div class="col-12 col-sm-6 col-md-4 col-xl-3 p-2">
         <div class="thumbnail">
@@ -75,7 +77,7 @@ $breadcrumbs = [
 
 
     @endforeach
-
+    @endif
 </div>
 
 @endsection

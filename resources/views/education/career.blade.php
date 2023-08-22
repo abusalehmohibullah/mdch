@@ -22,6 +22,11 @@
             </tr>
         </thead>
         <tbody>
+        @if($career->isEmpty())
+            <tr>
+                <td colspan="5" class="text-center">No data found.</td>
+            </tr>
+            @else
             @foreach ($career as $careerData)
             <tr class="{{ $careerData->status == 0 ? 'bg-light' : '' }}">
                 <td>
@@ -49,6 +54,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 </div>

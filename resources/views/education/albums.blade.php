@@ -12,6 +12,9 @@
     <x-back-btn-component title="Student's Life" />
 
     <div class="row shadow-sm bg-white g-0">
+        @if ($albums->isEmpty())
+        <div class="text-center w-100">No album found.</div>
+        @else
         @foreach($albums as $albumsData)
         @php
         $id = $loop->index;
@@ -43,6 +46,7 @@
         </div>
         @endif
         @endforeach
+        @endif
     </div>
 </div>
 

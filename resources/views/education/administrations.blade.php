@@ -13,6 +13,9 @@
     <div class="container shadow-sm bg-white mb-3 mt-5">
 
         <div class="row g-4">
+        @if ($administrations->isEmpty())
+    <div class="text-center w-100">No data found.</div>
+    @else
             @foreach($administrations as $administrationsData)
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3  m-0 p-4 animate-on-scroll" data-animation="fadeInLeft" data-animation-delay="0">
                 <div class="h-100 p-4 bg-light shadow">
@@ -27,6 +30,7 @@
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
 
     </div>

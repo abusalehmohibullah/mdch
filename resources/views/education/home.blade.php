@@ -333,7 +333,12 @@
                     </div>
                     <hr>
                     <div class="notices">
-                        <ul>
+                        <ul> 
+                            @if($news->isEmpty())
+                            <div class="text-center animate-on-scroll" data-animation="fadeInDown">
+                                No data found.
+            </div>
+                            @else
                             @foreach($news as $newsData)
                             <li class="animate-on-scroll" data-animation="fadeInDown">
                                 <a href="{{ route('news.preview', $newsData->slug) }}" class="hover-deep text-reset text-decoration-none text-nowrap">
@@ -344,6 +349,7 @@
                                 </a>
                             </li>
                             @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>

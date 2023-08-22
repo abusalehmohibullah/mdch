@@ -20,7 +20,9 @@ $breadcrumbs = [
 
 
 <div class="row">
-
+@if ($advertisements->isEmpty())
+    <div class="text-center w-100">No image found.</div>
+    @else
     @foreach ($advertisements as $imagesItem)
     <div class="col-12 col-sm-6 col-md-4 col-xl-3 p-2">
         <div class="thumbnail">
@@ -74,7 +76,7 @@ $breadcrumbs = [
 
 
     @endforeach
-
+@endif
 </div>
 
 @endsection

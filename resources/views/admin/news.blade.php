@@ -7,8 +7,8 @@
 
 @php
 $breadcrumbs = [
-    ['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
-    ['route' => route('admin.news'), 'title' => 'News'],
+['route' => route('admin.dashboard'), 'title' => 'Dashboard'],
+['route' => route('admin.news'), 'title' => 'News'],
 ];
 @endphp
 
@@ -30,6 +30,11 @@ $breadcrumbs = [
             </tr>
         </thead>
         <tbody>
+            @if($news->isEmpty())
+            <tr>
+                <td colspan="6" class="text-center">No data found.</td>
+            </tr>
+            @else
             @foreach ($news as $newsData)
             <tr class="{{ $newsData->status == 0 ? 'bg-light' : '' }}">
                 <td width="1%">
@@ -46,16 +51,16 @@ $breadcrumbs = [
                 <td width="1%">
                     <div class="table-data__info d-flex justify-content-center align-items-center">
                         @if ($newsData->latest_news == 1)
-                            Yes
+                        Yes
                         @else
-                            No
-                            @endif
+                        No
+                        @endif
                     </div>
-                    
+
                 </td>
                 <td width="1%" class="text-nowrap">
 
-                        {{$newsData->published_at}}
+                    {{$newsData->published_at}}
 
                 </td>
                 <td width="1%">
@@ -116,6 +121,7 @@ $breadcrumbs = [
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 </div>
