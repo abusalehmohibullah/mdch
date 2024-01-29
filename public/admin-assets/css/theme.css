@@ -241,6 +241,24 @@ a {
 /*                   OBJECTS                           */
 /*-----------------------------------------------------*/
 /* ----- Section----- */
+
+
+::-webkit-scrollbar {
+    background: rgba(59, 125, 221, .1);
+    width: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a8c5f0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8eb7f5;
+}
+
+
 section {
     position: relative;
 }

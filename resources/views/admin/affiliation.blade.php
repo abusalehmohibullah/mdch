@@ -47,7 +47,7 @@ $breadcrumbs = [
                 </td>
                 <td>
                     <div class="table-data__info">
-                    {!! nl2br(e($sectionsData->content)) !!}
+                    {!! ($sectionsData->content) !!}
                     </div>
                 </td>
                 <td>

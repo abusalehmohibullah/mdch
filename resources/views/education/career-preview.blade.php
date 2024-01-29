@@ -7,7 +7,7 @@
     <div class="container bg-white mt-3">
            
     <h3>{{ $careerData->heading }}</h3>
-        <p>{{ $careerData->content }}</p>
+        <p>{!! ($careerData->content) !!}</p>
         @if ($careerData->attachment)
             @if (Str::endsWith($careerData->attachment, ['.jpg', '.jpeg', '.png', '.gif']))
             <div class="h-100 d-flex justify-content-center align-items-center preview-container">

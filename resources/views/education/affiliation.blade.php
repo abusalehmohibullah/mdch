@@ -23,7 +23,7 @@
 
         <div class="py-3">
             <h4>{!! nl2br(html_entity_decode($affiliationData->title)) !!}</h4>
-            <p>{!! nl2br(html_entity_decode($affiliationData->content)) !!}</p>
+            <p>{!! ($affiliationData->content) !!}</p>
         </div>
     </div>
 </div>

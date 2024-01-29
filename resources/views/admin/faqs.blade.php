@@ -41,7 +41,7 @@ $breadcrumbs = [
                     <div class="table-data__info">
                         <h6>{{$faqsData->question}}</h6>
                         <span>
-                            <a>{{$faqsData->answer}}</a>
+                            <a>{!! ($faqsData->answer) !!}</a>
                         </span>
                     </div>
                 </td>

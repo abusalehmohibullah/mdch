@@ -46,7 +46,7 @@
             <div class="text-justify">
                 <div class="card-body p-3">   
                     <h4 class="card-title">{{ $departmentsData->name }}</h4>
-                    <p>{{ $departmentsData->description }}</p>
+                    <p>{!! ( $departmentsData->description ) !!}</p>
                 </div>
             </div>
         </div>

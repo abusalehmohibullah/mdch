@@ -45,7 +45,7 @@
                     <div class="table-data__info d-flex justify-content-center align-items-center">
                         @if ($careerData->attachment)
                         <a href="{{ asset('storage/' . $careerData->attachment) }}" target="_blank"><i class="fa-solid fa-eye fa-lg p-2 text-dark"></i></a>
-                        <a href="{{ route('career.download', $careerData->id) }}"><i class="fa-solid fa-download fa-lg p-2 text-dark"></i></a>
+                        <a href="{{ route('admin.career.download', $careerData->id) }}"><i class="fa-solid fa-download fa-lg p-2 text-dark"></i></a>
                         @else
                         -
                         @endif

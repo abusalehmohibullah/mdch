@@ -36,7 +36,7 @@ $breadcrumbs = [
 
         <div class="row form-group">
             <div class="col col-md-3">
-                <label for="content" class=" form-control-label">Description</label>
+                <label for="content" class=" form-control-label">Description<span class="text-danger ml-1">*</span></label>
             </div>
             <div class="col-12 col-md-9">
                 <div class="text-danger">
@@ -44,7 +44,7 @@ $breadcrumbs = [
                     {{$message}}
                     @enderror
                 </div>
-                <textarea name="description" id="description" rows="9" placeholder="Describe this album" class="form-control">{{ old('description') ? old('description') : $albumsData->description }}</textarea>
+                <textarea name="description" id="editor" rows="9" placeholder="Describe this album" class="form-control">{{ old('description') ? old('description') : $albumsData->description }}</textarea>
             </div>
         </div>
 

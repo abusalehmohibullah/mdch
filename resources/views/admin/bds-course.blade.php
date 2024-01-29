@@ -20,7 +20,7 @@ $breadcrumbs = [
 <div class="row g-0 mb-5">
     <div class="col-md-7">
         <div class="card-body p-0">
-            <p class="card-text">{!! nl2br(e($sectionsData->content)) !!}</p>
+            <p class="card-text">{!! ($sectionsData->content) !!}</p>
         </div>
     </div>
 

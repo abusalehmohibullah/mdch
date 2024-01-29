@@ -37,7 +37,7 @@ $breadcrumbs = [
 
         <div class="row form-group">
             <div class="col col-md-3">
-                <label for="file" class=" form-control-label">File</label>
+                <label for="file" class=" form-control-label">File<span class="text-danger ml-1">*</span></label>
             </div>
             <div class="col-12 col-md-9">
                 <div class="text-danger">

@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <h4 class="card-title text-center fw-bold deep-color">{{$administrationsData->designation}}</h4>
                         <p class="card-text text-center fs-5 fw-semibold">{{$administrationsData->name}}</p>
-                        <p class="card-text text-center fs-6">{{$administrationsData->description}}</p>
+                        <p class="card-text text-center fs-6">{!! ($administrationsData->description) !!}</p>
                     </div>
                 </div>
             </div>

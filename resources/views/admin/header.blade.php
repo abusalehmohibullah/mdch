@@ -5,7 +5,7 @@
                     <img src="{{ asset('admin-assets/images/icon/logo-white.png') }}" alt="MDCH Admin" width="150px" />
                 </a>
             </div>
-            <div class="menu-sidebar2__content js-scrollbar1 d-flex flex-column justify-content-between">
+            <div class="menu-sidebar2__content d-flex flex-column justify-content-between">
                 <!-- <div class="account2">
                     <div class="image img-cir img-120">
                         <img src="{{ asset('admin-assets/images/icon/avatar-big-01.jpg') }}" alt="John Doe" />

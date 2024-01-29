@@ -53,7 +53,7 @@ $breadcrumbs = [
                 </td>
                 <td>
                     <div class="table-data__info">
-                        {{$facultiesData->description}}
+                        {!! ($facultiesData->description) !!}
                     </div>
                 </td>
                 <td>

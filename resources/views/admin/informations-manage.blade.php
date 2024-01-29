@@ -45,7 +45,7 @@ $breadcrumbs = [
                 {{$message}}
                 @enderror
             </div>
-            <textarea name="content" id="content" rows="9" placeholder="Enter the content" class="form-control">{{ old('content') ? old('content') : $informationsData->content }}</textarea>
+            <textarea name="content" id="editor" rows="9" placeholder="Enter the content" class="form-control">{{ old('content') ? old('content') : $informationsData->content }}</textarea>
         </div>
     </div>
 

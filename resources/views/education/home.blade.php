@@ -48,7 +48,7 @@
             <div class="col-md-7 order-md-1 text-container text-justify">
                 <div class="card-body p-3">
                     <h3 class="card-title deep-color large-text">{{$about->title}}</h3>
-                    <p class="card-text mini-text">{!! nl2br(e($about->content)) !!}</p>
+                    <p class="card-text mini-text">{!! ($about->content) !!}</p>
                 </div>
                 <a href="/education/about/{{$about->slug}}" class="btn custom-btn read-more-btn">Read More</a>
             </div>
@@ -100,7 +100,7 @@
             <div class="col-md-5 text-container text-justify">
                 <div class="card-body p-3">
                     <h3 class="card-title deep-color large-text">{{$facilities->title}}</h3>
-                    <p class="card-text mini-text">{!! nl2br(e($facilities->content)) !!}</p>
+                    <p class="card-text mini-text">{!! ($facilities->content) !!}</p>
                 </div>
                 <a href="/education/about/{{$facilities->slug}}" class="btn custom-btn read-more-btn">Read More</a>
             </div>
@@ -122,7 +122,7 @@
                     </button>
                 </h2>
                 <div id="flush-collapse-{{ $loop->iteration }}" class="accordion-collapse collapse bg-light" aria-labelledby="flush-heading-{{ $loop->iteration }}" data-bs-parent="#faqs-accordion">
-                    <div class="accordion-body mini-text">{{$faqsData->answer}}</div>
+                    <div class="accordion-body mini-text">{!! ($faqsData->answer) !!}</div>
                 </div>
             </div>
             @endforeach
@@ -194,7 +194,7 @@
                     <div class="img-container animate-on-scroll px-3" data-animation="fadeInUp" data-animation-delay='{{ $delay }}'>
                         <img src="{{ asset('storage/default/' . $messageData->slug . '.jpg') }}" class="card-img-top" alt="...">
                         <div class="py-1">
-                            <div class="mini-text">
+                            <div class="mini-text fw-bold">
                                 @if ($messageData->slug === 'chairmans-message')
                                 {{ config('informations.chairman') }}
                                 @elseif ($messageData->slug === 'directors-message')

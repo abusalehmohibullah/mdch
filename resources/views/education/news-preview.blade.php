@@ -7,7 +7,7 @@
     <div class="container bg-white mt-3">
             
     <h3>{{ $newsData->heading }}</h3>
-        <p>{{ $newsData->content }}</p>
+        <p>{!! ($newsData->content ) !!}</p>
         @if ($newsData->attachment)
             @if (Str::endsWith($newsData->attachment, ['.jpg', '.jpeg', '.png', '.gif']))
             <div class="h-100 d-flex justify-content-center align-items-center preview-container">

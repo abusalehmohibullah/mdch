@@ -51,7 +51,7 @@ $breadcrumbs = [
                 </td>
                 <td>
                     <div class="table-data__info">
-                        {{$departmentsData->description}}
+                        {!! ($departmentsData->description) !!}
                     </div>
                 </td>
                 <td width="1%">
