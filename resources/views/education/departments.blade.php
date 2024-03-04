@@ -45,7 +45,7 @@
             </div>
             <div class="text-justify">
                 <div class="card-body p-3">   
-                    <h4 class="card-title">{{ $departmentsData->name }}</h4>
+                    <h4 class="card-title mb-3">{{ $departmentsData->name }}</h4>
                     <p>{!! ( $departmentsData->description ) !!}</p>
                 </div>
             </div>
@@ -58,6 +58,8 @@
             @foreach($departmentsData->faculties as $faculty)
             <div class="p-2 mb-3 col-lg-6">
                 <div class="card h-100 border-0 bg-light rounded shadow-sm">
+                <div class="position-absolute top-0 start-0 text-white fw-bold fs-4 px-2 z-3 translate-middle-y" style="background-color: navy;">{{$faculty->designation}}</div>
+
                     <div class="row g-0">
                         <div class="col-4">
                             <img src="{{ asset('storage/' . $faculty->image_path) }}" class="img-fluid rounded-start" alt="...">
@@ -65,8 +67,7 @@
                         <div class="col-8">
                             <div class="card-body">
                                 <h4 class="card-title">{{ $faculty->name }}</h4>
-                                <p class="fs-5">{{ $faculty->designation }}</p>
-                                <p class="card-text">{{ $faculty->description }}</p>
+                                <p class="card-text">{!! ($faculty->description) !!}</p>
                             </div>
                         </div>
                     </div>
@@ -76,7 +77,6 @@
         </div>
 
     </div>
-
 
 </div>
 

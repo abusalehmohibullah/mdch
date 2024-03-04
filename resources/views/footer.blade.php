@@ -49,7 +49,7 @@
             </div>
             <div class="text-center mini-text mt-1">
                 <small>
-                    Developed by <a href="https://www.codingkori.com" class="text-decoration-none">codingKori</a>.
+                    Developed by <a href="https://www.campusitbd.com" class="text-decoration-none">Campus IT BD</a>.
                 </small>
             </div>
         </div>

@@ -97,7 +97,7 @@
                             <li><a class="dropdown-item @yield('affiliation-active')" href="/education/about/affiliation">Affiliation</a></li>
                             <li><a class="dropdown-item @yield('chairmans-message-active')" href="/education/about/chairmans-message">Chairman's Message</a></li>
                             <li><a class="dropdown-item @yield('directors-message-active')" href="/education/about/directors-message">Director's Message</a></li>
-                            <li><a class="dropdown-item @yield('principals-message-active')" href="/education/about/principals-message">Principal's Message</a></li>
+                            <li><a class="dropdown-item @yield('principals-message-active')" href="/education/about/principals-message">Academic Director's Message</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

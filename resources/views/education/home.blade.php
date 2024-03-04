@@ -206,7 +206,7 @@
                                 No name found.
                                 @endif
                             </div>
-                            <div class="mini-text"><small>@firstword($messageData->title)</small></div>
+                            <div class="mini-text"><small>{{ explode("'", $messageData->title)[0] }}</small></div>
                             <div class="mini-text"><small>Mandy Dental College and Hospital</small></div>
                         </div>
                     </div>

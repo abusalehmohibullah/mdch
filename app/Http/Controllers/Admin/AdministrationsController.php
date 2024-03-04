@@ -35,13 +35,12 @@ class AdministrationsController extends Controller
 
     public function process(Request $request, $id = null)
     {
-
         // Validation rules for the 'administrations_name' and 'description' fields
         $validationRules = [
             'name' => 'required',
             'designation' => 'required',
             'description' => 'required',
-            'image' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:1024', // 1MB (1024 KB) limit
+            'image' => $id ? 'nullable|mimes:pdf,doc,docx,jpg,jpeg,png|max:1024' : 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:1024' // 1MB (1024 KB) limit
         ];
 
         // Custom error messages for validation
@@ -49,7 +48,6 @@ class AdministrationsController extends Controller
             'name.required' => 'Please provide a name.',
             'designation.required' => 'Please provide a designation.',
             'description.required' => 'Please provide a description.',
-            'image.required' => 'Please select an image.',
             'image.mimes' => 'Invalid file format. Only pdf, doc, docx, jpg, jpeg, png files are allowed.',
             'image.max' => 'The image must not be larger than 1MB.',
         ];
@@ -69,8 +67,8 @@ class AdministrationsController extends Controller
 
             // Check if the 'administrations_name' and 'description' fields are being updated
             if ($request->filled('name') && $request->filled('designation') && $request->filled('description')) {
-                $model->administrations_name = $request->input('name');
-                $model->administrations_name = $request->input('designation');
+                $model->name = $request->input('name');
+                $model->designation = $request->input('designation');
                 $model->description = $request->input('description');
                 $message = 'Administrations updated successfully!';
             }

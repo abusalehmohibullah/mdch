@@ -26,15 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        Blade::directive('firstword', function ($expression) {
-            return "<?php
-                \$titleWords = explode(' ', {$expression});
-                \$firstWord = \$titleWords[0];
-                \$firstWord = str_replace(\"'\", '', \$firstWord);
-                \$firstWord = rtrim(\$firstWord, 's');
-                echo \$firstWord;
-            ?>";
-        });
+
     }
     
 }

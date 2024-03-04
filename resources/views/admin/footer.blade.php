@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">
-                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                <p>Copyright © {{ date('Y') }} MDCH. All rights reserved. Developed by <a href="https://campusitbd.com">Campus IT BD</a>.</p>
                 </div>
             </div>
         </div>

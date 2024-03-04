@@ -16,10 +16,10 @@ $breadcrumbs = [
 
 @section('content')
 
-<x-back-btn-component title="{{ $sectionsData->id ? 'Edit' : 'Add' }} Affiliation" />
+<x-back-btn-component title="{{ $sectionsData->id ? 'Edit' : 'Add' }} Office Stuff" />
 
 
-<form action="{{ route('admin.sections.process', ['section_key' => 'affiliation', 'id' => $sectionsData->id]) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ route('admin.sections.process', ['section_key' => 'office-stuff', 'id' => $sectionsData->id]) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
 
     @csrf
     <div class="row form-group">

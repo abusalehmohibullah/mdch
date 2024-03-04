@@ -20,6 +20,9 @@ body {
   display: none;
 }
 
+p {
+  margin-bottom: 0;
+}
 .preloader-container {
   z-index: 99999 !important;
 }
@@ -473,6 +476,11 @@ figure.table table td {
 }
 
 figure.image {
+  display: flex;
+  justify-content: center;
+}
+
+p>img {
   display: flex;
   justify-content: center;
 }
